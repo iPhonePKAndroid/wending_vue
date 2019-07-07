@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { Tabbar, TabbarItem } from 'vant';
-Vue.use(Tabbar).use(TabbarItem);
+import { Tabbar, TabbarItem, Field, NavBar, Cell, CellGroup, Button, Image, Checkbox, CheckboxGroup } from 'vant';
+Vue.use(Tabbar).use(TabbarItem).use(Field).use(NavBar).use(Cell).use(CellGroup).use(Button).use(Image).use(Checkbox).use(CheckboxGroup);
 
 Vue.config.productionTip = false
 

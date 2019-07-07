@@ -34,6 +34,26 @@ let router = new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
+    {
+      path: '/login',
+      name: 'login',
+      meta: {
+        auth: false,
+        tabar: false,
+        title: '登录' + title,
+      },
+      component: resolve => require(['./views/auth/Login.vue'], resolve),
+    },
+    {
+      path: '/register',
+      name: 'register',
+      meta: {
+        auth: false,
+        tabar: false,
+        title: '注册' + title,
+      },
+      component: resolve => require(['./views/auth/Register.vue'], resolve),
+    },
   ]
 })
 
