@@ -16,3 +16,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+    .home {
+        text-align: center;
+        img {
+            margin-top: 5rem;
+        }
+    }
+</style>
