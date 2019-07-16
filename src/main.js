@@ -1,3 +1,5 @@
+import '@babel/polyfill'
+import Es6Promise from 'es6-promise'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -7,6 +9,8 @@ import { Tabbar, TabbarItem, Field, NavBar, Cell, CellGroup, Button, Image, Chec
 Vue.use(Tabbar).use(TabbarItem).use(Field).use(NavBar).use(Cell).use(CellGroup).use(Button).use(Image).use(Checkbox).use(CheckboxGroup);
 
 Vue.config.productionTip = false
+
+Es6Promise.polyfill()
 
 // 使用axios
 import axios from './axios'

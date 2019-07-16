@@ -2,13 +2,13 @@
   <div class="header">
     <div class="nav">
       <van-nav-bar
-        :fixed="true"
-        title="注册"
-        left-arrow
-        left-text=" "
-        right-text
-        @click-left="onClickLeft"
-        @click-right="onClickRight"
+      :fixed="true"
+      title="注册"
+      left-arrow
+      left-text=" "
+      right-text
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
       />
     </div>
     <div class="text">
@@ -18,27 +18,27 @@
         <van-field v-model="params.phone" clearable placeholder="请输入手机号码" />
         <van-field v-model="params.password" clearable placeholder="请输入密码" type="password" />
         <van-field
-          v-model="params.password_confirmation"
-          clearable
-          placeholder="请确认登录密码"
-          type="password"
+        v-model="params.password_confirmation"
+        clearable
+        placeholder="请确认登录密码"
+        type="password"
         />
         <van-field v-model="params.affcode" clearable placeholder="请输入邀请码" />
 
         <van-field v-model="params.code" center clearable placeholder="请输入短信验证码">
           <van-button
-            v-show="show"
-            @click="getCode()"
-            slot="button"
-            size="small"
-            type="primary"
+          v-show="show"
+          @click="getCode()"
+          slot="button"
+          size="small"
+          type="info"
           >发送验证码</van-button>
           <van-button
-            v-show="!show"
-            :disabled="!show"
-            slot="button"
-            size="small"
-            type="primary"
+          v-show="!show"
+          :disabled="!show"
+          slot="button"
+          size="small"
+          type="info"
           >{{ count }}秒后重试</van-button>
         </van-field>
       </van-cell-group>
@@ -47,11 +47,11 @@
       </van-checkbox>
       <div class="goin">
         <van-button
-          type="primary"
-          :hairline="true"
-          :square="true"
-          @click="register"
-          :disabled="!checked"
+        type="info"
+        :hairline="true"
+        :square="true"
+        @click="register"
+        :disabled="!checked"
         >注册</van-button>
       </div>
       <div class="text-center register_and_password">
@@ -62,51 +62,49 @@
   </div>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      params: {
-        phone: "",
-        password: "",
-        password_confirmation: "",
-        code: "",
-        name: "",
-        affcode: "",
-        method: "register"
-      },
+  export default {
+    data() {
+      return {
+        params: {
+          phone: "",
+          password: "",
+          password_confirmation: "",
+          code: "",
+          name: "",
+          affcode: "",
+          method: "register"
+        },
 
-      checked: true,
-      show: true,
-      count: "",
-      timer: null,
-    };
-  },
-  methods: {
-    affCode() {
-      this.params.affcode = this.$route.query.inviteCode;
+        checked: true,
+        show: true,
+        count: "",
+        timer: null,
+      };
     },
-    onClickLeft() {
-      this.$router.go(-1);
-    },
-    onClickRight() {
+    methods: {
+      affCode() {
+        this.params.affcode = this.$route.query.inviteCode;
+      },
+      onClickLeft() {
+        this.$router.go(-1);
+      },
+      onClickRight() {
       // this.$toast('按钮');
       this.$router.push({
         name: "my.payment.add"
       });
     },
-    register() {
-      this.$axios.post("/register", this.params).then(res => {
-        if (res.code == 10000) {
-          this.$router.push({
-            name: "app"
-          });
-        }
-      });
+    async register() {
+      let res = this.$axios.post("/register", this.params)
+      if (res.code == 10000) {
+        this.$router.push({
+          name: "app"
+        });
+      }
     },
     async getCode() {
       if (!this.timer) {
-        let res = await this.$axios.post("/sendcode", this.params);
-
+        await this.$axios.post("/sendcode", this.params);
         this.count = 60;
         this.show = false;
         this.timer = setInterval(() => {

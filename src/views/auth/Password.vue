@@ -14,14 +14,14 @@
 				<van-field v-model="password_confirm" clearable placeholder="请确认新密码" type='password'/>
 
 				<van-field v-model="code" center clearable placeholder="请输入短信验证码">
-					<van-button v-show="show" @click="getCode()" slot="button" size="small" type="primary">发送验证码</van-button>
-					<van-button v-show="!show" :disabled="!show" slot="button" size="small" type="primary">{{ count }}秒后重试</van-button>
+					<van-button v-show="show" @click="getCode()" slot="button" size="small" type="info">发送验证码</van-button>
+					<van-button v-show="!show" :disabled="!show" slot="button" size="small" type="info">{{ count }}秒后重试</van-button>
 				</van-field>
 
 			</van-cell-group>
 
 			<div class="goin">
-				<van-button type="primary" :hairline="true" :square="true">登入</van-button>
+				<van-button type="info" :hairline="true" :square="true">登入</van-button>
 			</div>
 			<div class="text-center register_and_password">
 				已经有账号？
