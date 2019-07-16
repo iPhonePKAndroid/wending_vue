@@ -21,34 +21,22 @@
     },
     async mounted() {
 
-      setInterval(() => {
-        this.$notify({
-          message: '联系QQ71314126',
-          duration: 2000,
-          background: '#07c160',
-          onClick() {
-            alert('联系微信iPhonePKAndroid')
-          },
-        });
-      }, 100000)
+      // setInterval(() => {
+      //   this.$notify({
+      //     message: '联系QQ71314126',
+      //     duration: 2000,
+      //     background: '#07c160',
+      //     onClick() {
+      //       alert('联系微信iPhonePKAndroid')
+      //     },
+      //   });
+      // }, 100000)
 
     },
   }
 </script>
 
 <style lang="scss">
-body {
-  color: white;
-  background-color: #1d2243;
-  a {
-    color: white;
-  }
-}
-
 #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin-top: 12px;
-  margin-bottom: 12px;
 }
 </style>

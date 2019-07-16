@@ -11,28 +11,58 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'index',
       meta: {
         auth: false,
         guest: false,
         tabar: true,
-        title: '网站首页' + title,
+        title: '首页' + title,
       },
       component: Home,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/wallet',
+      name: 'wallet',
       meta: {
         auth: false,
         guest: false,
         tabar: true,
-        title: '关于我们' + title,
+        title: '钱包' + title,
       },
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import('./views/wallet/index.vue')
+    },
+    {
+      path: '/trade',
+      name: 'trade',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '交易' + title,
+      },
+      component: () => import('./views/trade/index.vue')
+    },
+    {
+      path: '/find',
+      name: 'find',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '发现' + title,
+      },
+      component: () => import('./views/find/index.vue')
+    },
+    {
+      path: '/my',
+      name: 'my',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '我的' + title,
+      },
+      component: () => import('./views/my/index.vue')
     },
     {
       path: '/login',

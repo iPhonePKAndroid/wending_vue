@@ -1,20 +1,17 @@
 <template>
-  <div>
+  <div class="tabar">
     <van-tabbar :value="active" :fixed="true" :border="false" :safe-area-inset-bottom="true" :z-index="999">
-      <van-tabbar-item @click="go('/')" icon="home-o">
-        行情
-      </van-tabbar-item>
-      <van-tabbar-item @click="go('/trade')" icon="search">
-        币币
-      </van-tabbar-item>
-      <van-tabbar-item @click="go('/wallet')" icon="discount">
+      <van-tabbar-item @click="go('/wallet')" icon="ecard-pay">
         钱包
       </van-tabbar-item>
-      <van-tabbar-item @click="go('/otc')" icon="friends-o">
-        合约
+      <van-tabbar-item @click="go('/trade')" icon="cash-back-record">
+        交易
       </van-tabbar-item>
-      <van-tabbar-item @click="go('/about')" icon="setting-o">
-        关于
+      <van-tabbar-item @click="go('/find')" icon="friends-o">
+        发现
+      </van-tabbar-item>
+      <van-tabbar-item @click="go('/my')" icon="user-circle-o">
+        我的
       </van-tabbar-item>
     </van-tabbar>
   </div>
@@ -24,7 +21,7 @@
   export default {
     computed: {
       active() {
-        let arr = ['home', 'trade', 'wallet', 'otc', 'about']
+        let arr = ['wallet', 'trade', 'find', 'my']
         return arr.indexOf(this.$route.name)
       },
     },
@@ -45,3 +42,21 @@
     },
   }
 </script>
+
+<style lang="scss">
+  .tabar {
+
+    .van-tabbar {
+      background-color: #fcfcfc;
+    }
+
+    .van-tabbar-item--active {
+      color: black;
+    }
+
+    .van-tabbar-item__text {
+      font-weight:bold;
+    }
+
+  }
+</style>
