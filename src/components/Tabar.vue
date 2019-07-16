@@ -24,7 +24,7 @@
   export default {
     computed: {
       active() {
-        let arr = ['home', 'trade', 'wallet', 'otc', 'my']
+        let arr = ['home', 'trade', 'wallet', 'otc', 'about']
         return arr.indexOf(this.$route.name)
       },
     },
