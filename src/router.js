@@ -16,7 +16,7 @@ let router = new Router({
         auth: false,
         guest: false,
         tabar: true,
-        title: '网站首页' + title,
+        title: '首页' + title,
       },
       component: Home,
     },
@@ -34,6 +34,85 @@ let router = new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
+    {
+      path: '/go',
+      name: 'go',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '抢单' + title,
+      },
+      // route level code-splitting
+      // this generates a separate chunk (go.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "go" */ './views/Go.vue')
+    },
+    {
+      path: '/my',
+      name: 'my',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '我的' + title,
+      },
+      // route level code-splitting
+      // this generates a separate chunk (my.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "my" */ './views/My.vue')
+    },
+
+
+
+    {
+      path: '/recharge',
+      name: 'recharge',
+      meta: {
+        auth: false,
+        tabar: false,
+        title: '充值' + title,
+      },
+      component: resolve => require(['./views/my/Recharge.vue'], resolve),
+    },
+
+
+    {
+      path: '/recharge/index',
+      name: 'recharge.index',
+      meta: {
+        auth: false,
+        tabar: false,
+        title: '充值记录' + title,
+      },
+      component: resolve => require(['./views/my/recharge/index.vue'], resolve),
+    },
+
+
+
+    {
+      path: '/withdraw',
+      name: 'withdraw',
+      meta: {
+        auth: false,
+        tabar: false,
+        title: '提现' + title,
+      },
+      component: resolve => require(['./views/my/Withdraw.vue'], resolve),
+    },
+
+    {
+      path: '/withdraw/index',
+      name: 'withdraw.index',
+      meta: {
+        auth: false,
+        tabar: false,
+        title: '提现记录' + title,
+      },
+      component: resolve => require(['./views/my/withdraw/index.vue'], resolve),
+    },
+
+
     {
       path: '/login',
       name: 'login',

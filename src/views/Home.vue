@@ -1,27 +1,62 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+
+        <div class="swiper">
+            <van-swipe :autoplay="3000">
+            <van-swipe-item v-for="(image, index) in images" :key="index">
+            <img v-lazy="image" />
+            </van-swipe-item>
+            </van-swipe>
+        </div>
+
+        <div class="swiper">
+            <van-swipe :autoplay="3000">
+            <van-swipe-item v-for="(image, index) in images" :key="index">
+            <img v-lazy="image" />
+            </van-swipe-item>
+            </van-swipe>
+        </div>
+
+        <div class="swiper">
+            <van-swipe :autoplay="3000">
+            <van-swipe-item v-for="(image, index) in images" :key="index">
+            <img v-lazy="image" />
+            </van-swipe-item>
+            </van-swipe>
+        </div>
+
+        <div class="swiper">
+            <van-swipe :autoplay="3000">
+            <van-swipe-item v-for="(image, index) in images" :key="index">
+            <img v-lazy="image" />
+            </van-swipe-item>
+            </van-swipe>
+        </div>
+
+
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        data() {
+            return {
+              images: [
+                'https://img.yzcdn.cn/vant/apple-1.jpg',
+                'https://img.yzcdn.cn/vant/apple-2.jpg',
+              ],
+           }
+       },
+       methods: {
+       },
+   }
 </script>
 
 <style lang="scss">
-    .home {
-        text-align: center;
-        img {
-            margin-top: 5rem;
-        }
+.swiper {
+    img {
+        width: 100%;
+        height: 200px;
     }
+}
 </style>

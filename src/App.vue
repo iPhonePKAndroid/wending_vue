@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <router-view />
+
+
     <Tabar v-if="tabar" />
   </div>
 </template>
@@ -20,18 +22,6 @@
       }
     },
     async mounted() {
-
-      setInterval(() => {
-        this.$notify({
-          message: '联系QQ71314126',
-          duration: 2000,
-          background: '#07c160',
-          onClick() {
-            alert('联系微信iPhonePKAndroid')
-          },
-        });
-      }, 100000)
-
     },
   }
 </script>
@@ -39,16 +29,11 @@
 <style lang="scss">
 body {
   color: white;
-  background-color: #1d2243;
-  a {
-    color: white;
-  }
+  background-color: #f2f4f5;
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-top: 12px;
-  margin-bottom: 12px;
 }
 </style>

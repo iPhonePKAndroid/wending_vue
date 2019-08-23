@@ -1,17 +1,7 @@
 module.exports = {
   presets: [
-    '@vue/app', {
-      useBuiltIns: 'entry'
-    }
+    '@vue/app'
   ],
   plugins: [
-    ['import', {
-      libraryName: 'vant',
-      libraryDirectory: 'es',
-      style: true
-    }, 'vant']
-  ],
-  browserslist: [
-    'ie 10'
   ]
 }

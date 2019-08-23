@@ -4,17 +4,21 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-import { Tabbar, TabbarItem, Field, NavBar, Cell, CellGroup, Button, Image, Checkbox, CheckboxGroup } from 'vant';
-Vue.use(Tabbar).use(TabbarItem).use(Field).use(NavBar).use(Cell).use(CellGroup).use(Button).use(Image).use(Checkbox).use(CheckboxGroup);
+import VueLazyload from 'vue-lazyload'
 
 Vue.config.productionTip = false
 
 Es6Promise.polyfill()
 
-// 使用axios
+Vue.use(VueLazyload)
+
 import axios from './axios'
 Vue.prototype.$axios = axios
+
+import Vant from 'vant'
+import 'vant/lib/index.css'
+
+Vue.use(Vant)
 
 new Vue({
   router,
