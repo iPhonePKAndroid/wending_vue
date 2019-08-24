@@ -29,10 +29,29 @@ let router = new Router({
         tabar: true,
         title: '关于我们' + title,
       },
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/tops',
+      name: 'tops',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '服务协议' + title,
+      },
+      component: () => import(/* webpackChunkName: "about" */ './views/Tops.vue')
+    },
+    {
+      path: '/help',
+      name: 'help',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '帮助关于' + title,
+      },
+      component: () => import(/* webpackChunkName: "about" */ './views/Help.vue')
     },
     {
       path: '/go',
@@ -43,9 +62,6 @@ let router = new Router({
         tabar: true,
         title: '抢单' + title,
       },
-      // route level code-splitting
-      // this generates a separate chunk (go.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "go" */ './views/Go.vue')
     },
     {
@@ -57,14 +73,19 @@ let router = new Router({
         tabar: true,
         title: '我的' + title,
       },
-      // route level code-splitting
-      // this generates a separate chunk (my.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "my" */ './views/My.vue')
     },
-
-
-
+    {
+      path: '/my/aff',
+      name: 'my.aff',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '邀请好友' + title,
+      },
+      component: () => import(/* webpackChunkName: "my" */ './views/my/Aff.vue')
+    },
     {
       path: '/recharge',
       name: 'recharge',
@@ -87,7 +108,6 @@ let router = new Router({
       },
       component: resolve => require(['./views/my/recharge/index.vue'], resolve),
     },
-
 
 
     {

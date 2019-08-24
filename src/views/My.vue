@@ -1,6 +1,6 @@
 <template>
     <div class="my">
-    
+
         <div class="bg">
             <div class="avatar">
                 <van-image width="100" height="100" lazy-load round src="https://img.yzcdn.cn/vant/cat.jpeg" />
@@ -31,104 +31,115 @@
                     <span class="text">充值</span>
                 </div>
                 
-              </van-col>
-              <van-col span="12">
+            </van-col>
+            <van-col span="12">
                 <div class="center" @click="go('withdraw')">
                     <van-icon name="vip-card-o" />
                     <span class="text">提现</span>
                 </div>
-              </van-col>
-            </van-row>
-        </div>    
+            </van-col>
+        </van-row>
+    </div>    
 
-        <div class="no"></div>
+    <div class="no"></div>
 
-        <div class="team">
-            <van-row>
-                <van-col span="3">
-                    <van-icon name="friends-o" size="20" color="#7d8993" />
-                </van-col>
-                <van-col span="5">
-                    我的团队
-                </van-col>
-                <van-col span="3" offset="13">
-                    <van-icon name="arrow" color="#dfe3e5" />
-                </van-col>
-            </van-row>
-        </div>
+    <div class="team">
+        <van-row>
+            <van-col span="3">
+                <van-icon name="friends-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                我的团队（{{ team }}）
+            </van-col>
+            <van-col span="3" offset="10">
+            </van-col>
+        </van-row>
+    </div>
 
-        <div class="no"></div>
+    <div class="no"></div>
     
-        <div class="team">
+    <div class="team">
 
-            <van-row>
-                <van-col span="3">
-                    <van-icon name="gift-o" size="20" color="#7d8993" />
-                </van-col>
-                <van-col span="5">
-                    邀请好友
-                </van-col>
-                <van-col span="3" offset="13">
-                    <van-icon name="arrow" color="#dfe3e5" />
-                </van-col>
-            </van-row>
+        <van-row @click="go('my.aff')">
+            <van-col span="3">
+                <van-icon name="gift-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                邀请好友
+            </van-col>
+            <van-col span="3" offset="10">
+                <van-icon name="arrow" color="#dfe3e5" />
+            </van-col>
+        </van-row>
 
-            <van-row>
-                <van-col span="3">
-                    <van-icon name="search" size="20" color="#7d8993" />
-                </van-col>
-                <van-col span="5">
-                    帮助关于
-                </van-col>
-                <van-col span="3" offset="13">
-                    <van-icon name="arrow" color="#dfe3e5" />
-                </van-col>
-            </van-row>
-            <van-row>
-                <van-col span="3">
-                    <van-icon name="description" size="20" color="#7d8993" />
-                </van-col>
-                <van-col span="5">
-                    用户协议
-                </van-col>
-                <van-col span="3" offset="13">
-                    <van-icon name="arrow" color="#dfe3e5" />
-                </van-col>
-            </van-row>
-            <van-row @click="go('about')">
-                <van-col span="3">
-                    <van-icon name="home-o" size="20" color="#7d8993" />
-                </van-col>
-                <van-col span="5">
-                    关于我们
-                </van-col>
-                <van-col span="3" offset="13">
-                    <van-icon name="arrow" color="#dfe3e5" />
-                </van-col>
-            </van-row>
+        <van-row @click="go('help')">
+            <van-col span="3">
+                <van-icon name="search" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                帮助关于
+            </van-col>
+            <van-col span="3" offset="10">
+                <van-icon name="arrow" color="#dfe3e5" />
+            </van-col>
+        </van-row>
+        <van-row @click="go('tops')">
+            <van-col span="3">
+                <van-icon name="description" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                用户协议
+            </van-col>
+            <van-col span="3" offset="10">
+                <van-icon name="arrow" color="#dfe3e5" />
+            </van-col>
+        </van-row>
+        <van-row @click="go('about')">
+            <van-col span="3">
+                <van-icon name="home-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                关于我们
+            </van-col>
+            <van-col span="3" offset="10">
+                <van-icon name="arrow" color="#dfe3e5" />
+            </van-col>
+        </van-row>
+
+        <van-row @click="logout">
+            <van-col span="3">
+                <van-icon name="underway-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                退出登录
+            </van-col>
+            <van-col span="3" offset="10">
+                <van-icon name="arrow" color="#dfe3e5" />
+            </van-col>
+        </van-row>
 
 
-
-        </div>
 
     </div>
+
+</div>
 </template>
 
 <script>
     export default {
         data() {
             return {
-                
+                team: 0,
             }
         },
         methods: {
             go(name) {
               this.$router.push({
                 name: name
-              });
-            }
-        },
-    }
+            });
+          }
+      },
+  }
 </script>
 
 <style lang="scss">
@@ -189,8 +200,8 @@
 }
 
 .no {
-     background-color: #f2f4f5;
-     padding: 8px;
+   background-color: #f2f4f5;
+   padding: 8px;
 }
 
 .team {

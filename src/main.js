@@ -5,12 +5,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueLazyload from 'vue-lazyload'
+import Clipboard from 'v-clipboard'
 
 Vue.config.productionTip = false
 
 Es6Promise.polyfill()
 
 Vue.use(VueLazyload)
+Vue.use(Clipboard)
 
 import axios from './axios'
 Vue.prototype.$axios = axios
