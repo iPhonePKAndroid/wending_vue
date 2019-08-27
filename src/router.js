@@ -26,7 +26,7 @@ let router = new Router({
       meta: {
         auth: false,
         guest: false,
-        tabar: true,
+        tabar: false,
         title: '关于我们' + title,
       },
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
@@ -37,7 +37,7 @@ let router = new Router({
       meta: {
         auth: false,
         guest: false,
-        tabar: true,
+        tabar: false,
         title: '服务协议' + title,
       },
       component: () => import(/* webpackChunkName: "about" */ './views/Tops.vue')
@@ -48,7 +48,7 @@ let router = new Router({
       meta: {
         auth: false,
         guest: false,
-        tabar: true,
+        tabar: false,
         title: '帮助关于' + title,
       },
       component: () => import(/* webpackChunkName: "about" */ './views/Help.vue')

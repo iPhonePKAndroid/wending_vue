@@ -6,10 +6,10 @@ import { Notify, Toast } from 'vant'
 
 
 // axios.defaults.timeout = 1000 * 5
-axios.defaults.baseURL = 'https://api.imhtt.com/api/'
+// axios.defaults.baseURL = 'https://api.imhtt.com/api/'
 // axios.defaults.baseURL = 'http://192.168.0.168:8000/api/'
 // axios.defaults.baseURL = 'http://192.168.1.4:8000/api/'
-// axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
+axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
@@ -22,11 +22,11 @@ axios.interceptors.request.use(
         }
 
         // 开启网络加载动画
-        // Toast.loading({
-        //     mask: true,
-        //     duration: 0,
-        //     message: '加载中...',
-        // });
+        Toast.loading({
+            mask: true,
+            duration: 0,
+            message: '加载中...',
+        });
 
         return config
     },
@@ -40,7 +40,7 @@ axios.interceptors.response.use(
     response => {
 
         // 取消网络加载提示
-        // Toast.clear();
+        Toast.clear();
         // alert(2)
 
         switch (response.data.code) {
@@ -93,9 +93,9 @@ axios.interceptors.response.use(
             }
         } else {
             // alert(3)
-            // Toast.fail({
-            //     message: '网络请求异常'
-            // })
+            Toast.fail({
+                message: '网络请求异常'
+            })
         }
         return Promise.reject(error)
     }

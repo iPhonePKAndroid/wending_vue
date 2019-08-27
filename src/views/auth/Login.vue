@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="center margin-top-10">
-				还没有账号？
+				<span style="color: black;">还没有账号？</span>
 				<router-link :to="{ name: 'register' }" class="info">点击注册</router-link>
 			</div>
 
@@ -54,10 +54,7 @@
 				})
 			},
 			async login() {
-				this.$axios.post('/login', {
-					phone: this.phone,
-					password: this.password,
-				}).then(response => {
+				this.$axios.post('/login', this.params).then(response => {
 					this.$store.commit('login', response.data.access_token)
 					this.$router.push({
 						name: 'home'

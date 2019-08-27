@@ -23,41 +23,31 @@
         placeholder="请确认登录密码"
         type="password"
         />
-        <van-field v-model="params.affcode" clearable placeholder="请输入邀请码" />
-
-        <van-field v-model="params.code" center clearable placeholder="请输入短信验证码">
-          <van-button
-          v-show="show"
-          @click="getCode()"
-          slot="button"
-          size="small"
-          type="info"
-          >发送验证码</van-button>
-          <van-button
-          v-show="!show"
-          :disabled="!show"
-          slot="button"
-          size="small"
-          type="info"
-          >{{ count }}秒后重试</van-button>
-        </van-field>
+        <van-field v-model="params.code" clearable placeholder="请输入邀请码" />
       </van-cell-group>
+
       <van-checkbox v-model="checked" class="selectbox" icon-size="16" @click="tops">
-        <div style="color:#fff">同意《注册协议》</div>
+        <div style="color:black;">同意《注册协议》</div>
       </van-checkbox>
-      <div class="goin">
-        <van-button
-        type="info"
-        :hairline="true"
-        :square="true"
-        @click="register"
-        :disabled="!checked"
-        >注册</van-button>
+      
+      <div class="center auth_button">
+        <div>
+          <van-button
+          type="info"
+          :hairline="true"
+          :square="true"
+          size="large"
+          @click="register"
+          :disabled="!checked"
+          >注册</van-button>
+        </div>
       </div>
-      <div class="text-center register_and_password">
-        已经有账号？
+
+      <div class="center margin-top-10">
+        <div style="color: black;">已经有账号？</div>
         <router-link :to="{ name: 'login' }" style="color: #07c160;">立即登录</router-link>
       </div>
+
     </div>
   </div>
 </template>
@@ -71,7 +61,6 @@
           password_confirmation: "",
           code: "",
           name: "",
-          affcode: "",
           method: "register"
         },
 
@@ -89,55 +78,46 @@
         this.$router.go(-1);
       },
       onClickRight() {
-      // this.$toast('按钮');
-      this.$router.push({
-        name: "my.payment.add"
-      });
-    },
-    async register() {
-      let res = this.$axios.post("/register", this.params)
-      if (res.code == 10000) {
         this.$router.push({
-          name: "app"
+          name: "my.payment.add"
         });
+      },
+      async register() {
+        let res = await this.$axios.post("/register", this.params)
+        if (res.code == 10000) {
+          this.$router.push({
+            name: "login"
+          });
+        }
+      },
+      async tops() {
+        this.$router.push({
+          name: 'tops'
+        })
+      },
+    },
+    mounted() {
+      this.affCode();
+    },
+    watch: {
+      checked() {
+        this.checked = true
       }
     },
-    async getCode() {
-      if (!this.timer) {
-        await this.$axios.post("/sendcode", this.params);
-        this.count = 60;
-        this.show = false;
-        this.timer = setInterval(() => {
-          if (this.count > 0 && this.count <= 60) {
-            this.count--;
-          } else {
-            this.show = true;
-            clearInterval(this.timer);
-            this.timer = null;
-          }
-        }, 1000);
-      }
-    },
-    async tops() {
-      this.$router.push({
-        name: 'tops'
-      })
-    },
-  },
-  mounted() {
-    this.affCode();
-  },
-  watch: {
-    checked() {
-      this.checked = true
-    }
-  },
-};
+  };
 </script>
 <style lang="scss">
 .selectbox {
   margin: 1rem;
   font-size: 0.8rem;
   color: #fff;
+}
+
+.center {
+  text-align: center;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
 }
 </style>

@@ -1,38 +1,17 @@
 <template>
     <div>
 
-        <div class="swiper">
-            <van-swipe :autoplay="3000">
-            <van-swipe-item v-for="(image, index) in images" :key="index">
-            <img v-lazy="image" />
-            </van-swipe-item>
-            </van-swipe>
-        </div>
+        <template v-for="banenr in banners">
 
-        <div class="swiper">
-            <van-swipe :autoplay="3000">
-            <van-swipe-item v-for="(image, index) in images" :key="index">
-            <img v-lazy="image" />
-            </van-swipe-item>
-            </van-swipe>
-        </div>
+            <div class="swiper">
+                <van-swipe :autoplay="3000">
+                    <van-swipe-item v-for="(image, index) in banenr.banners" :key="index">
+                        <img v-lazy="image.path" />
+                    </van-swipe-item>
+                </van-swipe>
+            </div>
 
-        <div class="swiper">
-            <van-swipe :autoplay="3000">
-            <van-swipe-item v-for="(image, index) in images" :key="index">
-            <img v-lazy="image" />
-            </van-swipe-item>
-            </van-swipe>
-        </div>
-
-        <div class="swiper">
-            <van-swipe :autoplay="3000">
-            <van-swipe-item v-for="(image, index) in images" :key="index">
-            <img v-lazy="image" />
-            </van-swipe-item>
-            </van-swipe>
-        </div>
-
+        </template>
 
     </div>
 </template>
@@ -41,15 +20,20 @@
     export default {
         data() {
             return {
-              images: [
-                'https://img.yzcdn.cn/vant/apple-1.jpg',
-                'https://img.yzcdn.cn/vant/apple-2.jpg',
-              ],
-           }
-       },
-       methods: {
-       },
-   }
+                banners: [
+                ],
+            }
+        },
+        methods: {
+            async get_banners() {
+                let banners = await this.$axios.get('/banners')
+                this.banners = banners.data
+            },
+        },
+        mounted() {
+            this.get_banners()
+        },
+    }
 </script>
 
 <style lang="scss">

@@ -1,20 +1,20 @@
 <template>
     <div class="go">
 
-        <van-notice-bar text="中华人民共和国刑法中华人民共和国刑法中华人民共和国刑法中华人民共和国刑法" left-icon="volume-o" />
+        <van-notice-bar :text="info.notice.body" left-icon="volume-o" />
         
         <div class="total">
-            今日总量：1231231.123
+            今日总量：{{ info.total }}
         </div>
 
 
         <div class="submit">
             <van-row>
                 <van-col span="6" offset="6">
-                    <van-button round type="danger">点击抢单</van-button>
+                    <van-button round type="danger" @click="go">点击抢单</van-button>
                 </van-col>
                 <van-col span="6" offset="0">
-                    <van-button round type="danger">积分提现</van-button>
+                    <van-button round type="danger" @click="withdraw">积分提现</van-button>
                 </van-col>
             </van-row>
         </div>
@@ -75,7 +75,7 @@
                         </span>
                         <span class="text">USDT</span>
                         <div class="text2">
-                            21311.0000
+                            {{ info.wallet.amount }}
                         </div>
                     </van-col>
                     <van-col span="2" offset="2">
@@ -89,7 +89,7 @@
                         </span>
                         <span class="text">积分</span>
                         <div class="text2">
-                            1313.0000
+                            {{ info.point.amount }}
                         </div>
                     </van-col>
                 </van-row>
@@ -107,8 +107,32 @@
     export default {
         data() {
             return {
-
+                info: {
+                    total: '0',
+                    profit: '0',
+                    notice: {
+                        body: '-',
+                    },
+                    wallet: {
+                        amount: '0',
+                    },
+                },
             }
+        },
+        methods: {
+            async get_go() {
+                let go = await this.$axios.get('/go')
+                this.info = go.data
+            },
+            async go() {
+                this.$toast('你好，渣渣辉！')
+            },
+            async withdraw() {
+                this.$toast('你好，渣渣辉！')
+            },
+        },
+        mounted() {
+            this.get_go()
         },
     }
 </script>
@@ -171,6 +195,7 @@
 
         .text2 {
             font-size: 12px;
+            text-align: center;
         }
 
         .icon {

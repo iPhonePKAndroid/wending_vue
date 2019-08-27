@@ -3,7 +3,7 @@
         <van-nav-bar title="我的邀请码" left-arrow right-text="分享" @click-left="onClickLeft" @click-right="onClickRight" />
 
         <div class="invite">
-            <van-image src="http://apitest.imhtt.com/storage/invite/WayNKJ.png" />
+            <van-image :src="params.img" />
         </div>
         <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
     </div>
@@ -42,8 +42,14 @@
                     this.$clipboard(`创造无限财富，从这里开始获得：https://imhtt.com/register?inviteCode=${this.params.code}`)
                     this.$toast('复制成功');
                 }
-
           },
+          async get_aff() {
+            let aff = await this.$axios.get('/aff')
+            this.params = aff.data
+          },
+      },
+      mounted() {
+        this.get_aff()
       },
  }
 </script>

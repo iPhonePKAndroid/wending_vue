@@ -5,6 +5,13 @@
     </van-nav-bar>
 
 
+    <div class="content-wrapper">
+      <div class="amount">
+        <p>
+          余额： {{ wallet.amount }} {{ wallet.token.cn_name }}
+        </p>
+      </div>
+    </div>
 
     <div class="input">
 
@@ -34,8 +41,7 @@
 
     <div class="submit">
 
-      <van-button round type="danger" size="normal" color="#1989fa">下一步</van-button>
-
+      <van-button round type="danger" size="normal" color="#1989fa" :loading="button.loading" :disabled="button.disabled" @click="submit">下一步</van-button>
 
     </div>
 
@@ -48,9 +54,24 @@
   export default {
     data() {
       return {
+        button: {
+          loading: false,
+          disabled: false,
+        },
         params: {
           amount: '',
           address: '',
+        },
+        wallet: {
+            address: '-',
+            amount: '0',
+            lock_amount: '0',
+            qrcode_url: '-',
+            token: {
+                icon: '-',
+                cn_name: '-',
+                en_name: '-',
+            },
         },
         activeNames: ['1'],
       }
@@ -64,12 +85,30 @@
           name: 'withdraw.index'
         });
       },
+      async get_wallet() {
+          let wallet = await this.$axios.get('/wallet/recharge')
+          this.wallet = wallet.data
+      },
+      async submit() {
+        this.button.loading = true
+        this.$toast('提交成功')
+        this.button.loading = false
+      },
+    },
+    mounted() {
+      this.get_wallet()
     },
   }
 </script>
 
 <style lang="scss">
 .withdraw {
+
+  .amount {
+    background: #3F79FE;
+    padding: 1rem;
+    text-align: center;
+  }
 
   .input {
     margin-top: 1rem;

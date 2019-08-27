@@ -3,17 +3,17 @@
 
         <div class="bg">
             <div class="avatar">
-                <van-image width="100" height="100" lazy-load round src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <van-image width="100" height="100" lazy-load round :src="require('../assets/avatar.png')" />
             </div>
 
             <div class="name">
-                问鼎公司&最帅的人
+                {{ user.name }}
             </div>
 
             <div class="profile">
                 <van-button color="white" plain size="mini">
                     <span class="text">
-                        17758584001
+                        {{ user.phone }}
                     </span>
                 </van-button>
             </div>
@@ -126,19 +126,37 @@
         data() {
             return {
                 team: 0,
+                user: {
+                    name: '-',
+                    phone: '-',
+                },
             }
         },
         methods: {
             go(name) {
-              this.$router.push({
-                name: name
-            });
+                this.$router.push({
+                    name: name
+                });
+            },
+            logout() {
+                this.$store.commit("logout");
+                this.$router.push({
+                    name: "login"
+                });
+            },
+            async profile() {
+                let user = await this.$axios.get('/user')
+                this.user = user.data
+            },
+            async team_count() {
+                let team = await this.$axios.get('/team')
+                this.team = team.data
+            },
           },
-          logout() {
-            
+          mounted() {
+            this.profile()
           },
-      },
-  }
+    }
 </script>
 
 <style lang="scss">

@@ -3,6 +3,11 @@
         <div class="nav">
             <van-nav-bar title="提现记录" left-arrow @click-left="onClickLeft" />
         </div>
+        <div class="amount">
+            <p>
+                余额： {{ wallet.amount }} USDT
+            </p>
+        </div>
         <van-cell style="backgroundColor: #1d2243">
             <van-row style="text-align: center;">
                 <van-col span="5">
@@ -43,16 +48,26 @@
             return {
                 show: false,
                 hash: '',
-                user: {},
                 active: 0,
                 list: [
-                {
-                    amount: '1.00',
-                    // hash: 'asd',
-                    hash: '0x4786205d7ca3c457c08de5821fccaa909949376ea04f2e1c526edcd66ee1fbbf',
-                    created_at: '2018年 12月 12日 12:12:12',
-                },
+                    {
+                        amount: '1.00',
+                        // hash: 'asd',
+                        hash: '0x4786205d7ca3c457c08de5821fccaa909949376ea04f2e1c526edcd66ee1fbbf',
+                        created_at: '2018年 12月 12日 12:12:12',
+                    },
                 ],
+                wallet: {
+                    address: '-',
+                    amount: '0',
+                    lock_amount: '0',
+                    qrcode_url: '-',
+                    token: {
+                        icon: '-',
+                        cn_name: '-',
+                        en_name: '-',
+                    },
+                },
                 loading: false,
                 finished: false,
                 type: '',
@@ -72,6 +87,14 @@
                 this.hash = hash
                 this.show = true
             },
+            async get_list() {
+                let list = await this.$axios.get('/wallet/recharges')
+                this.wallet = list.data.wallet
+                this.list = list.data.data.data
+            },
+        },
+        mounted() {
+            this.get_list()
         },
     }
 </script>
