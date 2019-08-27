@@ -13,11 +13,7 @@
             <div class="profile">
                 <van-button color="white" plain size="mini">
                     <span class="text">
-                        postmaster@g000.cn
-                    </span>
-
-                    <span style="vertical-align: middle;">
-                        <van-icon name="arrow" />
+                        17758584001
                     </span>
                 </van-button>
             </div>
@@ -77,7 +73,7 @@
                 <van-icon name="search" size="20" color="#7d8993" />
             </van-col>
             <van-col span="8">
-                帮助关于
+                平台公告
             </van-col>
             <van-col span="3" offset="10">
                 <van-icon name="arrow" color="#dfe3e5" />
@@ -137,7 +133,10 @@
               this.$router.push({
                 name: name
             });
-          }
+          },
+          logout() {
+            
+          },
       },
   }
 </script>
@@ -149,6 +148,7 @@
 
     .bg {
         background-color: #424a5c;
+        // background-image: url('../assets/profile.gif');
     }
 
 
@@ -166,6 +166,7 @@
 
         .text {
             padding-left: 4px;
+            padding-right: 4px;
         }
 
         .van-button {

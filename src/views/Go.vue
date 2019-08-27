@@ -1,8 +1,22 @@
 <template>
     <div class="go">
 
+        <van-notice-bar text="中华人民共和国刑法中华人民共和国刑法中华人民共和国刑法中华人民共和国刑法" left-icon="volume-o" />
+        
+        <div class="total">
+            今日总量：1231231.123
+        </div>
+
+
         <div class="submit">
-            <van-button round type="danger">点击抢单</van-button>
+            <van-row>
+                <van-col span="6" offset="6">
+                    <van-button round type="danger">点击抢单</van-button>
+                </van-col>
+                <van-col span="6" offset="0">
+                    <van-button round type="danger">积分提现</van-button>
+                </van-col>
+            </van-row>
         </div>
 
 
@@ -47,10 +61,43 @@
                     </div>
                 </van-col>
             </van-row>
-
-
         </div>
 
+
+
+        <div class="replace">
+            <van-panel status="兑换服务">
+
+                <van-row class="panel">
+                    <van-col span="6" offset="3">
+                        <span class="icon">
+                            <van-icon name="https://cdn.mytoken.org/Fp2vnCNJY7QudKwqR2mA4tt3Cmhl" size="24" />
+                        </span>
+                        <span class="text">USDT</span>
+                        <div class="text2">
+                            21311.0000
+                        </div>
+                    </van-col>
+                    <van-col span="2" offset="2">
+                        <div class="middle">
+                            <van-icon name="exchange" size="20" />
+                        </div>
+                    </van-col>
+                    <van-col span="6" offset="2">
+                        <span class="icon">
+                            <van-icon name="https://cdn.mytoken.org/FkonJbqGpUId6qy6AiVVURateiLD" size="24" />
+                        </span>
+                        <span class="text">积分</span>
+                        <div class="text2">
+                            1313.0000
+                        </div>
+                    </van-col>
+                </van-row>
+
+
+            </van-panel>
+
+        </div>
 
 
     </div>
@@ -70,6 +117,13 @@
 .go {
     color: black;
     text-align: center;
+
+    // background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS5WN_J3aLp34DLWC-JcVDbEH9Lt4rZqaDMfOBoRHIUMyurzB2');
+    background-color: #a7bdee;
+
+    .total {
+        padding-top: 5rem;
+    }
 
 
     .submit {
@@ -95,5 +149,36 @@
         }
 
     }
+
+
+    .replace {
+        margin-top: 1rem;
+
+
+        .panel {
+            padding-top: 1rem;
+            padding-bottom: 10rem;
+        }
+
+        .middle {
+            padding-top: 28px;
+        }
+
+        .text {
+            font-size: 24px;
+            margin-left: 5px;
+        }
+
+        .text2 {
+            font-size: 12px;
+        }
+
+        .icon {
+            vertical-align: middle;
+        }
+    }
+
+
+
 }
 </style>
