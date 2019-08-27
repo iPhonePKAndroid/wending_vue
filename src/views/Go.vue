@@ -116,6 +116,9 @@
                     wallet: {
                         amount: '0',
                     },
+                    point: {
+                        amount: '0',
+                    },
                 },
             }
         },

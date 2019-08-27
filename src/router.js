@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-let title = ' - Selly'
+let title = ' - 骚币'
 
 let router = new Router({
   mode: 'history',
