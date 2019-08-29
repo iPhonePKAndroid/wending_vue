@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="home">
 
         <template v-for="banenr in banners">
 
@@ -37,10 +37,14 @@
 </script>
 
 <style lang="scss">
-.swiper {
-    img {
-        width: 100%;
-        height: 200px;
+.home {
+    margin-bottom: 5rem;
+
+    .swiper {
+        img {
+            width: 100%;
+            height: 200px;
+        }
     }
 }
 </style>

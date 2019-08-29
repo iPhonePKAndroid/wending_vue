@@ -190,6 +190,7 @@
 
 .my {
     text-align: center;
+    margin-bottom: 5rem;
 
     .bg {
         background-color: #424a5c;
