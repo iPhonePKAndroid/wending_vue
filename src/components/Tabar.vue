@@ -1,7 +1,8 @@
 <template>
-  <div style="margin-top: 8rem; margin-bottom: 5rem;">
+  <!-- <div style="margin-top: 8rem; margin-bottom: 5rem;"> -->
+  <div>
 
-    <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">我是有底线的</van-divider>
+    <!-- <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">我是有底线的</van-divider> -->
 
     <van-tabbar :value="active" :fixed="true" :border="false" :safe-area-inset-bottom="true" :z-index="999" style="backgroundColor: #fbfcfd">
       <van-tabbar-item @click="go('home')" icon="home-o">首页</van-tabbar-item>

@@ -4,24 +4,32 @@
       <van-icon name="notes-o" slot="right" size=20 />
     </van-nav-bar>
 
+  
+    <div class="select">
 
-    <div class="content-wrapper">
-      <div class="amount">
-        <p>
-          余额： {{ wallet.amount }} {{ wallet.token.cn_name }}
-        </p>
-      </div>
+      <van-radio-group v-model="params.type">
+        <van-radio name="amount">USDT提现（余额：{{ wallet.amount }}）</van-radio>
+        <van-radio name="team_amount">团队抢单提现（余额：{{ wallet.team_amount }}）</van-radio>
+        <van-radio name="sheet_amount">我的抢单提现（余额：{{ wallet.sheet_amount }}）</van-radio>
+      </van-radio-group>
+
     </div>
+  
 
     <div class="input">
 
       <van-cell-group>
+
         <van-field v-model="params.amount" required clearable label="提现金额" placeholder="请输入提现金额" />
 
         <van-field v-model="params.address" required clearable label="接收地址" placeholder="请输入提现地址" />
 
-      </van-cell-group>
 
+        <van-field clearable :placeholder="placeholder" label="收费标准" required :disabled="true" />
+
+
+      </van-cell-group>
+  
 
     </div>
 
@@ -29,10 +37,7 @@
       <van-collapse v-model="activeNames">
         <van-collapse-item title="说明" name="1">
           <div class="text">
-            此地址仅接受USDT充值，单笔小于10金额将不会到账，任何低于最小金额或者非USDT的充值金额将无法找回。
-          </div>
-          <div class="text">
-            由于转账需要整个区块网络节点的确认，所以到账时间由区块网络拥堵决定，12次确认后将入账。
+            资金随进随出，完成抢单任务提现免手续费，没有完成抢单任务将扣取{{ info.token.fee }}个{{ info.token.cn_name }}
           </div>
         </van-collapse-item>
       </van-collapse>
@@ -54,6 +59,16 @@
   export default {
     data() {
       return {
+
+        placeholder: '收费',
+
+        info: {
+          token: {
+            min_withdraw: '0',
+            cn_name: 'USDT',
+            en_name: 'USDT',
+          },
+        },
         button: {
           loading: false,
           disabled: false,
@@ -61,17 +76,23 @@
         params: {
           amount: '',
           address: '',
+          type: 'amount',
+        },
+        point: {
+          amount: '0',
         },
         wallet: {
-            address: '-',
-            amount: '0',
-            lock_amount: '0',
-            qrcode_url: '-',
-            token: {
-                icon: '-',
-                cn_name: '-',
-                en_name: '-',
-            },
+          address: '-',
+          amount: '0',
+          lock_amount: '0',
+          team_amount: '0',
+          sheet_amount: '0',
+          qrcode_url: '-',
+          token: {
+            icon: '-',
+            cn_name: '-',
+            en_name: '-',
+          },
         },
         activeNames: ['1'],
       }
@@ -86,32 +107,72 @@
         });
       },
       async get_wallet() {
-          let wallet = await this.$axios.get('/wallet/recharge')
-          this.wallet = wallet.data
+        let wallet = await this.$axios.get('/wallet/recharge')
+        this.wallet = wallet.data
+      },
+      async get_point() {
+        let point = await this.$axios.get('/point')
+        this.point = point.data
+      },
+      async get_info() {
+        let info = await this.$axios.get('/withdraw/info')
+        this.info = info.data
       },
       async submit() {
         this.button.loading = true
-        this.$toast('提交成功')
+
+        let r = await this.$axios.post('/withdraw', this.params).catch(error => {
+          this.button.loading = false
+        })
         this.button.loading = false
+
       },
     },
     mounted() {
       this.get_wallet()
+      this.get_point()
+      this.get_info()
     },
+    watch: {
+
+      params: {
+        handler: function(newValue, oldValue) {
+          // console.log('你修改了a对象(watch deep)', newValue.type, oldValue.type)
+
+          if (newValue.type == 'usdt') {
+            this.placeholder = '收费'
+          } else {
+            this.placeholder = '免费'
+          }
+
+        },
+        deep: true
+      },
+
+    }
   }
 </script>
 
 <style lang="scss">
 .withdraw {
 
-  .amount {
-    background: #3F79FE;
-    padding: 1rem;
-    text-align: center;
+
+  .select {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    .van-radio {
+      margin-top: 7px;
+    }
   }
 
   .input {
     margin-top: 1rem;
+
+
+    .van-field--disabled .van-field__control, .van-field__right-icon {
+      color: red;
+    }
   }
 
   .readme {

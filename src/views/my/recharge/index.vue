@@ -38,7 +38,7 @@
         </van-list>
 
 
-        <van-popup round position="bottom" v-model="show">{{ hash }}</van-popup>
+        <van-popup round position="bottom" v-model="show">{{ hash || '暂无' }}</van-popup>
 
     </div>
 </template>

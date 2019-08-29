@@ -38,7 +38,7 @@
         </van-list>
 
 
-        <van-popup round position="bottom" v-model="show">{{ hash }}</van-popup>
+        <van-popup round position="bottom" v-model="show">{{ hash || '暂无' }}</van-popup>
 
     </div>
 </template>
@@ -88,7 +88,7 @@
                 this.show = true
             },
             async get_list() {
-                let list = await this.$axios.get('/wallet/recharges')
+                let list = await this.$axios.get('/wallet/withdraws')
                 this.wallet = list.data.wallet
                 this.list = list.data.data.data
             },

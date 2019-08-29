@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-let title = ' - 骚币'
+let title = ' - U呗'
 
 let router = new Router({
   mode: 'history',
@@ -52,6 +52,17 @@ let router = new Router({
         title: '帮助关于' + title,
       },
       component: () => import(/* webpackChunkName: "about" */ './views/Help.vue')
+    },
+    {
+      path: '/notice',
+      name: 'notice',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: false,
+        title: '平台公告' + title,
+      },
+      component: () => import(/* webpackChunkName: "about" */ './views/Notice.vue')
     },
     {
       path: '/go',

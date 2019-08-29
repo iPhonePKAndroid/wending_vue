@@ -7,8 +7,8 @@ import { Notify, Toast } from 'vant'
 
 // axios.defaults.timeout = 1000 * 5
 // axios.defaults.baseURL = 'https://api.imhtt.com/api/'
-// axios.defaults.baseURL = 'http://192.168.0.168:8000/api/'
-// axios.defaults.baseURL = 'http://192.168.1.4:8000/api/'
+// axios.defaults.baseURL = 'http://api.imnms.com/api/'
+// axios.defaults.baseURL = 'http://192.168.0.192:8000/api/'
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
@@ -22,11 +22,11 @@ axios.interceptors.request.use(
         }
 
         // 开启网络加载动画
-        Toast.loading({
-            mask: true,
-            duration: 0,
-            message: '加载中...',
-        });
+        // Toast.loading({
+        //     mask: true,
+        //     duration: 0,
+        //     message: '加载中...',
+        // });
 
         return config
     },
@@ -40,7 +40,7 @@ axios.interceptors.response.use(
     response => {
 
         // 取消网络加载提示
-        Toast.clear();
+        // Toast.clear();
         // alert(2)
 
         switch (response.data.code) {
@@ -71,6 +71,9 @@ axios.interceptors.response.use(
                     store.commit('logout')
                     Notify('状态失效，请重新登录')
                     router.push('/login')
+                    break
+                case 404:
+                    Notify('请求地址不存在')
                     break
                 case 419:
                     Notify('请求失效，请刷新页面')

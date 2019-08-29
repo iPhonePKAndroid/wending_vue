@@ -29,7 +29,7 @@
 
 
 <div class="center">
-    <van-button round type="primary" size="small" color="#424a5c" @click="copy(wallet.address)">复制</van-button>
+    <van-button round type="primary" size="small" color="#424a5c" @click="copy(wallet.address)">复制钱包地址</van-button>
 </div>
 
 <div class="readme">

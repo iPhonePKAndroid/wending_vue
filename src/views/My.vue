@@ -45,9 +45,38 @@
                 <van-icon name="friends-o" size="20" color="#7d8993" />
             </van-col>
             <van-col span="8">
-                我的团队（{{ team }}）
+                我的团队
             </van-col>
             <van-col span="3" offset="10">
+                {{ team.all }}
+            </van-col>
+        </van-row>
+    </div>
+
+    <div class="team">
+        <van-row>
+            <van-col span="3">
+                <van-icon name="user-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                有效人数
+            </van-col>
+            <van-col span="3" offset="10">
+                {{ team.active }}
+            </van-col>
+        </van-row>
+    </div>
+
+    <div class="team">
+        <van-row>
+            <van-col span="3">
+                <van-icon name="gift-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="10">
+                团队今日抢单
+            </van-col>
+            <van-col span="6" offset="5">
+                开发中
             </van-col>
         </van-row>
     </div>
@@ -58,7 +87,7 @@
 
         <van-row @click="go('my.aff')">
             <van-col span="3">
-                <van-icon name="gift-o" size="20" color="#7d8993" />
+                <van-icon name="flower-o" size="20" color="#7d8993" />
             </van-col>
             <van-col span="8">
                 邀请好友
@@ -68,7 +97,7 @@
             </van-col>
         </van-row>
 
-        <van-row @click="go('help')">
+        <van-row @click="go('notice')">
             <van-col span="3">
                 <van-icon name="search" size="20" color="#7d8993" />
             </van-col>
@@ -113,9 +142,6 @@
                 <van-icon name="arrow" color="#dfe3e5" />
             </van-col>
         </van-row>
-
-
-
     </div>
 
 </div>
@@ -152,10 +178,11 @@
                 let team = await this.$axios.get('/team')
                 this.team = team.data
             },
-          },
-          mounted() {
+        },
+        mounted() {
             this.profile()
-          },
+            this.team_count()
+        },
     }
 </script>
 
@@ -219,8 +246,8 @@
 }
 
 .no {
-   background-color: #f2f4f5;
-   padding: 8px;
+ background-color: #f2f4f5;
+ padding: 8px;
 }
 
 .team {
