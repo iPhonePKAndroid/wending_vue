@@ -76,7 +76,7 @@
                 团队今日抢单
             </van-col>
             <van-col span="6" offset="5">
-                开发中
+                {{ team.today }}
             </van-col>
         </van-row>
     </div>
@@ -97,7 +97,7 @@
             </van-col>
         </van-row>
 
-        <van-row @click="go('notice')">
+<!--         <van-row @click="go('notice')">
             <van-col span="3">
                 <van-icon name="search" size="20" color="#7d8993" />
             </van-col>
@@ -107,8 +107,8 @@
             <van-col span="3" offset="10">
                 <van-icon name="arrow" color="#dfe3e5" />
             </van-col>
-        </van-row>
-        <van-row @click="go('tops')">
+        </van-row> -->
+<!--         <van-row @click="go('tops')">
             <van-col span="3">
                 <van-icon name="description" size="20" color="#7d8993" />
             </van-col>
@@ -129,7 +129,7 @@
             <van-col span="3" offset="10">
                 <van-icon name="arrow" color="#dfe3e5" />
             </van-col>
-        </van-row>
+        </van-row> -->
 
         <van-row @click="logout">
             <van-col span="3">
@@ -154,6 +154,7 @@
                 team: {
                     direct: 0,
                     teams: 0,
+                    today: 0,
                 },
                 user: {
                     name: '-',
