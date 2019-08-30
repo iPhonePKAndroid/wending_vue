@@ -76,6 +76,17 @@ let router = new Router({
       component: () => import(/* webpackChunkName: "go" */ './views/Go.vue')
     },
     {
+      path: '/app',
+      name: 'app',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: false,
+        title: 'APP下载' + title,
+      },
+      component: () => import(/* webpackChunkName: "go" */ './views/App.vue')
+    },
+    {
       path: '/my',
       name: 'my',
       meta: {

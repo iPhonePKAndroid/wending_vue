@@ -5,23 +5,25 @@
 
         <van-notice-bar :text="info.notice.body" left-icon="volume-o" />
         
-    <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" title="您的账号未激活，是否激活将消耗10个USDT？" @select="onSelect" />
+        <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" title="您的账号未激活，是否激活将消耗10个USDT？" @select="onSelect" />
 
         <div class="total" v-if="info.total_active == '1'">
             <h3>今日总量：{{ info.total }}</h3>
         </div>
 
 
+
+
         <div class="submit">
-            <van-row>
-                <van-col span="6" offset="6">
-                    <van-button round type="danger" @click="togo">点击抢单</van-button>
+            <lucky-wheel></lucky-wheel>
+<!--             <van-row>
+                <van-col span="8" offset="8">
+                    <van-button round type="danger" @click="togo">抢单</van-button>
                 </van-col>
-                <van-col span="6" offset="0">
-                    <van-button round type="danger" @click="withdraw">余额提现</van-button>
-                </van-col>
-            </van-row>
+            </van-row> -->
         </div>
+
+
 
 
 
@@ -121,19 +123,20 @@
             </van-panel>
 
         </div>
- -->
-    </div>
+    -->
+</div>
 </template>
 
 <script>
+    import LuckyWheel from '../components/luckywheel'
     export default {
         data() {
             return {
-        active: true,
-        show: false,
-        actions: [
-          { name: '确认激活', color: '#07c160' },
-        ],
+                active: true,
+                show: false,
+                actions: [
+                { name: '确认激活', color: '#07c160' },
+                ],
                 info: {
                     total_active: false,
                     total: '0',
@@ -170,11 +173,11 @@
                 this.get_go()
 
             },
-      async onSelect(item) {
-        this.show = false;
-        let r = await this.$axios.post('/active')
-        this.get_go()
-      },
+            async onSelect(item) {
+                this.show = false;
+                let r = await this.$axios.post('/active')
+                this.get_go()
+            },
             async withdraw() {
                 // this.$toast('你好，渣渣辉！')
                 this.$router.push({
@@ -200,6 +203,9 @@
                 this.check_active()
             }
         },
+        components: {
+            LuckyWheel
+        },
     }
 </script>
 
@@ -224,17 +230,14 @@
 
 
     .submit {
-        margin-top: 5rem;
-        margin-bottom: 5rem;
+        // margin-top: 5rem;
+        // margin-bottom: 5rem;
     }
 
     .many {
-        // padding-top: 15rem;
-        // padding-bottom: 5rem;
         position:absolute;
         left:5px;
         right:5px;
-        // height: 120px;
         bottom: 100px;
 
         .van-col {
@@ -261,7 +264,7 @@
 
 
     .replace {
-        margin-top: 1rem;
+        // margin-top: 1rem;
 
 
         .panel {

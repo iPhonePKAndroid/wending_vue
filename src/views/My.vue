@@ -87,10 +87,22 @@
 
         <van-row @click="go('my.aff')">
             <van-col span="3">
-                <van-icon name="flower-o" size="20" color="#7d8993" />
+                <van-icon name="share" size="20" color="#7d8993" />
             </van-col>
             <van-col span="8">
                 邀请好友
+            </van-col>
+            <van-col span="3" offset="10">
+                <van-icon name="arrow" color="#dfe3e5" />
+            </van-col>
+        </van-row>
+
+        <van-row @click="go('app')">
+            <van-col span="3">
+                <van-icon name="flower-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                APP下载
             </van-col>
             <van-col span="3" offset="10">
                 <van-icon name="arrow" color="#dfe3e5" />
