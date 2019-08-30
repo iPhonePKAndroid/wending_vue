@@ -54,7 +54,8 @@
  }
 </script>
 <style lang="scss">
-.invite {
+.aff {
+    margin-bottom: 5rem;
     .van-image {
         width: 100%;
         height: 100%;

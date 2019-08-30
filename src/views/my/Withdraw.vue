@@ -8,7 +8,7 @@
     <div class="select">
 
       <van-radio-group v-model="params.type">
-        <van-radio name="amount">USDT提现（余额：{{ wallet.amount }}）</van-radio>
+        <van-radio name="amount">保证金提现（余额：{{ wallet.amount }}）</van-radio>
         <van-radio name="team_amount">团队抢单提现（余额：{{ wallet.team_amount }}）</van-radio>
         <van-radio name="sheet_amount">我的抢单提现（余额：{{ wallet.sheet_amount }}）</van-radio>
       </van-radio-group>

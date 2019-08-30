@@ -13,7 +13,7 @@ let router = new Router({
       path: '/',
       name: 'home',
       meta: {
-        auth: false,
+        auth: true,
         guest: false,
         tabar: true,
         title: '首页' + title,

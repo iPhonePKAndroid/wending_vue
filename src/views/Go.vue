@@ -1,9 +1,13 @@
 <template>
     <div class="go">
 
+
+
         <van-notice-bar :text="info.notice.body" left-icon="volume-o" />
         
-        <div class="total">
+    <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" title="您的账号未激活，是否激活将消耗10个USDT？" @select="onSelect" />
+
+        <div class="total" v-if="info.total_active == '1'">
             <h3>今日总量：{{ info.total }}</h3>
         </div>
 
@@ -52,6 +56,11 @@
                     </div>
                 </van-col>
             </van-row>
+        </div>
+
+
+        <div style="color: white;">
+            层级费率：{{ info.profit }}
         </div>
 
 
@@ -120,7 +129,13 @@
     export default {
         data() {
             return {
+        active: true,
+        show: false,
+        actions: [
+          { name: '确认激活', color: '#07c160' },
+        ],
                 info: {
+                    total_active: false,
                     total: '0',
                     profit: '0',
                     notice: {
@@ -155,6 +170,11 @@
                 this.get_go()
 
             },
+      async onSelect(item) {
+        this.show = false;
+        let r = await this.$axios.post('/active')
+        this.get_go()
+      },
             async withdraw() {
                 // this.$toast('你好，渣渣辉！')
                 this.$router.push({
@@ -166,9 +186,19 @@
                 console.log(replace)
                 this.get_go()
             },
+            async check_active() {
+                let user = await this.$axios.get('/user')
+
+                if (user.data.active == false) {
+                    this.show = true
+                }
+            },
         },
         mounted() {
             this.get_go()
+            if (this.$store.state.token) {
+                this.check_active()
+            }
         },
     }
 </script>
@@ -180,7 +210,7 @@
     text-align: center;
     position: relative;
     height: 100%;
-    background-image: url('https://photo.16pic.com/00/93/15/16pic_9315805_b.jpg');
+    background-image: url('../assets/back.gif');
     // background-image: url('https://photo.16pic.com/00/92/34/16pic_9234014_b.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;

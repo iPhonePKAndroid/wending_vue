@@ -2,7 +2,6 @@
   <div id="app">
     <router-view />
 
-    <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" title="您的账号未激活，是否激活将消耗10个USDT？" @select="onSelect" />
 
     <Tabar v-if="tabar" />
 
@@ -20,29 +19,11 @@
     },
     data() {
       return {
-        active: true,
-        show: false,
-        actions: [
-          { name: '确认激活', color: '#07c160' },
-        ],
       }
     },
     mounted() {
-      this.check_active()
     },
     methods: {
-      async onSelect(item) {
-        this.show = false;
-        let r = await this.$axios.post('/active')
-      },
-      async check_active() {
-        let user = await this.$axios.get('/user')
-
-        if (user.data.active == false) {
-            this.show = true
-        }
-
-      },
     },
   }
 </script>

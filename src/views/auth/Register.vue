@@ -59,7 +59,7 @@
           phone: "",
           password: "",
           password_confirmation: "",
-          code: "",
+          code: this.$route.query.inviteCode || '',
           name: "",
           method: "register"
         },

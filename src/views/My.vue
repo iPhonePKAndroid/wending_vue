@@ -48,7 +48,7 @@
                 我的团队
             </van-col>
             <van-col span="3" offset="10">
-                {{ team.all }}
+                {{ team.direct }}
             </van-col>
         </van-row>
     </div>
@@ -62,7 +62,7 @@
                 有效人数
             </van-col>
             <van-col span="3" offset="10">
-                {{ team.active }}
+                {{ team.teams }}
             </van-col>
         </van-row>
     </div>
@@ -151,7 +151,10 @@
     export default {
         data() {
             return {
-                team: 0,
+                team: {
+                    direct: 0,
+                    teams: 0,
+                },
                 user: {
                     name: '-',
                     phone: '-',
