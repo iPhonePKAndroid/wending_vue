@@ -8,10 +8,8 @@
         <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" title="您的账号未激活，是否激活将消耗10个USDT？" @select="onSelect" />
 
         <div class="total" v-if="info.total_active == '1'">
-            <h3>今日总量：{{ info.total }}</h3>
+            今日总量：{{ info.total }}
         </div>
-
-
 
 
         <div class="submit">
@@ -225,7 +223,7 @@
 
     .total {
         color: red;
-        padding-top: 5rem;
+        // padding-top: 5rem;
     }
 
 
