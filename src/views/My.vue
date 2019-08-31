@@ -21,14 +21,20 @@
 
         <div class="trade">
             <van-row align="bottom" justify="space-between" type="flex">
-              <van-col span="12">
+              <van-col span="8">
                 <div class="center" @click="go('recharge')">
                     <van-icon name="paid" />
                     <span class="text">充值</span>
                 </div>
                 
             </van-col>
-            <van-col span="12">
+            <van-col span="8">
+                <div class="center" @click="go('trades')">
+                    <van-icon name="todo-list-o" />
+                    <span class="text">交易记录</span>
+                </div>
+            </van-col>
+            <van-col span="8">
                 <div class="center" @click="go('withdraw')">
                     <van-icon name="vip-card-o" />
                     <span class="text">提现</span>

@@ -119,6 +119,17 @@ let router = new Router({
       component: resolve => require(['./views/my/Recharge.vue'], resolve),
     },
 
+    {
+      path: '/trades',
+      name: 'trades',
+      meta: {
+        auth: false,
+        tabar: false,
+        title: '交易记录' + title,
+      },
+      component: resolve => require(['./views/wallet/Trade.vue'], resolve),
+    },
+
 
     {
       path: '/recharge/index',

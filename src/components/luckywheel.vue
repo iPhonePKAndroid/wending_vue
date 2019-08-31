@@ -110,7 +110,7 @@ export default {
       rotate_transition_pointer: "transform 12s ease-in-out", //初始化指针过度属性控制
       click_flag: true, //是否可以旋转抽奖
       index: 0,
-      toast_title: 'asdasd',
+      toast_title: "asdasd",
     };
   },
   created() {
@@ -132,10 +132,10 @@ export default {
     }
   },
   methods: {
-            async togo() {
-                let togo = await this.$axios.post('/togo')
-                this.toast_title = togo.message
-            },
+    async togo() {
+      let togo = await this.$axios.post("/togo");
+      this.toast_title = togo.message;
+    },
     //此方法为处理奖品数据
     init_prize_list(list) {},
     rotate_handle() {
@@ -177,7 +177,7 @@ export default {
       this.toast_control = true;
       this.hasPrize = this.prize_list[this.index].isPrize;
 
-          this.togo()
+      this.togo();
     },
     //关闭弹窗
     close_toast() {
