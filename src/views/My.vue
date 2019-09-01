@@ -103,6 +103,18 @@
             </van-col>
         </van-row>
 
+        <van-row @click="go('password')">
+            <van-col span="3">
+                <van-icon name="bulb-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                修改密码
+            </van-col>
+            <van-col span="3" offset="10">
+                <van-icon name="arrow" color="#dfe3e5" />
+            </van-col>
+        </van-row>
+
         <van-row @click="go('app')">
             <van-col span="3">
                 <van-icon name="flower-o" size="20" color="#7d8993" />
@@ -212,7 +224,7 @@
 
 .my {
     text-align: center;
-    margin-bottom: 5rem;
+    padding-bottom: 5rem;
 
     .bg {
         background-color: #424a5c;

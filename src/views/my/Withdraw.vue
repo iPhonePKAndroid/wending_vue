@@ -4,7 +4,7 @@
       <van-icon name="notes-o" slot="right" size=20 />
     </van-nav-bar>
 
-  
+
     <div class="select">
 
       <van-radio-group v-model="params.type">
@@ -14,7 +14,7 @@
       </van-radio-group>
 
     </div>
-  
+
 
     <div class="input">
 
@@ -27,9 +27,19 @@
 
         <van-field clearable :placeholder="placeholder" label="收费标准" required :disabled="true" />
 
+        <van-field
+        v-model="params.password"
+        @touchstart.native.stop="show = true"
+        type="password"
+        label="密码"
+        placeholder="请输入密码"
+        clearable
+        required
+        />
+
 
       </van-cell-group>
-  
+
 
     </div>
 
@@ -51,6 +61,16 @@
     </div>
 
 
+    <van-number-keyboard
+    :show="show"
+    theme="custom"
+    extra-key="."
+    close-button-text="完成"
+    @blur="show = false"
+    @input="onInput"
+    @delete="onDelete"
+    />
+
 
   </div>
 </template>
@@ -59,6 +79,9 @@
   export default {
     data() {
       return {
+
+
+        show: false,
 
         placeholder: '收费',
 
@@ -77,6 +100,7 @@
           amount: '',
           address: '',
           type: 'amount',
+          password: '',
         },
         point: {
           amount: '0',
@@ -98,6 +122,13 @@
       }
     },
     methods: {
+      onInput(value) {
+        this.params.password += value
+      },
+      onDelete() {
+        this.params.password = this.params.password.substring(0, this.params.password.length-1)
+        this.params.password.length-1
+      },
       onClickLeft() {
         this.$router.go(-1);
       },
@@ -156,6 +187,14 @@
 <style lang="scss">
 .withdraw {
 
+  .van-number-keyboard {
+    background-color: #cecece;
+  }
+
+
+  .van-key--gray {
+    background-color: #7aaaf3;
+  }
 
   .select {
     margin-top: 1rem;

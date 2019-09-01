@@ -38,7 +38,7 @@
 
 <style lang="scss">
 .home {
-    margin-bottom: 5rem;
+    padding-bottom: 5rem;
 
     .swiper {
         img {

@@ -31,13 +31,13 @@
 <style lang="scss">
 html,body {
   color: white;
-  height: 100%;
+  // height: 100%;
   background-color: #f2f4f5;
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
+  // height: 100%;
 }
 </style>
