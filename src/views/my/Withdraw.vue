@@ -170,7 +170,7 @@
         handler: function(newValue, oldValue) {
           // console.log('你修改了a对象(watch deep)', newValue.type, oldValue.type)
 
-          if (newValue.type == 'usdt') {
+          if (newValue.type == 'amount') {
             this.placeholder = '收费'
           } else {
             this.placeholder = '免费'

@@ -3,7 +3,7 @@
 
         <div class="bg">
             <div class="avatar">
-                <van-image width="100" height="100" lazy-load round :src="require('../assets/avatar.png')" />
+                <van-image width="100" height="100" lazy-load round :src="require('../assets/logo.png')" />
             </div>
 
             <div class="name">
