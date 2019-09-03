@@ -21,23 +21,29 @@
 
         <div class="trade">
             <van-row align="bottom" justify="space-between" type="flex">
-              <van-col span="8">
+              <van-col span="6">
                 <div class="center" @click="go('recharge')">
                     <van-icon name="paid" />
                     <span class="text">充值</span>
                 </div>
                 
             </van-col>
-            <van-col span="8">
-                <div class="center" @click="go('trades')">
-                    <van-icon name="todo-list-o" />
-                    <span class="text">交易记录</span>
-                </div>
-            </van-col>
-            <van-col span="8">
+            <van-col span="6">
                 <div class="center" @click="go('withdraw')">
                     <van-icon name="vip-card-o" />
                     <span class="text">提现</span>
+                </div>
+            </van-col>
+            <van-col span="6">
+                <div class="center" @click="go('trades')">
+                    <van-icon name="todo-list-o" />
+                    <span class="text">交易</span>
+                </div>
+            </van-col>
+            <van-col span="6">
+                <div class="center" @click="go('exchange')">
+                    <van-icon name="exchange" />
+                    <span class="text">兑换</span>
                 </div>
             </van-col>
         </van-row>
@@ -81,7 +87,7 @@
             <van-col span="10">
                 团队今日抢单
             </van-col>
-            <van-col span="6" offset="5">
+            <van-col span="3" offset="8">
                 {{ team.today }}
             </van-col>
         </van-row>
@@ -183,6 +189,7 @@
             return {
                 team: {
                     teams: 0,
+                    active_teams: 0,
                     today: 0,
                     active_teams: 0,
                 },
