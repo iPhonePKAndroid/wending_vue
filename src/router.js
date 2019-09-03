@@ -87,6 +87,17 @@ let router = new Router({
       component: () => import(/* webpackChunkName: "go" */ './views/App.vue')
     },
     {
+      path: '/exchange',
+      name: 'exchange',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: false,
+        title: '兑换' + title,
+      },
+      component: () => import(/* webpackChunkName: "go" */ './views/Exchange.vue')
+    },
+    {
       path: '/my',
       name: 'my',
       meta: {

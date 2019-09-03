@@ -4,17 +4,21 @@
       <van-icon name="notes-o" slot="right" size=20 />
     </van-nav-bar>
 
-  
+    
     <div class="select">
 
       <van-radio-group v-model="params.type">
         <van-radio name="amount">保证金提现（余额：{{ wallet.amount }}）</van-radio>
-        <van-radio name="team_amount">团队抢单提现（余额：{{ wallet.team_amount }}）</van-radio>
-        <van-radio name="sheet_amount">我的抢单提现（余额：{{ wallet.sheet_amount }}）</van-radio>
+        <van-radio name="team_amount">
+          团队抢单提现（余额：{{ wallet.team_amount }}）
+        </van-radio>
+        <van-radio name="sheet_amount">
+          我的抢单提现（余额：{{ wallet.sheet_amount }}）
+        </van-radio>
       </van-radio-group>
 
     </div>
-  
+    
 
     <div class="input">
 
@@ -29,7 +33,7 @@
 
 
       </van-cell-group>
-  
+      
 
     </div>
 
@@ -46,7 +50,7 @@
 
     <div class="submit">
 
-      <van-button round type="danger" size="normal" color="#1989fa" :loading="button.loading" :disabled="button.disabled" @click="submit">下一步</van-button>
+      <van-button round type="danger" size="normal" color="#1989fa" :loading="button.loading" :disabled="this.params.amount == '' || this.params.address == ''" @click="submit">下一步</van-button>
 
     </div>
 
@@ -123,8 +127,15 @@
 
         let r = await this.$axios.post('/withdraw', this.params).catch(error => {
           this.button.loading = false
+
+          this.get_wallet()
+          this.get_point()
+          this.get_info()
+
         })
         this.button.loading = false
+
+
 
       },
     },
