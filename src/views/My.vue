@@ -87,7 +87,7 @@
             <van-col span="10">
                 团队今日抢单
             </van-col>
-            <van-col span="3" offset="8">
+            <van-col span="10" align="right">
                 {{ team.today }}
             </van-col>
         </van-row>
