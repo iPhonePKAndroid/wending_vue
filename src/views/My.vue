@@ -3,7 +3,7 @@
 
         <div class="bg">
             <div class="avatar">
-                <van-image width="100" height="100" lazy-load round :src="require('../assets/avatar.png')" />
+                <van-image width="100" height="100" lazy-load round :src="require('../assets/logo.png')" />
             </div>
 
             <div class="name">
@@ -103,6 +103,18 @@
             </van-col>
             <van-col span="8">
                 邀请好友
+            </van-col>
+            <van-col span="3" offset="10">
+                <van-icon name="arrow" color="#dfe3e5" />
+            </van-col>
+        </van-row>
+
+        <van-row @click="go('password')">
+            <van-col span="3">
+                <van-icon name="bulb-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                修改密码
             </van-col>
             <van-col span="3" offset="10">
                 <van-icon name="arrow" color="#dfe3e5" />
@@ -218,7 +230,7 @@
 
 .my {
     text-align: center;
-    margin-bottom: 5rem;
+    padding-bottom: 5rem;
 
     .bg {
         background-color: #424a5c;

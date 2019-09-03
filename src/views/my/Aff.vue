@@ -55,7 +55,7 @@
 </script>
 <style lang="scss">
 .aff {
-    margin-bottom: 5rem;
+    padding-bottom: 5rem;
     .van-image {
         width: 100%;
         height: 100%;

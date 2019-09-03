@@ -18,16 +18,8 @@
           <div class="lucky-title"></div>
           <div class="wheel-main">
             <div class="wheel-pointer-box">
-              <div
-                class="wheel-pointer"
-                :style="{transform:rotate_angle_pointer,transition:rotate_transition_pointer}"
-              >
-                <img
-                  v-if="active_go"
-                  src="../assets/img/draw_btn.png"
-                  width="100%"
-                  @click="rotate_handle()"
-                />
+              <div class="wheel-pointer" :style="{transform:rotate_angle_pointer,transition:rotate_transition_pointer}">
+                <img v-if="active_go" src="../assets/img/draw_btn.png" width="100%" @click="rotate_handle()" />
                 <img v-else src="../assets/img/draw_btn_dis.png" width="100%" />
               </div>
             </div>
@@ -408,7 +400,7 @@ export default {
 
   .submit {
     // margin-top: 5rem;
-    // margin-bottom: 5rem;
+    // padding-bottom: 5rem;
 
     .container {
       width: 100%;
@@ -416,9 +408,9 @@ export default {
     .lucky-wheel {
       width: 100%;
       height: 31.5625rem;
-      /*background: rgb(252, 207, 133) url("../assets/img/color_pillar.png") no-repeat center bottom;*/
+      // background: rgb(252, 207, 133) url("../assets/img/color_pillar.png") no-repeat center bottom;
       background-size: 100%;
-      padding-top: 1.5625rem;
+      // padding-top: 1.5625rem;
     }
     .lucky-title {
       width: 100%;
@@ -537,7 +529,7 @@ export default {
       width: 100%;
       min-height: 14.25rem;
       background: rgb(243, 109, 86);
-      padding-bottom: 1.6875rem;
+      // padding-bottom: 1.6875rem;
     }
     .main-bg {
       width: 100%;
@@ -562,7 +554,7 @@ export default {
       height: 5.1875rem;
       font-size: 1.125rem;
       color: #ffeb39;
-      padding-left: 6.75rem;
+      // padding-left: 6.75rem;
     }
     .content div {
       text-align: left;
@@ -581,10 +573,10 @@ export default {
       font-size: 1rem;
       color: #fccc6e;
       background: rgb(243, 109, 86);
-      padding: 0.3125rem 0.625rem;
+      // padding: 0.3125rem 0.625rem;
     }
     .tip-content {
-      padding: 1.5625rem 0.625rem;
+      // padding: 1.5625rem 0.625rem;
       font-size: 0.875rem;
       color: #fff8c5;
       line-height: 1.5;
@@ -607,7 +599,7 @@ export default {
       width: 15.4375rem;
       background: #fff;
       border-radius: 0.3125rem;
-      padding: 0.3125rem;
+      // padding: 0.3125rem;
       background-color: rgb(252, 244, 224);
     }
     .toast-container {
@@ -631,7 +623,7 @@ export default {
       height: 3.125rem;
     }
     .toast-title {
-      padding: 2.8125rem 0;
+      // padding: 2.8125rem 0;
       font-size: 18px;
       color: #fc7939;
       text-align: center;
@@ -682,10 +674,11 @@ export default {
   }
 
   .many {
-    position: absolute;
-    left: 5px;
-    right: 5px;
-    bottom: 100px;
+    padding-bottom: 5rem;
+    // position: absolute;
+    // left: 5px;
+    // right: 5px;
+    // bottom: 100px;
 
     .van-col {
       padding: 8px;
