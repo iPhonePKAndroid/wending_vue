@@ -1,7 +1,7 @@
 <template>
   <div class="header">
 
-    <van-nav-bar title="修改密码" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar title="修改支付密码" left-text="返回" left-arrow @click-left="onClickLeft" />
 
 
     <van-cell-group>
@@ -9,24 +9,24 @@
       v-model="params.old_password"
       required
       clearable
-      label="旧密码"
-      placeholder="请输入旧密码"
+      label="旧支付密码"
+      placeholder="默认123456"
       />
 
       <van-field
       v-model="params.password"
       type="password"
       clearable
-      label="密码"
-      placeholder="请输入密码"
+      label="支付密码"
+      placeholder="请输入支付密码"
       required
       />
       <van-field
       v-model="params.password_confirmation"
       type="password"
       clearable
-      label="确认密码"
-      placeholder="请确认新密码"
+      label="确认支付密码"
+      placeholder="请确认新支付密码"
       required
       />
     </van-cell-group>

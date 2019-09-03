@@ -68,6 +68,20 @@
     <div class="team">
         <van-row>
             <van-col span="3">
+                <van-icon name="manager-o" size="20" color="#7d8993" />
+            </van-col>
+            <van-col span="8">
+                直推人数
+            </van-col>
+            <van-col span="3" offset="10">
+                {{ team.direct }}
+            </van-col>
+        </van-row>
+    </div>
+
+    <div class="team">
+        <van-row>
+            <van-col span="3">
                 <van-icon name="user-o" size="20" color="#7d8993" />
             </van-col>
             <van-col span="8">
@@ -192,6 +206,7 @@
                     active_teams: 0,
                     today: 0,
                     active_teams: 0,
+                    direct: 0,
                 },
                 user: {
                     name: '-',
