@@ -21,14 +21,31 @@
       return {
       }
     },
+<<<<<<< HEAD
     mounted() {
     },
     methods: {
+=======
+    async mounted() {
+
+      // setInterval(() => {
+      //   this.$notify({
+      //     message: '联系QQ71314126',
+      //     duration: 2000,
+      //     background: '#07c160',
+      //     onClick() {
+      //       alert('联系微信iPhonePKAndroid')
+      //     },
+      //   });
+      // }, 100000)
+
+>>>>>>> 425629bc78a3a96b74b399d8f1a6a254d956c802
     },
   }
 </script>
 
 <style lang="scss">
+<<<<<<< HEAD
 html,body {
   color: white;
   // height: 100%;
@@ -39,5 +56,8 @@ html,body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   // height: 100%;
+=======
+#app {
+>>>>>>> 425629bc78a3a96b74b399d8f1a6a254d956c802
 }
 </style>

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div class="home">
 
         <template v-for="banenr in banners">
@@ -14,6 +15,12 @@
         </template>
 
     </div>
+=======
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png">
+    <HelloWorld msg="欢迎使用快速开发框架"/>
+  </div>
+>>>>>>> 425629bc78a3a96b74b399d8f1a6a254d956c802
 </template>
 
 <script>

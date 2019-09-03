@@ -11,7 +11,7 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'index',
       meta: {
         auth: true,
         guest: false,
@@ -21,15 +21,55 @@ let router = new Router({
       component: Home,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/wallet',
+      name: 'wallet',
       meta: {
         auth: false,
         guest: false,
+<<<<<<< HEAD
         tabar: false,
         title: '关于我们' + title,
       },
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+=======
+        tabar: true,
+        title: '钱包' + title,
+      },
+      component: () => import('./views/wallet/index.vue')
+    },
+    {
+      path: '/trade',
+      name: 'trade',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '交易' + title,
+      },
+      component: () => import('./views/trade/index.vue')
+    },
+    {
+      path: '/find',
+      name: 'find',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '发现' + title,
+      },
+      component: () => import('./views/find/index.vue')
+    },
+    {
+      path: '/my',
+      name: 'my',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '我的' + title,
+      },
+      component: () => import('./views/my/index.vue')
+>>>>>>> 425629bc78a3a96b74b399d8f1a6a254d956c802
     },
     {
       path: '/tops',
