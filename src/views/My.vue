@@ -60,7 +60,7 @@
                 我的团队
             </van-col>
             <van-col span="3" offset="10">
-                {{ team.direct }}
+                {{ team.teams }}
             </van-col>
         </van-row>
     </div>
@@ -74,7 +74,7 @@
                 有效人数
             </van-col>
             <van-col span="3" offset="10">
-                {{ team.teams }}
+                {{ team.active_teams }}
             </van-col>
         </van-row>
     </div>
@@ -87,7 +87,7 @@
             <van-col span="10">
                 团队今日抢单
             </van-col>
-            <van-col span="6" offset="5">
+            <van-col span="3" offset="8">
                 {{ team.today }}
             </van-col>
         </van-row>
@@ -188,8 +188,8 @@
         data() {
             return {
                 team: {
-                    direct: 0,
                     teams: 0,
+                    active_teams: 0,
                     today: 0,
                 },
                 user: {
