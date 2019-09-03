@@ -4,11 +4,7 @@
       <van-icon name="notes-o" slot="right" size=20 />
     </van-nav-bar>
 
-<<<<<<< HEAD
     
-=======
-
->>>>>>> ef887668535706ef6fd2597908a58ab0c1c95432
     <div class="select">
 
       <van-radio-group v-model="params.type">
@@ -22,11 +18,7 @@
       </van-radio-group>
 
     </div>
-<<<<<<< HEAD
     
-=======
-
->>>>>>> ef887668535706ef6fd2597908a58ab0c1c95432
 
     <div class="input">
 
@@ -51,11 +43,7 @@
 
 
       </van-cell-group>
-<<<<<<< HEAD
       
-=======
-
->>>>>>> ef887668535706ef6fd2597908a58ab0c1c95432
 
     </div>
 
