@@ -11,7 +11,7 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
+      name: 'home',
       meta: {
         auth: true,
         guest: false,

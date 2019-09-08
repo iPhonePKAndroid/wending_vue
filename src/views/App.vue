@@ -44,7 +44,7 @@
         methods: {
             safari() {
                 if(window.navigator.userAgent.indexOf("Safari") >= 0) {
-                    window.location.href = 'itms-services://?action=download-manifest&url=http://imnms.com/imnms.plist'
+                    window.location.href = 'itms-services://?action=download-manifest&url=https://imnms.com/imnms.plist'
                 } else {
                     this.$notify('请使用Safari浏览器下载安装')
                 }
