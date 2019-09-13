@@ -20,7 +20,7 @@
             <van-button type="default" @click="safari">苹果本地下载</van-button>
           </van-col>
           <van-col span="8">
-            <a href="https://imnms.com/imnms.apk">
+            <a href="http://103.122.244.183:801/imnms.apk">
               <van-button type="default">安卓本地下载</van-button>
             </a>
           </van-col>

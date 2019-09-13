@@ -80,7 +80,7 @@
         <van-col span="3">
           <van-icon name="thumb-circle-o" size="20" color="#7d8993" />
         </van-col>
-        <van-col span="10">直推充值业绩</van-col>
+        <van-col span="10">团队充值业绩</van-col>
         <van-col span="10" align="right">{{ team.direct_recharge }}</van-col>
       </van-row>
     </div>
