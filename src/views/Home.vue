@@ -6,7 +6,7 @@
             <div class="swiper" v-for="(banenr,banIndex) in banners" :key="banIndex">
                 <van-swipe :autoplay="3000">
                     <van-swipe-item v-for="(image, index) in banenr.banners" :key="index">
-                        <img v-lazy="image.path" />
+                        <img v-lazy="image.url" />
                     </van-swipe-item>
                 </van-swipe>
             </div>

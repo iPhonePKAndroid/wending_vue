@@ -6,7 +6,7 @@
 
     <van-tabbar :value="active" :fixed="true" :border="false" :safe-area-inset-bottom="true" :z-index="999" style="backgroundColor: #fbfcfd">
       <van-tabbar-item @click="go('home')" icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item @click="go('go')" icon="points">抢单</van-tabbar-item>
+      <van-tabbar-item @click="go('upgrade')" icon="points">投单</van-tabbar-item>
       <van-tabbar-item @click="go('my')" icon="user-circle-o">我的</van-tabbar-item>
     </van-tabbar>
   </div>
@@ -16,7 +16,7 @@
 export default {
   computed: {
     active() {
-      let arr = ["home", "go", "my"];
+      let arr = ["home", "upgrade", "my"];
       return arr.indexOf(this.$route.name);
     }
   },
