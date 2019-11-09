@@ -82,12 +82,23 @@ let router = new Router({
       path: '/password',
       name: 'password',
       meta: {
-        auth: false,
+        auth: true,
         guest: false,
         tabar: true,
         title: '修改密码' + title,
       },
       component: () => import(/* webpackChunkName: "go" */ './views/Password.vue')
+    },
+    {
+      path: '/resetPwd',
+      name: 'resetPwd',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: false,
+        title: '重置密码' + title,
+      },
+      component: () => import('./views/auth/Password.vue')
     },
     {
       path: '/app',
@@ -221,6 +232,16 @@ let router = new Router({
         title: '注册' + title,
       },
       component: resolve => require(['./views/auth/Register.vue'], resolve),
+    },
+    {
+      path: '/pwdHelper',
+      name: 'pwdHelper',
+      meta: {
+        auth: false,
+        tabar: false,
+        title: '登录' + title,
+      },
+      component: resolve => require(['./views/auth/pwdHelper.vue'], resolve),
     },
   ]
 })

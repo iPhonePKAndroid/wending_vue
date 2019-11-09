@@ -40,7 +40,7 @@
 
 <style lang="scss">
 html,body {
-  color: white;
+  // color: white;
   height: 100%;
   background-color: #f2f4f5;
 }

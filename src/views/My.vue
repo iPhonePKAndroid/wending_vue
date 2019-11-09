@@ -79,10 +79,18 @@ export default {
       });
     },
     logout() {
-      this.$store.commit("logout");
-      this.$router.push({
-        name: "login"
-      });
+      this.$dialog
+        .confirm({
+          title: "提示",
+          message: "确认退出吗？"
+        })
+        .then(() => {
+          this.$store.commit("logout");
+          this.$router.push({
+            name: "login"
+          });
+        })
+        .catch(() => {});
     },
     async profile() {
       let user = await this.$axios.get("/user");

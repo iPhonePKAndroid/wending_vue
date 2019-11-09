@@ -46,11 +46,14 @@ axios.interceptors.response.use(
         switch (response.data.code) {
             // 成功信息
             case 10000:
-                Toast({
-                    message: response.data.message,
-                    duration: 1000,
-                    background: '#1989fa'
-                })
+                if (response.data.message) {
+                    Toast({
+                        message: response.data.message,
+                        duration: 1000,
+                        background: '#1989fa'
+                    })
+                }
+
                 break
             // 警告信息
             case 20000:
