@@ -78,7 +78,7 @@
                     <van-icon name="arrow" color="#dfe3e5" />
                 </van-col>
             </van-row>
-            <van-row @click="go('my.aff')">
+            <van-row @click="go('my.team')">
                 <van-col span="3">
                     <van-icon name="friends-o" size="20" color="#7d8993" />
                 </van-col>
