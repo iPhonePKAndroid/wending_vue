@@ -1,6 +1,6 @@
 <template>
     <div class="withdraw">
-        <van-nav-bar title="提现" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight">
+        <van-nav-bar title="提现" left-arrow @click-left="onClickLeft" @click-right="onClickRight">
             <van-icon name="notes-o" slot="right" size=20 />
         </van-nav-bar>
         <div class="select">
@@ -10,7 +10,6 @@
             <van-cell-group>
                 <van-field v-model="params.amount" required clearable label="提现金额" placeholder="请输入提现金额" />
                 <van-field v-model="params.address" required clearable label="接收地址" placeholder="请输入提现地址" />
-                <van-field clearable :placeholder="placeholder" label="收费标准" required :disabled="true" />
                 <van-field v-model="params.password" @touchstart.native.stop="show = true" type="password" label="密码" placeholder="请输入密码" clearable required />
             </van-cell-group>
         </div>
@@ -18,7 +17,7 @@
             <van-collapse v-model="activeNames">
                 <van-collapse-item title="说明" name="1">
                     <div class="text">
-                        每次提现手续费{{ token.fee }}%
+                        每次提现手续费{{ info.fee }}%
                     </div>
                 </van-collapse-item>
             </van-collapse>
@@ -35,35 +34,18 @@ export default {
         return {
             show: false,
 
-            placeholder: '收费',
             button: {
                 loading: false,
                 disabled: false,
             },
             info: {
-                amount: '0.0000'
-            },
-            token: {
-                fee: 0,
+                amount: '0.0000',
+                fee:0,
             },
             params: {
                 amount: '',
                 address: '',
                 password: '',
-            },
-            point: {
-                amount: '0',
-            },
-            wallet: {
-                address: '-',
-                amount: '0',
-                lock_amount: '0',
-                qrcode_url: '-',
-                token: {
-                    icon: '-',
-                    cn_name: '-',
-                    en_name: '-',
-                },
             },
             activeNames:[1]
         }
@@ -86,8 +68,7 @@ export default {
         },
         async get_info() {
             let info = await this.$axios.get('/withdraw/info')
-            this.info = info.data.info
-            this.token = info.data.token
+            this.info = info.data
         },
         async submit() {
             this.button.loading = true
