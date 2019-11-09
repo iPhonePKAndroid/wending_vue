@@ -4,7 +4,6 @@ import router from './router'
 import { Toast } from 'vant'
 // import Cookies from 'js-cookie'
 
-
 // axios.defaults.timeout = 1000 * 5
 // axios.defaults.baseURL = 'https://api.imnms.com/api/'
 // axios.defaults.baseURL = 'http://103.122.244.183:802/api/'
@@ -12,7 +11,7 @@ axios.defaults.baseURL = 'http://192.168.0.119:8000/api/'
 // axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-
+axios.defaults.timeout = 7000
 // 请求拦截器
 axios.interceptors.request.use(
     config => {

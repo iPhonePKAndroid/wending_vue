@@ -95,7 +95,7 @@
 .show_recharge {
 
     .amount {
-        background: #3F79FE;
+        // background: #3F79FE;
         padding: 1rem;
         text-align: center;
     }

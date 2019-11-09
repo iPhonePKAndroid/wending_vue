@@ -112,9 +112,13 @@ export default {
       this.needAuth = true;
     },
     async readyPay(pass) {
+      var toast1 = this.$toast.loading({
+        message: "加载中..."
+      });
       this.params.password = pass;
       try {
         let r = await this.$axios.post("/replace", this.params);
+        this.getInfo();
         this.needAuth = false;
         this.$refs.myAuth.clear();
       } catch (error) {

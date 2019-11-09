@@ -72,6 +72,9 @@ export default {
       this.needAuth = true;
     },
     readyPay(pass) {
+      var toast1 = this.$toast.loading({
+        message: "加载中..."
+      });
       this.upgrade.password = pass;
       this.$axios
         .post("upgrade", this.upgrade)
