@@ -6,9 +6,9 @@ import { Notify, Toast } from 'vant'
 
 
 // axios.defaults.timeout = 1000 * 5
-axios.defaults.baseURL = 'https://api.imnms.com/api/'
+// axios.defaults.baseURL = 'https://api.imnms.com/api/'
 // axios.defaults.baseURL = 'http://103.122.244.183:802/api/'
-// axios.defaults.baseURL = 'http://192.168.0.192:8000/api/'
+axios.defaults.baseURL = 'http://192.168.0.119:8000/api/'
 // axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'

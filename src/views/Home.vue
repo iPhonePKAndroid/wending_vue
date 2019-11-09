@@ -1,9 +1,9 @@
 <template>
     <div class="home">
 
-        <template v-for="banenr in banners">
+        <template >
 
-            <div class="swiper">
+            <div class="swiper" v-for="(banenr,banIndex) in banners" :key="banIndex">
                 <van-swipe :autoplay="3000">
                     <van-swipe-item v-for="(image, index) in banenr.banners" :key="index">
                         <img v-lazy="image.path" />
