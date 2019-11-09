@@ -2,6 +2,10 @@
     <div class="trades">
         <van-nav-bar title="交易记录" left-arrow @click-left="onClickLeft" />
         <div>
+            <van-tabs v-model="activeName" @change="changeTokenList()">
+                <van-tab title="USDT" name="erc20_usdt" />
+                <van-tab title="IA" name="ia"/>
+            </van-tabs>
             <van-cell>
                 <van-row>
                     <van-col span="9">
@@ -44,7 +48,7 @@
 export default {
     data() {
         return {
-            active: 0,
+            activeName: 'erc20_usdt',
             list: [],
             loading: false,
             finished: false,
@@ -58,7 +62,7 @@ export default {
         },
         onLoad() {
             this.page++;
-            this.$axios.get(`/trades?&page=${this.page}&size=30`).then(response => {
+            this.$axios.get(`/trades?&token=${this.activeName}&page=${this.page}&size=30`).then(response => {
                 let ss = response.data;
                 this.list = this.list.concat(ss);
                 this.loading = false;
@@ -68,12 +72,10 @@ export default {
                 }
             });
         },
-        checkout(id) {
-            this.$axios.put(`/upgrade/${id}`).then(res => {
-                if (res.code == 10000) {
-                    this.onLoad()
-                }
-            })
+        changeTokenList(){
+            this.page = 0;
+            this.list = [];
+            this.onLoad()
         }
     },
 };
