@@ -31,10 +31,17 @@
     <div class="bottom-button">
       <van-button size="large" type="primary" @click="submit()">投单</van-button>
     </div>
+    <van-popup class="my-popup" position="bottom" v-model="needAuth">
+      <authPay ref="myAuth" v-on:readyPay="readyPay"></authPay>
+    </van-popup>
   </div>
 </template>
 <script>
+import authPay from "../components/authPay";
 export default {
+  components: {
+    authPay
+  },
   data() {
     return {
       lists: [],
@@ -43,7 +50,8 @@ export default {
         static_rate: 0,
         out_rate: 0
       },
-      selectedItem: 0
+      selectedItem: 0,
+      needAuth: false
     };
   },
   methods: {
@@ -61,11 +69,23 @@ export default {
       this.upgrade = this.lists[key];
     },
     submit() {
-      this.$axios.post("upgrade", this.upgrade).then(res => {
-        if (res.code == 10000) {
-          this.onClickRight();
-        }
-      });
+      this.needAuth = true;
+    },
+    readyPay(pass) {
+      this.upgrade.password = pass;
+      this.$axios
+        .post("upgrade", this.upgrade)
+        .then(res => {
+          if (res.code == 10000) {
+            this.onClickRight();
+          }
+          this.needAuth = false;
+          this.$refs.myAuth.clear();
+        })
+        .catch(err => {
+          this.needAuth = false;
+          this.$refs.myAuth.clear();
+        });
     }
   },
   mounted() {
@@ -75,7 +95,7 @@ export default {
 </script>
 <style lang="scss">
 .upgrade {
-  height: 100%;
+  //   height: 100%;
   background: #fff;
   //   .readme {
   //     color: #969799;
@@ -100,6 +120,10 @@ export default {
     bottom: 50px;
     width: 100%;
     position: absolute;
+  }
+  .my-popup {
+    height: 50%;
+    padding-top: 20px;
   }
 }
 </style>

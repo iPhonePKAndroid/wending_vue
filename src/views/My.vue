@@ -1,7 +1,7 @@
 <template>
   <div class="my">
     <div class="bg">
-      <van-cell title="user.name" label="user.phone">
+      <van-cell :title="user.name" :label="user.phone">
         <van-image
           slot="icon"
           width="60"
@@ -11,15 +11,6 @@
           :src="require('../assets/logo.png')"
         />
       </van-cell>
-      <!-- <div class="avatar">
-        <van-image width="100" height="100" lazy-load round :src="require('../assets/logo.png')" />
-      </div>
-      <div class="name">{{ user.name }}</div>
-      <div class="profile">
-        <van-button color="white" plain size="mini">
-          <span class="text">{{ user.phone }}</span>
-        </van-button>
-      </div>-->
     </div>
 
     <div class="trade">
@@ -58,116 +49,15 @@
       <van-cell icon="manager-o" title="直推人数" :value="user.direct_count" />
       <van-cell icon="manager-o" title="团队业绩" :value="user.team_amount" />
     </van-cell-group>
-    <!-- <div class="team">
-      <van-row>
-        <van-col span="3">
-          <van-icon name="friends-o" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">我的团队</van-col>
-        <van-col span="3" offset="10">{{ user.team_count }}</van-col>
-      </van-row>
-    </div>
-    <div class="team">
-      <van-row>
-        <van-col span="3">
-          <van-icon name="manager-o" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">直推人数</van-col>
-        <van-col span="3" offset="10">{{ user.direct_count }}</van-col>
-      </van-row>
-    </div>
 
-    <div class="team">
-      <van-row>
-        <van-col span="3">
-          <van-icon name="manager-o" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">团队业绩</van-col>
-        <van-col span="13">{{ user.team_amount *1}}</van-col>
-      </van-row>
-    </div>-->
     <div class="no"></div>
     <van-cell-group class="sub-nav">
       <van-cell icon="share" title="邀请好友" is-link @click="go('my.aff')" />
-      <van-cell icon="friends-o" title="我的团队" is-link @click="go('my.aff')" />
+      <van-cell icon="friends-o" title="我的团队" is-link @click="go('my.team')" />
       <van-cell icon="bulb-o" title="修改密码" is-link @click="go('password')" />
       <van-cell icon="flower-o" title="APP下载" is-link @click="go('app')" />
       <van-cell icon="underway-o" title="退出登录" is-link @click="logout" />
     </van-cell-group>
-    <!-- <div class="team">
-      <van-row>
-        <van-col span="3">
-          <van-icon name="share" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">邀请好友</van-col>
-        <van-col span="3" offset="10">
-          <van-icon name="arrow" color="#dfe3e5" />
-        </van-col>
-      </van-row>
-      <van-row @click="go('my.aff')">
-        <van-col span="3">
-          <van-icon name="friends-o" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">我的团队</van-col>
-        <van-col span="3" offset="10">
-          <van-icon name="arrow" color="#dfe3e5" />
-        </van-col>
-      </van-row>
-      <van-row @click="go('password')">
-        <van-col span="3">
-          <van-icon name="bulb-o" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">修改密码</van-col>
-        <van-col span="3" offset="10">
-          <van-icon name="arrow" color="#dfe3e5" />
-        </van-col>
-      </van-row>
-      <van-row @click="go('app')">
-        <van-col span="3">
-          <van-icon name="flower-o" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">APP下载</van-col>
-        <van-col span="3" offset="10">
-          <van-icon name="arrow" color="#dfe3e5" />
-        </van-col>
-      </van-row>
-      <van-row @click="go('notice')">
-        <van-col span="3">
-          <van-icon name="search" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">平台公告</van-col>
-        <van-col span="3" offset="10">
-          <van-icon name="arrow" color="#dfe3e5" />
-        </van-col>
-      </van-row>
-      <van-row @click="go('tops')">
-        <van-col span="3">
-          <van-icon name="description" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">用户协议</van-col>
-        <van-col span="3" offset="10">
-          <van-icon name="arrow" color="#dfe3e5" />
-        </van-col>
-      </van-row>
-      <van-row @click="go('about')">
-        <van-col span="3">
-          <van-icon name="home-o" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">关于我们</van-col>
-        <van-col span="3" offset="10">
-          <van-icon name="arrow" color="#dfe3e5" />
-        </van-col>
-      </van-row>
-      <van-row @click="logout">
-        <van-col span="3">
-          <van-icon name="underway-o" size="20" color="#7d8993" />
-        </van-col>
-        <van-col span="8">退出登录</van-col>
-        <van-col span="3" offset="10">
-          <van-icon name="arrow" color="#dfe3e5" />
-        </van-col>
-      </van-row>
-    </div>-->
   </div>
 </template>
 <script>

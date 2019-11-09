@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from './store'
 import router from './router'
-import { Notify, Toast } from 'vant'
+import { Toast } from 'vant'
 // import Cookies from 'js-cookie'
 
 
@@ -46,15 +46,15 @@ axios.interceptors.response.use(
         switch (response.data.code) {
             // 成功信息
             case 10000:
-                Notify({
+                Toast({
                     message: response.data.message,
                     duration: 1000,
                     background: '#1989fa'
                 })
                 break
-                // 警告信息
+            // 警告信息
             case 20000:
-                Notify(response.data.message)
+                Toast(response.data.message)
                 break
         }
         return response.data
@@ -69,27 +69,27 @@ axios.interceptors.response.use(
             switch (error.response.status) {
                 case 401:
                     store.commit('logout')
-                    Notify('状态失效，请重新登录')
+                    Toast('状态失效，请重新登录')
                     router.push('/login')
                     break
                 case 404:
                     router.push('/404')
-                    Notify('请求丢失')
+                    Toast('请求丢失')
                     break
                 case 419:
-                    Notify('请求失效，请刷新页面')
+                    Toast('请求失效，请刷新页面')
                     break
                 case 422:
-                    Notify(error.response.data.message)
+                    Toast(error.response.data.message)
                     break
                 case 429:
-                    Notify('频率过快')
+                    Toast('频率过快')
                     break
                 case 500:
-                    Notify('系统异常')
+                    Toast('系统异常')
                     break
                 default:
-                    // 
+                // 
             }
         } else {
             // alert(3)
