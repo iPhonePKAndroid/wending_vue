@@ -134,6 +134,17 @@ let router = new Router({
       component: () => import(/* webpackChunkName: "my" */ './views/my/Aff.vue')
     },
     {
+      path: '/my/team',
+      name: 'my.team',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: true,
+        title: '我的团队' + title,
+      },
+      component: () => import(/* webpackChunkName: "my" */ './views/my/team/Index.vue')
+    },
+    {
       path: '/recharge',
       name: 'recharge',
       meta: {
