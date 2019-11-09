@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-let title = ' - U呗'
+let title = ' - IA'
 
 let router = new Router({
   mode: 'history',
@@ -20,17 +20,6 @@ let router = new Router({
       },
       component: Home,
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   meta: {
-    //     auth: false,
-    //     guest: false,
-    //     tabar: false,
-    //     title: '关于我们' + title,
-    //   },
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    // },
     {
       path: '/tops',
       name: 'tops',
@@ -65,15 +54,26 @@ let router = new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Notice.vue')
     },
     {
-      path: '/go',
-      name: 'go',
+      path: '/upgrade',
+      name: 'upgrade',
       meta: {
-        auth: false,
+        auth: true,
         guest: false,
         tabar: true,
-        title: '抢单' + title,
+        title: '投单' + title,
       },
-      component: () => import(/* webpackChunkName: "go" */ './views/Go.vue')
+      component: () => import('./views/Upgrade.vue')
+    },
+    {
+      path: '/upgrade/index',
+      name: 'upgradeList',
+      meta: {
+        auth: true,
+        guest: false,
+        tabar: true,
+        title: '投单记录' + title,
+      },
+      component: () => import('./views/UpgradeList.vue')
     },
     {
       path: '/password',

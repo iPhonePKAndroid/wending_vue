@@ -1,62 +1,100 @@
 <template>
-  <div class="trades">
-    <van-nav-bar title="交易记录" left-text="返回" left-arrow @click-left="onClickLeft" />
-
-    <div>
-      <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="get_trades">
-        <van-cell v-for="(item,index) in data.data" :key="index">
-          <div>
-            {{ item.body }}
-          </div>
-        </van-cell>
-      </van-list>
+    <div class="trades">
+        <van-nav-bar title="交易记录" left-arrow @click-left="onClickLeft" />
+        <div>
+            <van-cell>
+                <van-row>
+                    <van-col span="9">
+                        时间
+                    </van-col>
+                    <van-col span="4">
+                        类型
+                    </van-col>
+                    <van-col span="4">
+                        金额
+                    </van-col>
+                    <van-col span="7">
+                        账户/冻结
+                    </van-col>
+                </van-row>
+            </van-cell>
+            <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+                <van-cell v-for="(item, index) in list" :key="index">
+                    <van-row gutter='20'>
+                        <van-col span="9">
+                            {{ item.created_at }}
+                        </van-col>
+                        <van-col span="4">
+                            {{ item.type_name }}
+                        </van-col>
+                        <van-col span="4">
+                            <span v-if="item.expend" class="text-red">-{{ item.change*1 }}</span>
+                            <span v-else class="text-green">+{{ item.change*1 }}</span>
+                        </van-col>
+                        <van-col span="7">
+                            {{ item.amount*1 }}/{{ item.lock_amount*1 }}
+                        </van-col>
+                    </van-row>
+                </van-cell>
+            </van-list>
+        </div>
     </div>
-  </div>
 </template>
-
 <script>
 export default {
-  data() {
-    return {
-      data: [],
-      loading: false,
-      finished: false
-    };
-  },
-  methods: {
-    onClickLeft() {
-      this.$router.go(-1);
-    },
-    async get_trades() {
-      this.loading = true
-      let r = await this.$axios.get("/trades");
-      this.data = r.data
-      this.loading = false
-      this.finished = true
-    },
-    onLoad() {
-      // 异步更新数据
-      setTimeout(() => {
-        for (let i = 0; i < 10; i++) {
-          this.list.push(this.list.length + 1);
+    data() {
+        return {
+            active: 0,
+            list: [],
+            loading: false,
+            finished: false,
+            type: '',
+            page: 0,
         }
-        // 加载状态结束
-        this.loading = false;
+    },
+    methods: {
+        onClickLeft() {
+            this.$router.go(-1)
+        },
+        onLoad() {
+            this.page++;
+            this.$axios.get(`/trades?&page=${this.page}&size=30`).then(response => {
+                let ss = response.data;
+                this.list = this.list.concat(ss);
+                this.loading = false;
 
-        // 数据全部加载完成
-        if (this.list.length >= 40) {
-          this.finished = true;
+                if (this.page >= response.last_page || response.total == 0) {
+                    this.finished = true;
+                }
+            });
+        },
+        checkout(id) {
+            this.$axios.put(`/upgrade/${id}`).then(res => {
+                if (res.code == 10000) {
+                    this.onLoad()
+                }
+            })
         }
-      }, 500);
-    }
-  },
-  mounted() {
-    this.get_trades();
-  }
+    },
 };
 </script>
-
 <style lang="scss">
 .trades {
+    .text-red {
+        color: red;
+    }
+
+    .text-green {
+        color: green;
+    }
+
+    .van-row {
+        font-size: 10px;
+
+        .van-col {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
 }
 </style>

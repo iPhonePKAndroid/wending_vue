@@ -1,133 +1,86 @@
 <template>
-    <div class="show_withdraw">
-        <div class="nav">
-            <van-nav-bar title="提现记录" left-arrow @click-left="onClickLeft" />
-        </div>
-        <div class="amount">
-            <p>
-                余额： {{ wallet.amount }} USDT
-            </p>
-        </div>
-        <van-cell style="backgroundColor: #1d2243">
-            <van-row style="text-align: center;">
-                <van-col span="5">
-                    数量
-                </van-col>
-                <van-col span="8">
-                    哈希
-                </van-col>
-                <van-col span="11">
-                    时间
-                </van-col>
-            </van-row>
-        </van-cell>
-        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-            <van-cell v-for="(item, index) in list" :key="index" style="backgroundColor:#1d2243">
-                <van-row style="text-align: center;">
-                    <van-col span="5">
-                        {{ item.amount }}
+    <div class="trades">
+        <van-nav-bar title="提现记录" left-arrow @click-left="onClickLeft" />
+        <div>
+            <van-cell>
+                <van-row>
+                    <van-col span="10">
+                        时间
                     </van-col>
-                    <van-col span="8" @click="look(item.hash)">
-                        查看
+                    <van-col span="10">
+                        金额/手续费/到账
                     </van-col>
-                    <van-col span="11">
-                        {{ item.created_at }}
+                    <van-col span="4">
+                        状态
                     </van-col>
                 </van-row>
             </van-cell>
-        </van-list>
-
-
-        <van-popup round position="bottom" v-model="show">{{ hash || '暂无' }}</van-popup>
-
+            <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+                <van-cell v-for="(item, index) in list" :key="index">
+                    <van-row>
+                        <van-col span="10">
+                            {{ item.created_at }}
+                        </van-col>
+                        <van-col span="8">
+                            {{ item.amount*1 }}/{{ item.fee*1 }}/{{ item.out_amount*1 }}
+                        </van-col>
+                        <van-col span="4">
+                            {{ item.status }}
+                        </van-col>
+                    </van-row>
+                </van-cell>
+            </van-list>
+        </div>
     </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                show: false,
-                hash: '',
-                active: 0,
-                list: [
-                    {
-                        amount: '1.00',
-                        // hash: 'asd',
-                        hash: '0x4786205d7ca3c457c08de5821fccaa909949376ea04f2e1c526edcd66ee1fbbf',
-                        created_at: '2018年 12月 12日 12:12:12',
-                    },
-                ],
-                wallet: {
-                    address: '-',
-                    amount: '0',
-                    lock_amount: '0',
-                    qrcode_url: '-',
-                    token: {
-                        icon: '-',
-                        cn_name: '-',
-                        en_name: '-',
-                    },
-                },
-                loading: false,
-                finished: false,
-                type: '',
-                page: 0,
-            }
+export default {
+    data() {
+        return {
+            active: 0,
+            list: [],
+            loading: false,
+            finished: false,
+            type: '',
+            page: 0,
+        }
+    },
+    methods: {
+        onClickLeft() {
+            this.$router.go(-1)
         },
-        methods: {
-            onClickLeft() {
-                this.$router.go(-1)
-            },
-            onLoad() {
-                this.page++;
+        onLoad() {
+            this.page++;
+            this.$axios.get(`wallet/withdraws?&page=${this.page}&size=30`).then(response => {
+                let ss = response.data;
+                this.list = this.list.concat(ss);
                 this.loading = false;
-                this.finished = true;
-            },
-            look(hash) {
-                this.hash = hash
-                this.show = true
-            },
-            async get_list() {
-                let list = await this.$axios.get('/wallet/withdraws')
-                this.wallet = list.data.wallet
-                this.list = list.data.data.data
-            },
-        },
-        mounted() {
-            this.get_list()
-        },
-    }
+
+                if (this.page >= response.last_page || response.total == 0) {
+                    this.finished = true;
+                }
+            });
+        }
+    },
+};
 </script>
 <style lang="scss">
-.show_withdraw {
-
-    .amount {
-        background: #3F79FE;
-        padding: 1rem;
-        text-align: center;
+.trades {
+    .text-red {
+        color: red;
     }
 
-    .van-cell,
-    .van-tab--active,
-    .van-cell__value--alone {
-        color: white;
+    .text-green {
+        color: green;
     }
 
     .van-row {
-        font-size: 12px;
+        font-size: 10px;
+
+        .van-col {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
     }
-
-
-    .van-popup {
-        // padding: 5rem;
-        color: white;
-        padding-top: 3rem;
-        text-align: center;
-        padding-bottom: 3rem;
-        word-wrap:break-word; 
-        word-break:break-all;
-        background-color: #5e6b6d;
-    }
-
 }
 </style>

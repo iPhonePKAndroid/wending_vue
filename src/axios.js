@@ -6,10 +6,8 @@ import { Notify, Toast } from 'vant'
 
 
 // axios.defaults.timeout = 1000 * 5
-axios.defaults.baseURL = 'https://api.imnms.com/api/'
-// axios.defaults.baseURL = 'http://103.122.244.183:802/api/'
-// axios.defaults.baseURL = 'http://192.168.0.192:8000/api/'
-// axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
+// axios.defaults.baseURL = 'https://api.imnms.com/api/'
+axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
@@ -52,7 +50,7 @@ axios.interceptors.response.use(
                     background: '#1989fa'
                 })
                 break
-            // 警告信息
+                // 警告信息
             case 20000:
                 Notify(response.data.message)
                 break
@@ -73,7 +71,8 @@ axios.interceptors.response.use(
                     router.push('/login')
                     break
                 case 404:
-                    Notify('请求地址不存在')
+                    router.push('/404')
+                    Notify('请求丢失')
                     break
                 case 419:
                     Notify('请求失效，请刷新页面')
@@ -87,12 +86,8 @@ axios.interceptors.response.use(
                 case 500:
                     Notify('系统异常')
                     break
-                case 404:
-                    router.push('/404')
-                    Notify('请求出错')
-                    break
                 default:
-                // 
+                    // 
             }
         } else {
             // alert(3)

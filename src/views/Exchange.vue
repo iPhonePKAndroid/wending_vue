@@ -1,19 +1,17 @@
 <template>
     <div class="exchange">
         <van-nav-bar title="兑换" left-arrow @click-left="onClickLeft" />
-
         <div class="replace">
-            <van-panel status="闪兑服务">
-
+            <van-panel status="闪兑IA">
                 <div>
                     <van-row class="panel">
                         <van-col span="7" offset="2">
                             <span class="icon">
-                                <van-icon name="https://cdn.mytoken.org/FkonJbqGpUId6qy6AiVVURateiLD" size="16" />
+                                <van-icon name="https://cdn.mytoken.org/Fp2vnCNJY7QudKwqR2mA4tt3Cmhl" size="16" />
                             </span>
-                            <span class="text">抢单金额</span>
+                            <span class="text">USDT</span>
                             <div class="text2">
-                                {{ info.wallet.sheet_amount }}
+                                {{ info.usdt }}
                             </div>
                         </van-col>
                         <van-col span="2" offset="3">
@@ -23,136 +21,77 @@
                         </van-col>
                         <van-col span="6" offset="3">
                             <span class="icon">
-                                <van-icon name="https://cdn.mytoken.org/Fp2vnCNJY7QudKwqR2mA4tt3Cmhl" size="16" />
-                            </span>
-                            <span class="text">保障金</span>
-                            <div class="text2">
-                                {{ info.wallet.amount }}
-                            </div>
-                        </van-col>
-                    </van-row>
-
-                    <van-row>
-                        <van-col span="12">
-                            <van-cell-group>
-                                <van-field v-model="params.amount" input-align="center" size="12" placeholder="请输入抢单金额" />
-                            </van-cell-group>
-                        </van-col>
-                        <van-col span="12">
-                            <van-cell-group>
-                                <van-field v-model="params.amount" input-align="center" size="12" placeholder="请输入保障金" />
-                            </van-cell-group>
-                        </van-col>
-                    </van-row>
-
-
-                    <van-row>
-                        <van-col offset="8">
-                        </van-col>
-                        <van-col span="8">
-                            <div class="button">
-                                <van-button type="primary" :round="true" size="large" @click="submit('sheet_amount')" :disabled="params.amount == 0">立即兑换</van-button>
-                            </div>
-                        </van-col>
-                    </van-row>
-                </div>
-
-                <div>
-                    <van-row class="panel">
-                        <van-col span="7" offset="2">
-                            <span class="icon">
                                 <van-icon name="https://cdn.mytoken.org/FkonJbqGpUId6qy6AiVVURateiLD" size="16" />
                             </span>
-                            <span class="text">团队抢单</span>
+                            <span class="text">IA</span>
                             <div class="text2">
-                                {{ info.wallet.team_amount }}
-                            </div>
-                        </van-col>
-                        <van-col span="2" offset="3">
-                            <div class="middle">
-                                <van-icon name="exchange" size="20" />
-                            </div>
-                        </van-col>
-                        <van-col span="6" offset="3">
-                            <span class="icon">
-                                <van-icon name="https://cdn.mytoken.org/Fp2vnCNJY7QudKwqR2mA4tt3Cmhl" size="16" />
-                            </span>
-                            <span class="text">保障金</span>
-                            <div class="text2">
-                                {{ info.wallet.amount }}
+                                {{ info.ia }}
                             </div>
                         </van-col>
                     </van-row>
-
                     <van-row>
                         <van-col span="12">
                             <van-cell-group>
-                                <van-field v-model="params.amount" input-align="center" size="12" placeholder="请输入团队抢单金额" />
+                                <van-field v-model="params.amount" type="number" @input="input()" input-align="center" size="12" :placeholder="`请输入兑换的USDT/${info.rate}`" />
                             </van-cell-group>
                         </van-col>
                         <van-col span="12">
                             <van-cell-group>
-                                <van-field v-model="params.amount" input-align="center" size="12" placeholder="请输入保障金" />
+                                <van-field v-model="params.ia" disabled="true" input-align="center" size="12" placeholder="AI" />
                             </van-cell-group>
                         </van-col>
                     </van-row>
-
-
                     <van-row>
                         <van-col offset="8">
                         </van-col>
                         <van-col span="8">
                             <div class="button">
-                                <van-button type="primary" :round="true" size="large" @click="submit('team_amount')" :disabled="params.amount == 0">立即兑换</van-button>
+                                <van-button type="primary" :round="true" size="large" @click="submit()" :disabled="params.amount == 0">立即兑换</van-button>
                             </div>
                         </van-col>
                     </van-row>
                 </div>
-
             </van-panel>
-
         </div>
-
     </div>
 </template>
-
 <script>
-    export default {
-        data() {
-            return {
-                info: {
-                    wallet: {
-                        amount: "0",
-                        team_amount: "0",
-                        sheet_amount: "0",
-                    },
-                },
-                params: {
-                    amount: "1",
-                    type: 'sheet_amount',
-                },
-            };
-        },
-        methods: {
-            onClickLeft() {
-                this.$router.go(-1)
+export default {
+    data() {
+        return {
+            info: {
+                usdt: "0",
+                ia: "0",
+                rate: 1,
             },
-            async get_go() {
-                let go = await this.$axios.get("/go");
-                this.info = go.data;
+            params: {
+                amount: "",
+                ia: ''
             },
-            async submit(type) {
-                this.params.type = type
-                let r = await this.$axios.post('/replace', this.params)
-                this.get_go()
-            },
+        };
+    },
+    methods: {
+        onClickLeft() {
+            this.$router.go(-1)
         },
-        mounted() {
-            this.get_go();
+        input(){
+            this.params.ia = (this.params.amount / this.info.rate).toFixed(4)
         },
-    };
+        async getInfo() {
+            let res = await this.$axios.get("/replace/info");
+            this.info = res.data;
+        },
+        async submit(type) {
+            this.params.type = type
+            let r = await this.$axios.post('/replace', this.params)
+            this.getInfo()
+        },
+    },
+    mounted() {
+        this.getInfo();
+    },
+};
 </script>
-
 <style lang="scss">
 .exchange {
     color: black;
@@ -163,35 +102,35 @@
     // padding-bottom: 100%;
 
     .replace {
-    // margin-top: 1rem;
+        // margin-top: 1rem;
 
-    .panel {
-        padding-top: 1rem;
-      // padding-bottom: 10rem;
-  }
+        .panel {
+            padding-top: 1rem;
+            // padding-bottom: 10rem;
+        }
 
-  .middle {
-      padding-top: 16px;
-  }
+        .middle {
+            padding-top: 16px;
+        }
 
-  .text {
-      font-size: 20px;
-      margin-left: 5px;
-  }
+        .text {
+            font-size: 20px;
+            margin-left: 5px;
+        }
 
-  .text2 {
-      font-size: 12px;
-      text-align: center;
-  }
+        .text2 {
+            font-size: 12px;
+            text-align: center;
+        }
 
-  .icon {
-      vertical-align: middle;
-  }
+        .icon {
+            vertical-align: middle;
+        }
 
-  .button {
-      padding-top: 1rem;
-      padding-bottom: 3rem;
-  }
-}
+        .button {
+            padding-top: 1rem;
+            padding-bottom: 3rem;
+        }
+    }
 }
 </style>
