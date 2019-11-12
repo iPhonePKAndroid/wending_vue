@@ -73,7 +73,7 @@ let router = new Router({
       meta: {
         auth: true,
         guest: false,
-        tabar: true,
+        tabar: false,
         title: '投单记录' + title,
       },
       component: () => import('./views/UpgradeList.vue')
@@ -84,10 +84,21 @@ let router = new Router({
       meta: {
         auth: true,
         guest: false,
-        tabar: true,
-        title: '修改密码' + title,
+        tabar: false,
+        title: '修改登录密码' + title,
       },
       component: () => import(/* webpackChunkName: "go" */ './views/Password.vue')
+    },
+    {
+      path: '/pay-pass',
+      name: 'pay-pass',
+      meta: {
+        auth: true,
+        guest: false,
+        tabar: false,
+        title: '修改交易密码' + title,
+      },
+      component: () => import(/* webpackChunkName: "go" */ './views/Pay-pass.vue')
     },
     {
       path: '/resetPwd',
@@ -115,7 +126,7 @@ let router = new Router({
       path: '/exchange',
       name: 'exchange',
       meta: {
-        auth: false,
+        auth: true,
         guest: false,
         tabar: false,
         title: '兑换' + title,
@@ -123,10 +134,21 @@ let router = new Router({
       component: () => import(/* webpackChunkName: "go" */ './views/Exchange.vue')
     },
     {
+      path: '/exchange/index',
+      name: 'exchangeList',
+      meta: {
+        auth: true,
+        guest: false,
+        tabar: false,
+        title: '兑换记录' + title,
+      },
+      component: () => import('./views/ExchangeList.vue')
+    },
+    {
       path: '/my',
       name: 'my',
       meta: {
-        auth: false,
+        auth: true,
         guest: false,
         tabar: true,
         title: '我的' + title,
@@ -134,12 +156,23 @@ let router = new Router({
       component: () => import(/* webpackChunkName: "my" */ './views/My.vue')
     },
     {
+      path: '/my/profit',
+      name: 'my.profit',
+      meta: {
+        auth: true,
+        guest: false,
+        tabar: false,
+        title: '我的收益' + title,
+      },
+      component: () => import(/* webpackChunkName: "my" */ './views/my/Profit.vue')
+    },
+    {
       path: '/my/aff',
       name: 'my.aff',
       meta: {
-        auth: false,
+        auth: true,
         guest: false,
-        tabar: true,
+        tabar: false,
         title: '邀请好友' + title,
       },
       component: () => import(/* webpackChunkName: "my" */ './views/my/Aff.vue')
@@ -148,9 +181,9 @@ let router = new Router({
       path: '/my/team',
       name: 'my.team',
       meta: {
-        auth: false,
+        auth: true,
         guest: false,
-        tabar: true,
+        tabar: false,
         title: '我的团队' + title,
       },
       component: () => import(/* webpackChunkName: "my" */ './views/my/team/Index.vue')
@@ -159,7 +192,7 @@ let router = new Router({
       path: '/recharge',
       name: 'recharge',
       meta: {
-        auth: false,
+        auth: true,
         tabar: false,
         title: '充值' + title,
       },
@@ -170,7 +203,7 @@ let router = new Router({
       path: '/trades',
       name: 'trades',
       meta: {
-        auth: false,
+        auth: true,
         tabar: false,
         title: '交易记录' + title,
       },
@@ -182,7 +215,7 @@ let router = new Router({
       path: '/recharge/index',
       name: 'recharge.index',
       meta: {
-        auth: false,
+        auth: true,
         tabar: false,
         title: '充值记录' + title,
       },
@@ -194,7 +227,7 @@ let router = new Router({
       path: '/withdraw',
       name: 'withdraw',
       meta: {
-        auth: false,
+        auth: true,
         tabar: false,
         title: '提现' + title,
       },
@@ -205,7 +238,7 @@ let router = new Router({
       path: '/withdraw/index',
       name: 'withdraw.index',
       meta: {
-        auth: false,
+        auth: true,
         tabar: false,
         title: '提现记录' + title,
       },
@@ -239,7 +272,7 @@ let router = new Router({
       meta: {
         auth: false,
         tabar: false,
-        title: '登录' + title,
+        title: '注册须知' + title,
       },
       component: resolve => require(['./views/auth/pwdHelper.vue'], resolve),
     },

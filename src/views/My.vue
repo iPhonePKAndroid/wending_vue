@@ -52,9 +52,11 @@
 
     <div class="no"></div>
     <van-cell-group class="sub-nav">
+      <van-cell icon="share" title="我的收益" is-link @click="go('my.profit')" />
       <van-cell icon="share" title="邀请好友" is-link @click="go('my.aff')" />
       <van-cell icon="friends-o" title="我的团队" is-link @click="go('my.team')" />
-      <van-cell icon="bulb-o" title="修改密码" is-link @click="go('password')" />
+      <van-cell icon="bulb-o" title="修改登录密码" is-link @click="go('password')" />
+      <van-cell icon="bulb-o" title="修改支付密码" is-link @click="go('pay-pass')" />
       <van-cell icon="flower-o" title="APP下载" is-link @click="go('app')" />
       <van-cell icon="underway-o" title="退出登录" is-link @click="logout" />
     </van-cell-group>
