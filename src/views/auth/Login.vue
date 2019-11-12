@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login">
     <van-nav-bar
       :fixed="true"
       title="登录"
@@ -75,29 +75,39 @@ export default {
 </script>
 
 <style lang="scss">
-.auth {
-  //   margin-top: 8rem;
-}
+.login {
+  .auth {
+    //   margin-top: 8rem;
+  }
+  .van-nav-bar__title {
+    color: #fff;
+  }
+  .van-nav-bar {
+    background-color: #13141a;
+  }
+  .van-hairline--bottom::after {
+    border: none;
+  }
+  .logo {
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 30px;
+  }
 
-.logo {
-  text-align: center;
-  padding-top: 80px;
-  padding-bottom: 30px;
-}
+  .center {
+    text-align: center;
+  }
 
-.center {
-  text-align: center;
-}
+  .margin-top-10 {
+    margin-top: 10px;
+  }
 
-.margin-top-10 {
-  margin-top: 10px;
-}
+  .auth_button {
+    margin: 10px 20px 0 20px;
+  }
 
-.auth_button {
-  margin: 10px 20px 0 20px;
-}
-
-.info {
-  color: #1989fa;
+  .info {
+    // color: #1989fa;
+  }
 }
 </style>

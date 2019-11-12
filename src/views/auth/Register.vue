@@ -27,7 +27,7 @@
       </van-cell-group>
 
       <van-checkbox v-model="checked" class="selectbox" icon-size="16" @click="tops">
-        <div style="color:black;">同意《注册协议》</div>
+        <div>同意《注册协议》</div>
       </van-checkbox>
 
       <div class="center auth_button">
@@ -44,7 +44,7 @@
       </div>
 
       <div class="center margin-top-10">
-        <div style="color: black;">已经有账号？</div>
+        <div>已经有账号？</div>
         <router-link :to="{ name: 'login' }" style="color: #07c160;">立即登录</router-link>
       </div>
     </div>
@@ -107,17 +107,31 @@ export default {
 };
 </script>
 <style lang="scss">
-.selectbox {
-  margin: 1rem;
-  font-size: 0.8rem;
-  color: #fff;
-}
+.header {
+  .van-checkbox__label {
+    color: white;
+  }
+  .van-nav-bar__title {
+    color: #fff;
+  }
+  .van-nav-bar {
+    background-color: #13141a;
+  }
+  .van-hairline--bottom::after {
+    border: none;
+  }
+  .selectbox {
+    margin: 1rem;
+    font-size: 0.8rem;
+    color: #fff;
+  }
 
-.center {
-  text-align: center;
-}
+  .center {
+    text-align: center;
+  }
 
-.margin-top-10 {
-  margin-top: 10px;
+  .margin-top-10 {
+    margin-top: 10px;
+  }
 }
 </style>

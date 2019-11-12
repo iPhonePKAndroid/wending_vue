@@ -107,7 +107,7 @@ export default {
 
 <style lang="scss" >
 .pwdHelper {
-  background: #fff;
+
   height: 100%;
   .top {
     padding-top: 145px;

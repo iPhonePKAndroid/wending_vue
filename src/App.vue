@@ -37,14 +37,53 @@ export default {
 <style lang="scss">
 html,
 body {
-  // color: white;
+  color: white;
   height: 100%;
-  background-color: #f2f4f5;
+  background-color: #13141a;
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+  .van-nav-bar {
+    color: #fff;
+    background-color: #13141a;
+    .van-icon {
+      color: #fff;
+    }
+  }
+
+  .van-tabbar-item--active {
+    color: black;
+  }
+  .van-nav-bar__title {
+    color: #fff !important;
+  }
+
+  .van-tabbar-item__text {
+    font-weight: bold;
+    // color: #fff;
+  }
+  .van-nav-bar__text {
+    color: #fff !important;
+  }
+  .van-cell-group {
+    background: #13141a;
+    .van-cell {
+      background: #13141a;
+      color: #fff;
+    }
+  }
+  .van-collapse-item {
+    .van-cell {
+      background: #13141a;
+      color: #fff;
+    }
+    .van-collapse-item__content {
+      background: #13141a;
+      color: #fff;
+    }
+  }
 }
 </style>

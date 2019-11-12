@@ -87,7 +87,7 @@ export default {
 
 <style lang="scss">
 .recharge {
-  background: #fff;
+  // background: #fff;
   .amount {
     // background: #3F79FE;
     padding: 1rem;

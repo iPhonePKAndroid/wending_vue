@@ -130,7 +130,6 @@ export default {
 <style lang="scss">
 .resetPassword {
   height: 100%;
-  background: #fff;
   .input-area {
     padding-top: 45px;
     .steps {
@@ -153,6 +152,12 @@ export default {
     padding: 16px;
     .van-button {
       margin: 5px;
+    }
+  }
+  .van-steps {
+    background: #13141a;
+    .van-step--horizontal .van-step__circle-container{
+      background: #13141a
     }
   }
 }

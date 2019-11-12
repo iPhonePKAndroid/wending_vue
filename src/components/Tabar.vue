@@ -1,10 +1,16 @@
 <template>
   <!-- <div style="margin-top: 8rem; margin-bottom: 5rem;"> -->
-  <div>
-
+  <div class="tabar">
     <!-- <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">我是有底线的</van-divider> -->
 
-    <van-tabbar :value="active" :fixed="true" :border="false" :safe-area-inset-bottom="true" :z-index="999" style="backgroundColor: #fbfcfd">
+    <van-tabbar
+      :value="active"
+      :fixed="true"
+      :border="false"
+      :safe-area-inset-bottom="true"
+      :z-index="999"
+      style="backgroundColor: #fbfcfd"
+    >
       <van-tabbar-item @click="go('home')" icon="home-o">首页</van-tabbar-item>
       <van-tabbar-item @click="go('upgrade')" icon="points">投单</van-tabbar-item>
       <van-tabbar-item @click="go('my')" icon="user-circle-o">我的</van-tabbar-item>
@@ -31,19 +37,18 @@ export default {
 </script>
 
 <style lang="scss">
-  .tabar {
+.tabar {
+  // .van-nav-bar {
+  //   color: #fff;
+  //   background-color: #13141a;
+  // }
 
-    .van-tabbar {
-      background-color: #fcfcfc;
-    }
+  // .van-tabbar-item--active {
+  //   color: black;
+  // }
 
-    .van-tabbar-item--active {
-      color: black;
-    }
-
-    .van-tabbar-item__text {
-      font-weight:bold;
-    }
-
-  }
+  // .van-tabbar-item__text {
+  //   font-weight: bold;
+  // }
+}
 </style>

@@ -99,7 +99,7 @@ export default {
 <style lang="scss">
 .upgrade {
   //   height: 100%;
-  background: #fff;
+  // background: #fff;
   //   .readme {
   //     color: #969799;
   //     padding: 1rem;
