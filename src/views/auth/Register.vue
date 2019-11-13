@@ -17,7 +17,7 @@
             </van-checkbox>
             <div class="center auth_button">
                 <div>
-                    <van-button type="info" :hairline="true" :square="true" size="large" @click="register" :disabled="!checked">注册</van-button>
+                    <van-button type="primary" :hairline="true" :square="true" size="large" @click="register" :disabled="!checked">注册</van-button>
                 </div>
             </div>
         </div>

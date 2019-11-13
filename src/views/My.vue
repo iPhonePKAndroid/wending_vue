@@ -110,12 +110,12 @@ export default {
   padding-bottom: 5rem;
 
   .bg {
-    background-color: #424a5c;
+    background-color: #282e48;
     // background-image: url('../assets/profile.gif');
     padding-top: 50px;
     padding-bottom: 20px;
     .van-cell {
-      background: #424a5c;
+      background-color: #282e48;
       .van-cell__title {
         padding-top: 10px;
         padding-left: 20px;
@@ -151,9 +151,9 @@ export default {
 }
 
 .trade {
-  color: black;
+  // color: black;
   padding: 1rem 0 1rem 0;
-  background-color: white;
+  // background-color: #1b2034;
 
   .center {
     display: flex;
@@ -167,7 +167,7 @@ export default {
 }
 
 .no {
-  background-color: #f2f4f5;
+  background-color: #1b2034;
   padding: 8px;
 }
 .sub-nav {

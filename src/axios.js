@@ -46,15 +46,17 @@ axios.interceptors.response.use(
                 if (response.data.message) {
                     Toast({
                         message: response.data.message,
-                        duration: 1000,
-                        background: '#1989fa'
+                        duration: 2000
                     })
                 }
 
                 break
             // 警告信息
             case 20000:
-                Toast(response.data.message)
+                Toast({
+                    message: response.data.message,
+                    duration: 2000
+                })
                 break
         }
         return response.data
@@ -69,24 +71,42 @@ axios.interceptors.response.use(
             switch (error.response.status) {
                 case 401:
                     store.commit('logout')
-                    Toast('状态失效，请重新登录')
+                    Toast({
+                        message: '状态失效，请重新登录',
+                        duration: 2000
+                    })
                     router.push('/login')
                     break
                 case 404:
                     router.push('/404')
-                    Toast('请求丢失')
+                    Toast({
+                        message: '请求丢失',
+                        duration: 2000
+                    })
                     break
                 case 419:
-                    Toast('请求失效，请刷新页面')
+                    Toast({
+                        message: '请求失败，请刷新页面',
+                        duration: 2000
+                    })
                     break
                 case 422:
-                    Toast(error.response.data.message)
+                    Toast({
+                        message: error.response.data.message,
+                        duration: 2000
+                    })
                     break
                 case 429:
-                    Toast('频率过快')
+                    Toast({
+                        message: '频率过快',
+                        duration: 2000
+                    })
                     break
                 case 500:
-                    Toast('系统异常')
+                    Toast({
+                        message: '系统异常',
+                        duration: 2000
+                    })
                     break
                 default:
                 // 
@@ -94,7 +114,8 @@ axios.interceptors.response.use(
         } else {
             // alert(3)
             Toast.fail({
-                message: '网络请求异常'
+                message: '网络请求异常',
+                duration: 2000
             })
         }
         return Promise.reject(error)

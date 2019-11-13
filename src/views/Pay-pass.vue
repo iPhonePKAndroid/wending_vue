@@ -7,7 +7,7 @@
             <van-field v-model="params.password_confirmation" type="password" clearable label="确认支付密码" placeholder="请确认新支付密码" required />
         </van-cell-group>
         <div class="center auth_button">
-            <van-button type="info" size="large" :round="true" :hairline="true" :square="true" @click="submit">立即修改</van-button>
+            <van-button type="primary" size="large" :round="true" :hairline="true" :square="true" @click="submit">立即修改</van-button>
         </div>
     </div>
 </template>

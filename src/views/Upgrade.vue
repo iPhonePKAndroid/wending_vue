@@ -125,5 +125,8 @@ export default {
     height: 50%;
     padding-top: 20px;
   }
+  .van-grid-item__content{
+    background: inherit;
+  }
 }
 </style>

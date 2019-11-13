@@ -30,9 +30,8 @@
     <div class="submit">
       <van-button
         round
-        type="danger"
+        type="primary"
         size="normal"
-        color="#1989fa"
         :loading="button.loading"
         :disabled="this.params.amount == '' || this.params.address == ''"
         @click="submit"
@@ -170,7 +169,7 @@ export default {
     margin-top: 1rem;
     padding-left: 1rem;
     margin-bottom: 1rem;
-    color: #000;
+    // color: #000;
 
     .van-radio {
       margin-top: 7px;

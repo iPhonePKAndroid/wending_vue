@@ -40,5 +40,8 @@ export default {
 
 <style lang="scss">
 .authPay {
+  .van-number-keyboard__body {
+    color: black;
+  }
 }
 </style>

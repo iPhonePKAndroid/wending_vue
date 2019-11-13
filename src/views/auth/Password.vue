@@ -26,7 +26,7 @@
             </template>
         </div>
         <div class="bottomButton">
-            <van-button size="large" type="info" :disabled="phone.length <=0" :hairline="true" @click="getNext" :square="true">下一步</van-button>
+            <van-button size="large" type="primary" :disabled="phone.length <=0" :hairline="true" @click="getNext" :square="true">下一步</van-button>
         </div>
     </div>
 </template>

@@ -125,11 +125,10 @@ export default {
 </script>
 <style lang="scss">
 .exchange {
-    color: black;
     // text-align: center;
     // position: relative;
     height: 100%;
-    background-color: white;
+    // background-color: white;
     // padding-bottom: 100%;
 
     .replace {

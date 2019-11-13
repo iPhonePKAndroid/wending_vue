@@ -8,7 +8,7 @@
                 余额： {{ wallet.amount }} USDT
             </p>
         </div>
-        <van-cell style="backgroundColor: #1d2243">
+        <van-cell>
             <van-row style="text-align: center;">
                 <van-col span="5">
                     数量
@@ -22,7 +22,7 @@
             </van-row>
         </van-cell>
         <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-            <van-cell v-for="(item, index) in list" :key="index" style="backgroundColor:#1d2243">
+            <van-cell v-for="(item, index) in list" :key="index">
                 <van-row style="text-align: center;">
                     <van-col span="5">
                         {{ item.amount }}
@@ -104,6 +104,7 @@
     .van-tab--active,
     .van-cell__value--alone {
         color: white;
+        background: #282e48
     }
 
     .van-row {

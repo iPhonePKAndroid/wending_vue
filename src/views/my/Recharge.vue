@@ -95,7 +95,7 @@ export default {
   }
 
   .alert {
-    color: black;
+    color: #aaa;
   }
 
   .center {

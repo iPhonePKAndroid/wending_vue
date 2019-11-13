@@ -69,24 +69,33 @@ body {
     color: #fff !important;
   }
   .van-cell-group {
-    background: #1b2034;
+    background: #282e48;
     .van-cell {
-      background: #1b2034;
+      background: #282e48;
       color: #fff;
     }
   }
   .van-collapse-item {
     .van-cell {
-      background: #1b2034;
+      background: #282e48;
       color: #fff;
     }
     .van-collapse-item__content {
-      background: #1b2034;
+      background: #282e48;
       color: #fff;
     }
   }
-  .van-field__control{
+  .van-field__control {
     color: #fff;
+  }
+  .van-list {
+    .van-cell {
+      background: #282e48;
+      color: #fff;
+      .van-cell__value--alone {
+        color: #fff;
+      }
+    }
   }
 }
 </style>
