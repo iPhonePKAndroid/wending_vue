@@ -12,7 +12,7 @@
       style="backgroundColor: #fbfcfd"
     >
       <van-tabbar-item @click="go('home')" icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item @click="go('upgrade')" icon="points">投单</van-tabbar-item>
+      <van-tabbar-item @click="go('upgrade')" icon="points">理财</van-tabbar-item>
       <van-tabbar-item @click="go('my')" icon="user-circle-o">我的</van-tabbar-item>
     </van-tabbar>
   </div>

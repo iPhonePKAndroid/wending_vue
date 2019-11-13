@@ -1,15 +1,15 @@
 <template>
   <div class="trades">
-    <van-nav-bar title="投单记录" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar title="理财记录" left-arrow @click-left="onClickLeft" />
     <div>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
         <van-cell v-for="(item, index) in list" :key="index">
           <van-row gutter="20">
-            <van-col span="9">
+            <van-col span="10">
               <p>时间</p>
               {{ item.created_at }}
             </van-col>
-            <van-col span="6">
+            <van-col span="5">
               <p>投入/收益</p>
               {{ item.amount }}/{{ item.now }}
             </van-col>
