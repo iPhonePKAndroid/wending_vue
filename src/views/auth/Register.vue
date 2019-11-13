@@ -33,7 +33,7 @@
       <div class="center auth_button">
         <div>
           <van-button
-            type="info"
+            type="primary"
             :hairline="true"
             :square="true"
             size="large"

@@ -104,12 +104,12 @@ export default {
   //     color: #969799;
   //     padding: 1rem;
   //   }
-  color: #888;
+  // color: #888;
   .title-area {
     text-align: center;
   }
   .subtitle {
-    color: #353535;
+    // color: #353535;
     font-size: 16px;
     line-height: 40px;
   }

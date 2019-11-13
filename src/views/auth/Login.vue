@@ -20,7 +20,7 @@
       </van-cell-group>
       <div class="center auth_button">
         <van-button
-          type="info"
+          type="primary"
           size="large"
           :round="true"
           :hairline="true"

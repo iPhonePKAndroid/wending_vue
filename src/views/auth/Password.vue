@@ -54,7 +54,7 @@
       </template>
     </div>
     <div class="bottomButton">
-      <van-button size="large" type="info" :hairline="true" @click="getNext" :square="true">下一步</van-button>
+      <van-button size="large" type="primary" :hairline="true" @click="getNext" :square="true">下一步</van-button>
     </div>
   </div>
 </template>
@@ -156,8 +156,8 @@ export default {
   }
   .van-steps {
     background: #13141a;
-    .van-step--horizontal .van-step__circle-container{
-      background: #13141a
+    .van-step--horizontal .van-step__circle-container {
+      background: #13141a;
     }
   }
 }

@@ -40,15 +40,18 @@ export default {
 .tabar {
   // .van-nav-bar {
   //   color: #fff;
-  //   background-color: #13141a;
+  //   background-color: #282e48;
   // }
+  .van-tabbar-item {
+    color: #fff;
+    background-color: #282e48;
+  }
+  .van-tabbar-item--active {
+    background-color: #1b2034;
+  }
 
-  // .van-tabbar-item--active {
-  //   color: black;
-  // }
-
-  // .van-tabbar-item__text {
-  //   font-weight: bold;
-  // }
+  .van-tabbar-item__text {
+    font-weight: bold;
+  }
 }
 </style>

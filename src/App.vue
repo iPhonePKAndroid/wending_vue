@@ -39,7 +39,7 @@ html,
 body {
   color: white;
   height: 100%;
-  background-color: #13141a;
+  background-color: #282e48;
 }
 
 #app {
@@ -48,15 +48,15 @@ body {
   height: 100%;
   .van-nav-bar {
     color: #fff;
-    background-color: #13141a;
+    background-color: #1b2034;
     .van-icon {
       color: #fff;
     }
   }
 
-  .van-tabbar-item--active {
-    color: black;
-  }
+  // .van-tabbar-item--active {
+  //   color: black;
+  // }
   .van-nav-bar__title {
     color: #fff !important;
   }
@@ -69,21 +69,24 @@ body {
     color: #fff !important;
   }
   .van-cell-group {
-    background: #13141a;
+    background: #1b2034;
     .van-cell {
-      background: #13141a;
+      background: #1b2034;
       color: #fff;
     }
   }
   .van-collapse-item {
     .van-cell {
-      background: #13141a;
+      background: #1b2034;
       color: #fff;
     }
     .van-collapse-item__content {
-      background: #13141a;
+      background: #1b2034;
       color: #fff;
     }
+  }
+  .van-field__control{
+    color: #fff;
   }
 }
 </style>
