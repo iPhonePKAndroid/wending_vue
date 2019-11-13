@@ -2,7 +2,6 @@
   <div class="recharge">
     <van-nav-bar
       title="充值"
-      left-text="返回"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
