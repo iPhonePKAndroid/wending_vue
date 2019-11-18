@@ -8,7 +8,7 @@
                 <van-step>重置密码</van-step>
             </van-steps>
             <van-cell-group v-if="active==0">
-                <van-field v-model="phone" clearable placeholder="请输入账户" />
+                <van-field v-model="phone" clearable placeholder="请输入5-16位账户" />
             </van-cell-group>
             <template v-if="active==1">
                 <div class="selected">

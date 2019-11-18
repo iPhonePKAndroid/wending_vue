@@ -6,8 +6,8 @@
         <div class="text">
             <van-cell-group>
                 <van-field clearable placeholder="中国" :disabled="true" right-icon="arrow" />
-                <van-field v-model="params.name" clearable placeholder="请输入账户名称" />
-                <van-field v-model="params.phone" clearable placeholder="请输入手机号码" />
+                <van-field v-model="params.name" clearable placeholder="请输入名称" />
+                <van-field v-model="params.phone" clearable placeholder="请输入5-16位账户" />
                 <van-field v-model="params.password" clearable placeholder="请输入密码" type="password" />
                 <van-field v-model="params.password_confirmation" clearable placeholder="请确认登录密码" type="password" />
                 <van-field v-model="params.code" clearable placeholder="请输入邀请码" />

@@ -15,7 +15,7 @@
       </div>
 
       <van-cell-group>
-        <van-field v-model="params.phone" clearable placeholder="请输入手机号" />
+        <van-field v-model="params.phone" clearable placeholder="请输入5-16位账户" />
         <van-field v-model="params.password" clearable placeholder="请输入密码" type="password" />
       </van-cell-group>
       <div class="center auth_button">
