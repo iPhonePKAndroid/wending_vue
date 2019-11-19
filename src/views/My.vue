@@ -1,5 +1,6 @@
 <template>
   <div class="my">
+    <van-nav-bar title="我的" />
     <div class="bg">
       <van-cell :title="user.name" :label="user.phone">
         <van-image
@@ -41,25 +42,48 @@
         </van-col>
       </van-row>
     </div>
-
     <div class="no"></div>
-
-    <van-cell-group class="sub-nav">
-      <van-cell icon="friends-o" title="我的团队" :value="user.team_count" />
-      <van-cell icon="manager-o" title="直推人数" :value="user.direct_count" />
-      <van-cell icon="manager-o" title="团队业绩" :value="user.team_amount" />
-    </van-cell-group>
-
+    <div>
+      <van-cell
+        icon="friends-o"
+        title="我的团队"
+        :value="user.team_count"
+        is-link
+        @click="go('my.team')"
+      >
+        <van-icon color="#ba924a" slot="icon" name="friends-o" size="20" />
+      </van-cell>
+      <van-cell icon="manager-o" title="直推人数" :value="user.direct_count">
+        <van-icon color="#ba924a" slot="icon" name="manager-o" size="20" />
+      </van-cell>
+      <van-cell icon="manager-o" title="团队业绩" :value="user.team_amount">
+        <van-icon color="#ba924a" slot="icon" name="chart-trending-o" size="20" />
+      </van-cell>
+    </div>
     <div class="no"></div>
-    <van-cell-group class="sub-nav">
-      <van-cell icon="share" title="我的收益" is-link @click="go('my.profit')" />
-      <van-cell icon="share" title="邀请好友" is-link @click="go('my.aff')" />
-      <van-cell icon="friends-o" title="我的团队" is-link @click="go('my.team')" />
-      <van-cell icon="bulb-o" title="修改登录密码" is-link @click="go('password')" />
-      <van-cell icon="bulb-o" title="修改支付密码" is-link @click="go('pay-pass')" />
-      <van-cell icon="flower-o" title="APP下载" is-link @click="go('app')" />
-      <van-cell icon="underway-o" title="退出登录" is-link @click="logout" />
-    </van-cell-group>
+    <div>
+      <van-cell icon="share" title="我的收益" is-link @click="go('my.profit')">
+        <van-icon color="#ba924a" slot="icon" name="balance-o" size="20" />
+      </van-cell>
+      <van-cell icon="share" title="邀请好友" is-link @click="go('my.aff')">
+        <van-icon color="#ba924a" slot="icon" name="share" size="20" />
+      </van-cell>
+      <van-cell title="修改登录密码" is-link @click="go('password')">
+        <van-icon color="#ba924a" slot="icon" name="warn-o" size="20" />
+      </van-cell>
+      <van-cell title="修改支付密码" is-link @click="go('pay-pass')">
+        <van-icon color="#ba924a" slot="icon" name="balance-pay" size="20" />
+      </van-cell>
+    </div>
+    <div class="no"></div>
+    <div>
+      <van-cell title="APP下载" is-link @click="go('app')">
+        <van-icon color="#ba924a" slot="icon" name="down" size="20" />
+      </van-cell>
+      <van-cell title="退出登录" is-link @click="logout">
+        <van-icon color="#ba924a" slot="icon" name="home-o" size="20" />
+      </van-cell>
+    </div>
   </div>
 </template>
 <script>
@@ -125,11 +149,6 @@ export default {
       }
     }
   }
-
-  .avatar {
-    padding-top: 5rem;
-  }
-
   .name {
   }
 
@@ -153,7 +172,7 @@ export default {
 .trade {
   // color: black;
   padding: 1rem 0 1rem 0;
-  // background-color: #1b2034;
+  background-color: #282e48;
 
   .center {
     display: flex;
@@ -166,18 +185,16 @@ export default {
   }
 }
 
+.van-cell {
+  background-color: #282e48;
+  color: #fff;
+  .van-icon {
+    margin-right: 10px;
+  }
+}
 .no {
   background-color: #1b2034;
   padding: 8px;
-}
-.sub-nav {
-  .van-cell {
-    color: black;
-    font-size: 16px;
-    .van-cell__title {
-      padding-left: 10px;
-    }
-  }
 }
 
 .team {

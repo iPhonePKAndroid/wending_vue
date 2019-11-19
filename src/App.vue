@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <router-view />
-
     <Tabar v-if="tabar" />
   </div>
 </template>
@@ -20,16 +19,6 @@ export default {
   },
   async mounted() {
     this.$toast.setDefaultOptions({ duration: 7000 });
-    // setInterval(() => {
-    //   this.$notify({
-    //     message: '联系QQ71314126',
-    //     duration: 2000,
-    //     background: '#07c160',
-    //     onClick() {
-    //       alert('联系微信iPhonePKAndroid')
-    //     },
-    //   });
-    // }, 100000)
   }
 };
 </script>
@@ -39,7 +28,7 @@ html,
 body {
   color: white;
   height: 100%;
-  background-color: #282e48;
+  background-color: rgb(21, 23, 39);
 }
 
 #app {
@@ -67,6 +56,9 @@ body {
   }
   .van-nav-bar__text {
     color: #fff !important;
+  }
+  .van-hairline--bottom::after {
+    border: none;
   }
   .van-cell-group {
     background: #282e48;
@@ -96,6 +88,14 @@ body {
         color: #fff;
       }
     }
+  }
+  .van-button--large {
+    height: 40px;
+    line-height: 40px;
+  }
+  .van-cell:not(:last-child)::after {
+    border-bottom: 1px solid #454c6c;
+    right: 16px;
   }
 }
 </style>
