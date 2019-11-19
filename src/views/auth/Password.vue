@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="resetPassword">
     <van-nav-bar
       :fixed="true"
@@ -28,6 +29,33 @@
             size="small"
             @click="delItem(item,index1)"
           >{{item}}</van-button>
+=======
+    <div class="resetPassword">
+        <van-nav-bar :fixed="true" title="找回密码" left-arrow left-text=" " right-text @click-left="onClickLeft" @click-right="onClickRight" />
+        <div class="input-area">
+            <van-steps class="steps" :active="active">
+                <van-step>输入账户</van-step>
+                <van-step>输入助记词</van-step>
+                <van-step>重置密码</van-step>
+            </van-steps>
+            <van-cell-group v-if="active==0">
+                <van-field v-model="phone" clearable placeholder="请输入5-16位账户" />
+            </van-cell-group>
+            <template v-if="active==1">
+                <div class="selected">
+                    <van-button v-for="(item,index1) in selectedItem" :key="index1" type="info" plain size="small" @click="delItem(item,index1)">{{item}}</van-button>
+                </div>
+                <div class="unselected">
+                    <van-button v-for="(item,index2) in unSelectedItem" :key="index2" type="info" plain size="small" @click="addItem(item,index2)">{{item}}</van-button>
+                </div>
+            </template>
+            <template v-if="active==2">
+                <van-cell-group>
+                    <van-field v-model="changeValue.password" type="password" clearable placeholder="请输入密码" />
+                    <van-field v-model="changeValue.password_confirmation" type="password" clearable placeholder="请确认密码" />
+                </van-cell-group>
+            </template>
+>>>>>>> 5cce03bf0a3876618308f28a61743179778a4817
         </div>
         <div class="unselected">
           <van-button

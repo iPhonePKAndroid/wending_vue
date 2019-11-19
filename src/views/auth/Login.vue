@@ -15,11 +15,27 @@
           <van-image height="130px" width="133px" :src="require('../../assets/logo.png')" />
         </div>
 
+<<<<<<< HEAD
         <div :class="{'mid-text':true,'mid-text-trans':isPageOk}">欢迎来到 IA</div>
         <div :class="{'bottom-btn':true,'bottom-btn-trans':isPageOk}">
           <van-button class="blank-bg" plain round color="#BD954E" @click="curIndex=2">登录</van-button>
           <van-button round color="#BD954E" @click="toRegister">注册</van-button>
         </div>
+=======
+      <van-cell-group>
+        <van-field v-model="params.phone" clearable placeholder="请输入5-16位账户" />
+        <van-field v-model="params.password" clearable placeholder="请输入密码" type="password" />
+      </van-cell-group>
+      <div class="center auth_button">
+        <van-button
+          type="primary"
+          size="large"
+          :round="true"
+          :hairline="true"
+          :square="true"
+          @click="login"
+        >立即登录</van-button>
+>>>>>>> 5cce03bf0a3876618308f28a61743179778a4817
       </div>
       <div class="input-wrapper" v-if="curIndex==2" key="el2">
         <div class="logo">
