@@ -14,7 +14,7 @@
           <van-row>
             <van-col span="10">{{ item.created_at }}</van-col>
             <van-col span="8">{{ item.amount*1 }}/{{ item.fee*1 }}/{{ item.out_amount*1 }}</van-col>
-            <van-col span="4">{{ item.status }}</van-col>
+            <van-col span="4">{{ item.status_name }}</van-col>
           </van-row>
         </van-cell>
       </van-list>
