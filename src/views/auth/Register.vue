@@ -5,9 +5,9 @@
     </div>
     <div class="text">
       <van-field clearable placeholder="中国" :disabled="true" right-icon="arrow" />
-      <span class="field-title">账户</span>
+      <span class="field-title">账户名</span>
       <van-field v-model="params.name" clearable placeholder="请输入账户名称" />
-      <span class="field-title">手机号码</span>
+      <span class="field-title">账户</span>
       <van-field v-model="params.phone" clearable placeholder="请输入手机号码" />
       <span class="field-title">密码</span>
       <van-field v-model="params.password" clearable placeholder="请输入密码" type="password" />

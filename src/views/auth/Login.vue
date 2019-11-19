@@ -26,7 +26,7 @@
           <van-image height="80px" width="80px" :src="require('../../assets/logo.png')" />
         </div>
         <span class="field-title">账户</span>
-        <van-field v-model="params.phone" clearable placeholder="请输入手机号" />
+        <van-field v-model="params.phone" clearable placeholder="请输入账户" />
         <br />
         <span class="field-title">登录密码</span>
         <van-field

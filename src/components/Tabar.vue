@@ -10,6 +10,7 @@
       :safe-area-inset-bottom="true"
       :z-index="999"
       style="backgroundColor: #fbfcfd"
+      active-color="#ba924a"
     >
       <van-tabbar-item @click="go('home')" icon="home-o">首页</van-tabbar-item>
       <van-tabbar-item @click="go('upgrade')" icon="points">理财</van-tabbar-item>
@@ -46,9 +47,9 @@ export default {
     color: #fff;
     background-color: #282e48;
   }
-  .van-tabbar-item--active {
-    background-color: #1b2034;
-  }
+  // .van-tabbar-item--active {
+  //   background-color: #1b2034;
+  // }
 
   .van-tabbar-item__text {
     font-weight: bold;
