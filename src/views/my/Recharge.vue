@@ -1,17 +1,13 @@
 <template>
   <div class="recharge">
-    <van-nav-bar
-      title="充值"
-      left-arrow
-      @click-left="onClickLeft"
-      @click-right="onClickRight"
-    >
+    <van-nav-bar title="充值" left-arrow @click-left="onClickLeft" @click-right="onClickRight">
       <van-icon name="notes-o" slot="right" size="20" />
     </van-nav-bar>
 
     <div class="content-wrapper">
       <div class="amount">
-        <p>余额： {{ wallet.amount }} {{ wallet.token.cn_name }}</p>
+        <span>余额:</span>
+        <span>{{ wallet.amount }} {{ wallet.token.cn_name }}</span>
       </div>
     </div>
 
@@ -26,11 +22,13 @@
     <div class="alert center">
       <p>{{ wallet.address }}</p>
     </div>
-
     <div class="center">
-      <van-button type="primary" size="small" @click="copy(wallet.address)">复制钱包地址</van-button>
+      <van-button color="#ba924a" size="small" @click="copy(wallet.address)">复制钱包地址</van-button>
     </div>
-
+    <br />
+    <br />
+    <br />
+    <div class="distinct"></div>
     <div class="readme">
       <van-collapse v-model="activeNames">
         <van-collapse-item title="说明" name="1">
@@ -86,11 +84,15 @@ export default {
 
 <style lang="scss">
 .recharge {
-  // background: #fff;
+  background: #282e48;
   .amount {
     // background: #3F79FE;
-    padding: 1rem;
     text-align: center;
+    color: #ba924a;
+    padding-top: 40px;
+    span:last-child {
+      font-size: 28px;
+    }
   }
 
   .alert {
@@ -107,11 +109,17 @@ export default {
   }
 
   .readme {
-    margin-top: 5rem;
-
     .text {
       margin-bottom: 1rem;
     }
+    .van-hairline--top-bottom::after,
+    .van-hairline-unset--top-bottom::after {
+      border: none;
+    }
+  }
+  .distinct {
+    height: 5px;
+    background: #1b2034;
   }
 }
 </style>

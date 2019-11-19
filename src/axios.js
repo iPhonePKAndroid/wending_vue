@@ -6,7 +6,7 @@ import { Toast } from 'vant'
 
 // axios.defaults.timeout = 1000 * 5
 axios.defaults.baseURL = 'http://api.imddm.com/api/'
-axios.defaults.baseURL = 'http://localhost:8000/api/'
+// axios.defaults.baseURL = 'http://localhost:8000/api/'
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.timeout = 7000

@@ -4,7 +4,7 @@
     <div>
       <van-tabs
         background="#282e48"
-        title-active-color="#fff"
+        title-active-color="#ba924a"
         v-model="activeName"
         @change="changeTokenList()"
       >
@@ -75,6 +75,7 @@ export default {
 </script>
 <style lang="scss">
 .trades {
+  background: #282e48;
   .text-red {
     color: red;
   }
@@ -91,8 +92,18 @@ export default {
       padding-right: 10px;
     }
   }
+  .van-cell {
+    background: #282e48;
+  }
+  .van-cell__value--alone {
+    color: #fff;
+  }
   .van-tabs__line {
-    background: #fff;
+    background: #ba924a;
+  }
+  .van-hairline--top-bottom::after,
+  .van-hairline-unset--top-bottom::after {
+    border: none;
   }
 }
 </style>
