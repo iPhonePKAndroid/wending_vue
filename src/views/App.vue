@@ -4,7 +4,7 @@
     <div class="center">
       <!-- LOGO -->
       <div class="logo">
-        <van-image width="100" height="100" :src="require('../assets/logo.png')" />
+        <van-image width="100" height="100" :src="require('../assets/downPage.png')" />
       </div>
       <!-- 下载按钮 -->
       <div class="download">
@@ -14,7 +14,9 @@
           plain
           @click="safari"
         >苹果本地下载</van-button>
-        <van-button :icon="require('../assets/andriod_icon.png')" color="#ba924a" plain>安卓本地下载</van-button>
+        <a href="http://www.imddm.com/ia.apk">
+          <van-button :icon="require('../assets/andriod_icon.png')" color="#ba924a" plain>安卓本地下载</van-button>
+        </a>
       </div>
     </div>
   </div>
