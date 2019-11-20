@@ -10,12 +10,12 @@
       <span class="field-title">名称</span>
       <van-field v-model="params.name" clearable placeholder="请输入账户名称" />
       <span class="field-title">密码</span>
-      <van-field v-model="params.password" clearable placeholder="请输入密码" type="password" />
+      <van-field v-model="params.password" clearable placeholder="请输入(建议密码包含字母和数字)" type="password" />
       <span class="field-title">确认密码</span>
       <van-field
         v-model="params.password_confirmation"
         clearable
-        placeholder="请确认登录密码"
+        placeholder="请输入"
         type="password"
       />
       <span class="field-title">邀请码</span>
