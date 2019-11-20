@@ -115,7 +115,8 @@ export default {
 </script>
 <style lang="scss">
 .upgrade {
-  //   height: 100%;
+  // height: 100%;
+  padding-bottom: 80px;
   // background: #fff;
   //   .readme {
   //     color: #969799;

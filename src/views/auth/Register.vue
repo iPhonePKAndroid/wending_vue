@@ -8,7 +8,7 @@
       <span class="field-title">账户名</span>
       <van-field v-model="params.name" clearable placeholder="请输入账户名称" />
       <span class="field-title">账户</span>
-      <van-field v-model="params.phone" clearable placeholder="请输入手机号码" />
+      <van-field v-model="params.phone" clearable placeholder="请输入账户" />
       <span class="field-title">密码</span>
       <van-field v-model="params.password" clearable placeholder="请输入密码" type="password" />
       <span class="field-title">确认密码</span>
