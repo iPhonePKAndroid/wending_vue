@@ -65,7 +65,6 @@ export default {
       this.$router.push({ name: "upgradeList" });
     },
     getLevel() {
-      console.log("执行");
       this.$axios.get("level").then(res => {
         this.lists = res.data.levels;
         this.amount = res.data.amount;
@@ -101,9 +100,11 @@ export default {
     },
     counter(limit) {
       this.countTimer = setInterval(() => {
-        this.static_rate += 0.1;
+        this.static_rate *= 1;
         if (this.static_rate >= limit) {
           clearInterval(this.countTimer);
+        } else {
+          this.static_rate = (this.static_rate + 0.1).toFixed(1);
         }
       }, 50);
     }
@@ -167,7 +168,7 @@ export default {
   }
   .bottom-button {
     padding: 0 16px;
-    margin-top: 100px;
+    margin-top: 80px;
   }
   .my-popup {
     height: 50%;
