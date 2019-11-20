@@ -4,11 +4,11 @@
       <van-image height="80px" width="80px" :src="require('../../assets/logo.png')" />
     </div>
     <div class="text">
-      <van-field clearable placeholder="中国" :disabled="true" right-icon="arrow" />
-      <span class="field-title">账户名</span>
-      <van-field v-model="params.name" clearable placeholder="请输入账户名称" />
+      <!-- <van-field clearable placeholder="中国" :disabled="true" right-icon="arrow" /> -->
       <span class="field-title">账户</span>
-      <van-field v-model="params.phone" clearable placeholder="请输入账户" />
+      <van-field v-model="params.phone" maxlength="10" clearable placeholder="请输入账户" />
+      <span class="field-title">名称</span>
+      <van-field v-model="params.name" clearable placeholder="请输入账户名称" />
       <span class="field-title">密码</span>
       <van-field v-model="params.password" clearable placeholder="请输入密码" type="password" />
       <span class="field-title">确认密码</span>
