@@ -1,10 +1,10 @@
 <template>
-  <div class="trades">
+  <div class="option-list">
     <van-nav-bar title="理财记录" left-arrow @click-left="onClickLeft" />
     <div>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
         <van-cell v-for="(item, index) in list" :key="index">
-          <van-row gutter="20">
+          <van-row>
             <van-col span="10">
               <p>时间</p>
               {{ item.created_at }}
@@ -71,9 +71,16 @@ export default {
 };
 </script>
 <style lang="scss">
-.trades {
+.option-list {
   .van-row {
     font-size: 10px;
+  }
+  .van-cell {
+    color: #fff;
+    background: #282e48;
+    .van-cell__value--alone {
+      color: white;
+    }
   }
 }
 </style>

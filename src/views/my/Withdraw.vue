@@ -184,7 +184,13 @@ export default {
       border: none;
     }
   }
-
+  .van-cell {
+    color: #fff;
+    background: #282e48;
+    .van-cell__value--alone {
+      color: white;
+    }
+  }
   .submit {
     padding: 20px 16px;
   }

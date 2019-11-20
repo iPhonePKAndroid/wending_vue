@@ -12,23 +12,23 @@
         <van-tab title="IA" name="ia" />
       </van-tabs>
       <van-cell>
-        <van-row>
-          <van-col span="10">时间</van-col>
-          <van-col span="4">类型</van-col>
-          <van-col span="4">金额</van-col>
-          <van-col span="6">账户/冻结</van-col>
+        <van-row type="flex" justify="space-between">
+          <van-col>时间</van-col>
+          <van-col>类型</van-col>
+          <van-col>金额</van-col>
+          <van-col>账户/冻结</van-col>
         </van-row>
       </van-cell>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
         <van-cell v-for="(item, index) in list" :key="index">
-          <van-row gutter="20">
-            <van-col span="10">{{ item.created_at }}</van-col>
-            <van-col span="4">{{ item.type_name }}</van-col>
-            <van-col span="4">
+          <van-row type="flex" justify="space-between">
+            <van-col>{{ item.created_at | format}}</van-col>
+            <van-col>{{ item.type_name }}</van-col>
+            <van-col>
               <span v-if="item.expend" class="text-red">-{{ item.change*1 }}</span>
               <span v-else class="text-green">+{{ item.change*1 }}</span>
             </van-col>
-            <van-col span="6">{{ item.amount*1 }}/{{ item.lock_amount*1 }}</van-col>
+            <van-col>{{ item.amount*1 }}/{{ item.lock_amount*1 }}</van-col>
           </van-row>
         </van-cell>
       </van-list>
@@ -70,6 +70,11 @@ export default {
       this.list = [];
       this.onLoad();
     }
+  },
+  filters: {
+    format(e) {
+      return e.substring(5, 16);
+    }
   }
 };
 </script>
@@ -88,8 +93,10 @@ export default {
     font-size: 10px;
 
     .van-col {
-      padding-left: 10px;
-      padding-right: 10px;
+      flex: 1;
+      text-align: center;
+      // padding-left: 10px;
+      // padding-right: 10px;
     }
   }
   .van-cell {

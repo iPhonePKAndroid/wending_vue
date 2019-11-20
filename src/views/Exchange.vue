@@ -193,6 +193,13 @@ export default {
       }
     }
   }
+  .van-cell {
+    color: #fff;
+    background: #282e48;
+    .van-cell__value--alone {
+      color: white;
+    }
+  }
 
   .my-popup {
     height: 50%;

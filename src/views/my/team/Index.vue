@@ -1,5 +1,5 @@
 <template>
-    <div class="trades">
+    <div class="team-list">
         <van-nav-bar title="我的团队" left-arrow @click-left="onClickLeft" />
         <div>
             <van-cell>
@@ -65,7 +65,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.trades {
+.team-list {
     .text-red {
         color: red;
     }
@@ -73,6 +73,13 @@ export default {
     .text-green {
         color: green;
     }
+    .van-cell {
+    color: #fff;
+    background: #282e48;
+    .van-cell__value--alone {
+      color: white;
+    }
+  }
 
     .van-row {
         font-size: 10px;

@@ -1,23 +1,23 @@
 <template>
-  <div class="trades">
+  <div class="trades-list">
     <van-nav-bar title="兑换记录" left-arrow @click-left="onClickLeft" />
     <div>
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
         <van-cell v-for="(item, index) in list" :key="index">
-          <van-row gutter="20">
-            <van-col span="9">
+          <van-row type="flex" justify="space-between">
+            <van-col>
               <p>时间</p>
-              {{ item.created_at }}
+              {{ item.created_at | timerFormat}}
             </van-col>
-            <van-col span="6">
+            <van-col>
               <p>支出(USDT)</p>
               {{ item.amount }}
             </van-col>
-            <van-col span="4">
+            <van-col>
               <p>价格</p>
               {{ item.rate }}
             </van-col>
-            <van-col span="5">
+            <van-col>
               <p>收入(IA)</p>
               {{ item.income }}
             </van-col>
@@ -54,13 +54,25 @@ export default {
         }
       });
     }
+  },
+  filters: {
+    timerFormat(a) {
+      return a.substring(5, 16);
+    }
   }
 };
 </script>
 <style lang="scss">
-.trades {
+.trades-list {
   .van-row {
     font-size: 10px;
+  }
+  .van-cell {
+    color: #fff;
+    background: #282e48;
+    .van-cell__value--alone {
+      color: white;
+    }
   }
 }
 </style>

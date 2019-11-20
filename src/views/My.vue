@@ -44,28 +44,25 @@
     </div>
     <div class="no"></div>
     <div>
-      <van-cell
-        icon="friends-o"
-        title="我的团队"
-        :value="user.team_count"
-        is-link
-        @click="go('my.team')"
-      >
+      <van-cell title="团队人数" :value="user.team_count">
         <van-icon color="#ba924a" slot="icon" name="friends-o" size="20" />
       </van-cell>
-      <van-cell icon="manager-o" title="直推人数" :value="user.direct_count">
+      <van-cell title="直推人数" :value="user.direct_count">
         <van-icon color="#ba924a" slot="icon" name="manager-o" size="20" />
       </van-cell>
-      <van-cell icon="manager-o" title="团队业绩" :value="user.team_amount">
+      <van-cell title="团队业绩" :value="user.team_amount">
         <van-icon color="#ba924a" slot="icon" name="chart-trending-o" size="20" />
       </van-cell>
     </div>
     <div class="no"></div>
     <div>
-      <van-cell icon="share" title="我的收益" is-link @click="go('my.profit')">
+      <van-cell title="我的团队" is-link @click="go('my.team')">
+        <van-icon color="#ba924a" slot="icon" name="cluster-o" size="20" />
+      </van-cell>
+      <van-cell title="我的收益" is-link @click="go('my.profit')">
         <van-icon color="#ba924a" slot="icon" name="balance-o" size="20" />
       </van-cell>
-      <van-cell icon="share" title="邀请好友" is-link @click="go('my.aff')">
+      <van-cell title="邀请好友" is-link @click="go('my.aff')">
         <van-icon color="#ba924a" slot="icon" name="share" size="20" />
       </van-cell>
       <van-cell title="修改登录密码" is-link @click="go('password')">

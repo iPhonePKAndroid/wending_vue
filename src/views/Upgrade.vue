@@ -75,6 +75,7 @@ export default {
     selectBtn(key) {
       this.selectedItem = key;
       this.upgrade = this.lists[key];
+      this.counter(this.upgrade.static_rate);
     },
     submit() {
       this.needAuth = true;
@@ -99,6 +100,7 @@ export default {
         });
     },
     counter(limit) {
+      this.static_rate = 0;
       this.countTimer = setInterval(() => {
         this.static_rate *= 1;
         if (this.static_rate >= limit) {

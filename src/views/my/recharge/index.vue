@@ -3,27 +3,31 @@
     <div class="nav">
       <van-nav-bar title="充值记录" left-arrow @click-left="onClickLeft" />
     </div>
-    <div class="amount">
-      <p>余额： {{ wallet.amount }} USDT</p>
-    </div>
     <van-cell>
-      <van-row style="text-align: center;">
-        <van-col span="5">数量</van-col>
-        <van-col span="8">哈希</van-col>
-        <van-col span="11">时间</van-col>
+      <van-row type="flex" justify="space-between">
+        <van-col>数量</van-col>
+        <van-col>余额</van-col>
+        <van-col>时间</van-col>
       </van-row>
     </van-cell>
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-      <van-cell v-for="(item, index) in list" :key="index">
-        <van-row style="text-align: center;">
-          <van-col span="5">{{ item.amount }}</van-col>
-          <van-col span="8" @click="look(item.hash)">查看</van-col>
-          <van-col span="11">{{ item.created_at }}</van-col>
+      <van-cell v-for="(item, index) in list" :key="index" @click="look(item)">
+        <van-row type="flex" justify="space-between">
+          <van-col>{{ item.amount }}</van-col>
+          <van-col>{{item.balance}}</van-col>
+          <van-col>{{ item.created_at |format }}</van-col>
         </van-row>
       </van-cell>
     </van-list>
 
-    <van-popup round position="bottom" v-model="show">{{ hash || '暂无' }}</van-popup>
+    <van-dialog v-model="show" title="详情" show-cancel-button>
+      <van-cell title="交易数量数量" :value="selectedItem.amount" />
+      <van-cell title="交易前余额" :value="selectedItem.balance" />
+      <van-cell title="Hash" :value="selectedItem.hash" value-class="hash-value" />
+      <van-cell title="来源地址" :value="selectedItem.from_address" value-class="hash-value" />
+      <van-cell title="备注" :value="selectedItem.remark" />
+      <van-cell title="充值时间" :value="selectedItem.created_at" />
+    </van-dialog>
   </div>
 </template>
 <script>
@@ -33,22 +37,12 @@ export default {
       show: false,
       hash: "",
       active: 0,
-      list: [
-        {
-          amount: "1.00",
-          hash:
-            "0x4786205d7ca3c457c08de5821fccaa909949376ea04f2e1c526edcd66ee1fbbf",
-          created_at: "2018年 12月 12日 12:12:12"
-        }
-      ],
-
-      wallet: {
-        amount: "0"
-      },
+      list: [],
       loading: false,
       finished: false,
       type: "",
-      page: 0
+      page: 0,
+      selectedItem: {}
     };
   },
   methods: {
@@ -57,17 +51,32 @@ export default {
     },
     onLoad() {
       this.page++;
-      this.loading = false;
-      this.finished = true;
+      this.$axios
+        .get(`/wallet/recharges?&page=${this.page}&size=30`)
+        .then(response => {
+          let ss = response.data;
+          this.list = this.list.concat(ss);
+          this.loading = false;
+          if (
+            this.page >= response.last_page ||
+            response.data.data.total == 0
+          ) {
+            this.finished = true;
+          }
+        });
     },
     look(hash) {
-      this.hash = hash;
+      this.selectedItem = hash;
       this.show = true;
     },
     async get_list() {
       let list = await this.$axios.get("/wallet/recharges");
-      this.wallet = list.data.wallet;
-      this.list = list.data.data.data;
+      this.list = list.data;
+    }
+  },
+  filters: {
+    format(e) {
+      return e.substring(5, 16);
     }
   },
   mounted() {
@@ -92,6 +101,10 @@ export default {
 
   .van-row {
     font-size: 12px;
+    .van-col {
+      flex: 1;
+      text-align: center;
+    }
   }
 
   .van-popup {
@@ -103,6 +116,13 @@ export default {
     word-wrap: break-word;
     word-break: break-all;
     background-color: #5e6b6d;
+  }
+  .van-dialog {
+    background: #282e48;
+    .hash-value {
+      word-wrap: break-word;
+      flex: 3;
+    }
   }
 }
 </style>

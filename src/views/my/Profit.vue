@@ -1,5 +1,5 @@
 <template>
-  <div class="trades">
+  <div class="profit-list">
     <van-nav-bar title="收益记录" left-arrow @click-left="onClickLeft" />
     <div>
       <van-cell>
@@ -54,7 +54,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.trades {
+.profit-list {
   .text-red {
     color: red;
   }
