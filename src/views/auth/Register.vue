@@ -15,7 +15,7 @@
       <van-field
         v-model="params.password_confirmation"
         clearable
-        placeholder="请输入"
+        placeholder="请输入(建议密码包含字母和数字)"
         type="password"
       />
       <span class="field-title">邀请码</span>
