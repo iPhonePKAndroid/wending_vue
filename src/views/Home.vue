@@ -6,13 +6,17 @@
       </van-swipe-item>
     </van-swipe>
     <van-panel class="notice-card">
-      <div slot="header">
+      <div slot="header" class="notice-title">
         <span class="dot">公告</span>
+        <span>
+          全部公告
+          <van-icon name="arrow"></van-icon>
+        </span>
       </div>
-      <ul class="card-list">
-        <li v-for="(item,index) in 3" :key="index">
-          <span>充值资金已充值到账</span>
-          <div>{{curTime}}</div>
+      <ul class="card-list" v-if="noticeList.length>0">
+        <li v-for="(item,index2) in noticeList" :key="index2">
+          <span>{{item.name}}</span>
+          <div>{{item.created_at}}</div>
         </li>
       </ul>
     </van-panel>
@@ -20,8 +24,8 @@
       <span class="dot">关于IA</span>
     </div>
     <div class="ad-card" v-if="banners.length>0">
-      <div v-for="(image, index) in banners" :key="index">
-        <van-image :src="image.url"></van-image>
+      <div v-for="(image, index) in 3" :key="index">
+        <van-image :src="require(`../assets/home-banner${index}.png`)"></van-image>
       </div>
     </div>
   </div>
@@ -31,17 +35,23 @@
 export default {
   data() {
     return {
-      banners: []
+      banners: [],
+      noticeList: []
     };
   },
   methods: {
     async get_banners() {
       let banners = await this.$axios.get("/banners");
       this.banners = banners.data;
+    },
+    async getNotice() {
+      var res = await this.$axios.get("notice?size=5");
+      this.noticeList = res.data;
     }
   },
   mounted() {
     this.get_banners();
+    this.getNotice();
   },
   computed: {
     curTime() {
@@ -74,14 +84,53 @@ export default {
     padding: 10px 16px;
     border-radius: 7px;
     overflow: hidden;
+    .notice-title {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      span:last-child {
+        display: flex;
+        align-items: center;
+        text-decoration: underline;
+        color: #ba924a;
+      }
+      &::after {
+        position: absolute;
+        box-sizing: border-box;
+        content: " ";
+        pointer-events: none;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-bottom: 1px solid #454c6c;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+      }
+    }
     .card-list {
       position: relative;
+      height: 160px;
+      overflow-y: scroll;
       li {
         padding: 10px 0;
         margin-left: 16px;
         list-style: disc;
+        position: relative;
         div {
           font-size: 10px;
+        }
+        &::after {
+          position: absolute;
+          box-sizing: border-box;
+          content: " ";
+          pointer-events: none;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border-bottom: 1px solid #454c6c;
+          -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
         }
       }
     }
