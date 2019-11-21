@@ -8,13 +8,13 @@
     <van-panel class="notice-card">
       <div slot="header" class="notice-title">
         <span class="dot">公告</span>
-        <span>
+        <span @click="$router.push({name:'notice'})">
           全部公告
           <van-icon name="arrow"></van-icon>
         </span>
       </div>
       <ul class="card-list" v-if="noticeList.length>0">
-        <li v-for="(item,index2) in noticeList" :key="index2">
+        <li v-for="(item,index2) in noticeList" :key="index2" @click="toDetail(item.id)">
           <span>{{item.name}}</span>
           <div>{{item.created_at}}</div>
         </li>
@@ -47,6 +47,12 @@ export default {
     async getNotice() {
       var res = await this.$axios.get("notice?size=5");
       this.noticeList = res.data;
+    },
+    async toDetail(id) {
+      this.$router.push({
+        name: "noticeShow",
+        params: { id }
+      });
     }
   },
   mounted() {

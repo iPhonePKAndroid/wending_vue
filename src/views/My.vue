@@ -2,7 +2,7 @@
   <div class="my">
     <van-nav-bar title="我的" />
     <div class="bg">
-      <van-cell :title="user.name" :label="user.phone">
+      <van-cell :title="user.name">
         <van-image
           slot="icon"
           width="60"
@@ -11,9 +11,15 @@
           round
           :src="require('../assets/logo.png')"
         />
+        <div slot="label">
+          <span>{{user.phone}}</span>
+          <div class="label-area">
+             邀请码：{{user.code}}
+            <van-icon name="wap-nav" @click="toCopy(user.code)" />
+          </div>
+        </div>
       </van-cell>
     </div>
-
     <div class="trade">
       <van-row align="bottom" justify="space-between" type="flex">
         <van-col span="6">
@@ -118,6 +124,14 @@ export default {
     async profile() {
       let user = await this.$axios.get("/user");
       this.user = user.data;
+    },
+    toCopy(val) {
+      console.log(val);
+      this.$clipboard(val);
+      this.$toast({
+        message: "成功",
+        duration: 1500
+      });
     }
   },
   mounted() {
@@ -133,7 +147,7 @@ export default {
   .bg {
     background-color: #282e48;
     // background-image: url('../assets/profile.gif');
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 20px;
     .van-cell {
       background-color: #282e48;
@@ -143,6 +157,13 @@ export default {
         color: #fff;
         font-size: 18px;
         font-weight: bold;
+      }
+    }
+    .label-area {
+      display: flex;
+      align-items: center;
+      .van-icon {
+        padding: 5px;
       }
     }
   }

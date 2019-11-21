@@ -57,6 +57,17 @@ let router = new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Notice.vue')
     },
     {
+      path: '/noticeShow/:id',
+      name: 'noticeShow',
+      meta: {
+        auth: false,
+        guest: false,
+        tabar: false,
+        title: '平台公告' + title,
+      },
+      component: () => import(/* webpackChunkName: "about" */ './views/noticeShow/index.vue')
+    },
+    {
       path: '/upgrade',
       name: 'upgrade',
       meta: {
