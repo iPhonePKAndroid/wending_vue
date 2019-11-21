@@ -73,6 +73,7 @@ export default {
       });
     },
     selectBtn(key) {
+      console.log(`key:${key}`);
       this.selectedItem = key;
       this.upgrade = this.lists[key];
       this.counter(this.upgrade.static_rate);
@@ -100,7 +101,11 @@ export default {
         });
     },
     counter(limit) {
+      console.log(limit);
       this.static_rate = 0;
+      if (this.countTimer) {
+        clearInterval(this.countTimer);
+      }
       this.countTimer = setInterval(() => {
         this.static_rate *= 1;
         if (this.static_rate >= limit) {
