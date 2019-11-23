@@ -23,10 +23,14 @@
     <div class="sub-title">
       <span class="dot">关于IA</span>
     </div>
-    <div class="ad-card" v-if="banners.length>0">
-      <div v-for="(image, index) in 3" :key="index">
-        <van-image fit="fill" :src="require(`../assets/home-banner${index}.png`)"></van-image>
-      </div>
+    <div class="ad-card">
+      <van-image fit="fill" :src="require(`../assets/home-banner0.png`)"></van-image>
+    </div>
+    <div class="ad-card">
+      <van-image fit="fill" :src="require(`../assets/home-banner1.png`)"></van-image>
+    </div>
+    <div class="ad-card">
+      <van-image fit="fill" :src="require(`../assets/home-banner2.png`)"></van-image>
     </div>
   </div>
 </template>
@@ -36,7 +40,12 @@ export default {
   data() {
     return {
       banners: [],
-      noticeList: []
+      noticeList: [
+        {
+          name: "-",
+          created_at: "-"
+        }
+      ]
     };
   },
   methods: {
@@ -116,7 +125,7 @@ export default {
     }
     .card-list {
       position: relative;
-      height: 160px;
+      max-height: 160px;
       overflow-y: scroll;
       li {
         padding: 10px 0;
