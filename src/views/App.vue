@@ -8,17 +8,20 @@
       </div>
       <!-- 下载按钮 -->
       <div class="download">
-        <van-button color="#ba924a" @click="wxToast" plain v-show="isWeChat">请前往浏览器下载</van-button>
         <van-button
-          v-show="isIos"
           :icon="require('../assets/ios_icon.png')"
           color="#ba924a"
           plain
           @click="safari"
         >苹果本地下载</van-button>
-        <a v-show="isApk" href="http://www.imddm.com/ia.apk">
-          <van-button :icon="require('../assets/andriod_icon.png')" color="#ba924a" plain>安卓本地下载</van-button>
-        </a>
+
+        <van-button
+          @click="downLoadApk"
+          :icon="require('../assets/andriod_icon.png')"
+          color="#ba924a"
+          plain
+        >安卓本地下载</van-button>
+
         <van-dialog v-model="show" title="请打开右上角按钮，用系统浏览器打开" show-cancel-button></van-dialog>
       </div>
     </div>
@@ -36,15 +39,25 @@ export default {
   },
   methods: {
     safari() {
-      if (window.navigator.userAgent.indexOf("Safari") >= 0) {
+      if (this.isWeChat) {
+        this.show = true;
+        return;
+      }
+      if (window.navigator.userAgent.indexOf("iPhone") >= 0) {
         // this.$toast("暂无苹果App");
-
         // return;
         window.location.href =
           "itms-services://?action=download-manifest&url=https://imddm.com/ia.plist";
-      } else {
-        this.$toast("请使用Safari浏览器下载安装");
+        return false;
       }
+      this.$toast("请使用Safari浏览器下载安装");
+    },
+    downLoadApk() {
+      if (this.isWeChat) {
+        this.show = true;
+        return;
+      }
+      window.location.href = "http://www.imddm.com/ia.apk";
     },
     onClickLeft() {
       this.$router.go(-1);

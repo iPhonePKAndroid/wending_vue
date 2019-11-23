@@ -20,10 +20,6 @@
       />
       <span class="field-title">邀请码</span>
       <van-field v-model="params.code" clearable placeholder="请输入邀请码" />
-
-      <van-checkbox v-model="checked" class="selectbox" icon-size="16" @click="tops">
-        <span>同意《注册协议》</span>
-      </van-checkbox>
       <div class="auth_button">
         <van-button
           color="linear-gradient(to right, #ba924a, #e9d495)"

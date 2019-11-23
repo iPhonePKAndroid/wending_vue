@@ -25,11 +25,7 @@
     </div>
     <div class="ad-card">
       <van-image fit="fill" :src="require(`../assets/home-banner0.png`)"></van-image>
-    </div>
-    <div class="ad-card">
       <van-image fit="fill" :src="require(`../assets/home-banner1.png`)"></van-image>
-    </div>
-    <div class="ad-card">
       <van-image fit="fill" :src="require(`../assets/home-banner2.png`)"></van-image>
     </div>
   </div>
