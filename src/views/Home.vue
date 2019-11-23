@@ -25,7 +25,7 @@
     </div>
     <div class="ad-card" v-if="banners.length>0">
       <div v-for="(image, index) in 3" :key="index">
-        <van-image :src="require(`../assets/home-banner${index}.png`)"></van-image>
+        <van-image fit="fill" :src="require(`../assets/home-banner${index}.png`)"></van-image>
       </div>
     </div>
   </div>
@@ -161,8 +161,10 @@ export default {
     }
   }
   .ad-card {
+    padding: 0 20px;
     .van-image {
-      margin: 5px 20px;
+      padding: 5px 0;
+      width: 100%;
       img {
         border-radius: 7px;
         overflow: hidden;
