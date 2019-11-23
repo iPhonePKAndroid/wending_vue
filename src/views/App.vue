@@ -8,15 +8,18 @@
       </div>
       <!-- 下载按钮 -->
       <div class="download">
+        <van-button color="#ba924a" @click="wxToast" plain v-show="isWeChat">请前往浏览器下载</van-button>
         <van-button
+          v-show="isIos"
           :icon="require('../assets/ios_icon.png')"
           color="#ba924a"
           plain
           @click="safari"
         >苹果本地下载</van-button>
-        <a href="http://www.imddm.com/ia.apk">
+        <a v-show="isApk" href="http://www.imddm.com/ia.apk">
           <van-button :icon="require('../assets/andriod_icon.png')" color="#ba924a" plain>安卓本地下载</van-button>
         </a>
+        <van-dialog v-model="show" title="请打开右上角按钮，用系统浏览器打开" show-cancel-button></van-dialog>
       </div>
     </div>
   </div>
@@ -24,14 +27,19 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isApk: false,
+      isIos: false,
+      isWeChat: false,
+      show: false
+    };
   },
   methods: {
     safari() {
       if (window.navigator.userAgent.indexOf("Safari") >= 0) {
-        this.$toast("暂无苹果App");
+        // this.$toast("暂无苹果App");
 
-        return;
+        // return;
         window.location.href =
           "itms-services://?action=download-manifest&url=https://imddm.com/ia.plist";
       } else {
@@ -40,6 +48,20 @@ export default {
     },
     onClickLeft() {
       this.$router.go(-1);
+    },
+    wxToast() {
+      this.show = true;
+    }
+  },
+  mounted() {
+    var agentInfo = navigator.userAgent;
+    if (agentInfo.search(/MicroMessenger/) > -1) {
+      this.isWeChat = true;
+      console.log(WeixinJSBridge);
+    } else if (agentInfo.search(/iPhone/) > -1) {
+      this.isIos = true;
+    } else {
+      this.isApk = true;
     }
   }
 };
@@ -48,7 +70,9 @@ export default {
 .download {
   height: 100%;
   background-color: #282e48;
-
+  .van-dialog {
+    background-color: #1d2343;
+  }
   .center {
     text-align: center;
     padding-top: 10rem;
