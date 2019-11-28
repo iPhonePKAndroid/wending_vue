@@ -67,7 +67,7 @@ axios.interceptors.response.use(
         // 取消网络加载提示
         Toast.clear();
 
-        if (error.response) {
+        // if (error.response) {
             switch (error.response.status) {
                 case 401:
                     store.commit('logout')
@@ -111,13 +111,13 @@ axios.interceptors.response.use(
                 default:
                 // 
             }
-        } else {
-            // alert(3)
-            Toast.fail({
-                message: '网络请求异常',
-                duration: 2000
-            })
-        }
+        // } else {
+        //     // alert(3)
+        //     Toast.fail({
+        //         message: '网络请求异常',
+        //         duration: 2000
+        //     })
+        // }
         return Promise.reject(error)
     }
 )
