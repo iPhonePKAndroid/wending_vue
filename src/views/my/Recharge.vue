@@ -32,6 +32,7 @@
     <div class="readme">
       <van-collapse v-model="activeNames">
         <van-collapse-item title="说明" name="1">
+          <div class="text">请使用ERC20方式 的USDT充值。</div>
           <div class="text">此地址仅接受USDT充值，单笔小于10金额将不会到账，任何低于最小金额或者非USDT的充值金额将无法找回。</div>
           <div class="text">由于转账需要整个区块网络节点的确认，所以到账时间由区块网络拥堵决定，12次确认后将入账。</div>
         </van-collapse-item>
