@@ -29,17 +29,26 @@
         </van-cell>
       </van-list>
     </div>
+    <van-popup class="my-popup" position="bottom" v-model="needAuth">
+      <authPay ref="myAuth" v-on:readyPay="readyPay"></authPay>
+    </van-popup>
   </div>
 </template>
 <script>
+import authPay from "../components/authPay";
 export default {
+  components: {
+    authPay
+  },
   data() {
     return {
       active: 0,
       list: [],
       loading: false,
       finished: false,
-      page: 0
+      page: 0,
+      needAuth: false,
+      selectedId: ""
     };
   },
   methods: {
@@ -59,13 +68,42 @@ export default {
       });
     },
     checkout(id) {
-      this.$axios.put(`/upgrade/${id}`).then(res => {
-        if (res.code == 10000) {
-          this.list = [];
-          this.page = 0;
-          this.onLoad();
-        }
+      this.$dialog
+        .confirm({
+          title: "注意",
+          message: "确定撤销吗"
+        })
+        .then(() => {
+          this.selectedId = id;
+          this.needAuth = true;
+        })
+        .catch(() => {});
+
+      // this.$axios.put(`/upgrade/${id}`).then(res => {
+      //   if (res.code == 10000) {
+      //     this.list = [];
+      //     this.page = 0;
+      //     this.onLoad();
+      //   }
+      // });
+    },
+    readyPay(pass) {
+      var toast1 = this.$toast.loading({
+        message: "加载中..."
       });
+      this.$axios
+        .put(`/upgrade/${this.selectedId}`, {
+          password: pass
+        })
+        .then(res => {
+          if (res.code == 10000) {
+            this.list = [];
+            this.page = 0;
+            this.needAuth = false;
+            toast1.clear();
+            this.onLoad();
+          }
+        });
     }
   }
 };
@@ -81,6 +119,10 @@ export default {
     .van-cell__value--alone {
       color: white;
     }
+  }
+  .my-popup {
+    height: 50%;
+    padding-top: 20px;
   }
 }
 </style>

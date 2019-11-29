@@ -24,9 +24,7 @@
           <li>暂无公告</li>
         </template>
       </ul>
-      <div v-else>
-      暂无公告
-      </div>
+
     </van-panel>
     <div class="sub-title">
       <span class="dot">关于IA</span>
