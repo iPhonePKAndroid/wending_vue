@@ -2,7 +2,7 @@
   <div class="home">
     <van-swipe class="swiper" indicator-color="white">
       <van-swipe-item v-for="(image, index) in banners" :key="index">
-        <van-image :src="image.url"></van-image>
+        <van-image height="156px" width="335px" :src="image.url"></van-image>
       </van-swipe-item>
     </van-swipe>
     <van-panel class="notice-card">
@@ -24,14 +24,17 @@
           <li>暂无公告</li>
         </template>
       </ul>
+      <div v-else>
+      暂无公告
+      </div>
     </van-panel>
     <div class="sub-title">
       <span class="dot">关于IA</span>
     </div>
-    <div class="ad-card">
-      <van-image fit="fill" :src="require(`../assets/home-banner0.png`)"></van-image>
-      <van-image fit="fill" :src="require(`../assets/home-banner1.png`)"></van-image>
-      <van-image fit="fill" :src="require(`../assets/home-banner2.png`)"></van-image>
+    <div class="three-card">
+      <van-image width="335px" height="127px" fit="fill" :src="require(`../assets/home-banner0.png`)"></van-image>
+      <van-image width="335px" height="127px" fit="fill" :src="require(`../assets/home-banner1.png`)"></van-image>
+      <van-image width="335px" height="127px" fit="fill" :src="require(`../assets/home-banner2.png`)"></van-image>
     </div>
   </div>
 </template>
@@ -42,10 +45,6 @@ export default {
     return {
       banners: [],
       noticeList: [
-        {
-          name: "-",
-          created_at: "-"
-        }
       ]
     };
   },
@@ -175,7 +174,7 @@ export default {
       left: 0;
     }
   }
-  .ad-card {
+  .three-card {
     padding: 0 20px;
     .van-image {
       padding: 5px 0;
