@@ -32,6 +32,14 @@
     <van-popup class="my-popup" position="bottom" v-model="needAuth">
       <authPay ref="myAuth" v-on:readyPay="readyPay"></authPay>
     </van-popup>
+    <van-dialog
+  v-model="show"
+  title="申请撤销提示"
+>
+  <div>请扫描添加一下客服申请退单</div>
+  <br>
+  <img src="../assets/kf.jpeg" width="80%">
+</van-dialog>
   </div>
 </template>
 <script>
@@ -48,7 +56,8 @@ export default {
       finished: false,
       page: 0,
       needAuth: false,
-      selectedId: ""
+      selectedId: "",
+      show: false
     };
   },
   methods: {
@@ -68,6 +77,9 @@ export default {
       });
     },
     checkout(id) {
+      this.show = true;
+
+      return;
       this.$dialog
         .confirm({
           title: "注意",
@@ -123,6 +135,12 @@ export default {
   .my-popup {
     height: 50%;
     padding-top: 20px;
+  }
+  .van-dialog{
+    color:#000;
+    div{
+      text-align:center;
+    }
   }
 }
 </style>
