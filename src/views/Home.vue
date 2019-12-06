@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <van-swipe :autoplay="3000" class="swiper" indicator-color="white">
+    <van-swipe class="swiper" indicator-color="white">
       <van-swipe-item v-for="(image, index) in banners" :key="index">
         <van-image height="156px" width="335px" :src="image.url"></van-image>
       </van-swipe-item>
@@ -13,15 +13,18 @@
           <van-icon name="arrow"></van-icon>
         </span>
       </div>
-      <ul class="card-list" v-if="noticeList.length>0">
-        <li v-for="(item,index2) in noticeList" :key="index2" @click="toDetail(item.id)">
-          <span>{{item.name}}</span>
-          <div>{{item.created_at}}</div>
-        </li>
+      <ul class="card-list">
+        <template v-if="noticeList.length>0">
+          <li v-for="(item,index2) in noticeList" :key="index2" @click="toDetail(item.id)">
+            <span>{{item.name}}</span>
+            <div>{{item.created_at}}</div>
+          </li>
+        </template>
+        <template v-else>
+          <li>暂无公告</li>
+        </template>
       </ul>
-      <div v-else>
-      暂无公告
-      </div>
+
     </van-panel>
     <div class="sub-title">
       <span class="dot">关于IA</span>
@@ -50,6 +53,8 @@ export default {
     },
     async getNotice() {
       var res = await this.$axios.get("notice?size=5");
+      if (res.data == 0) {
+      }
       this.noticeList = res.data;
     },
     async toDetail(id) {
@@ -80,6 +85,9 @@ export default {
     position: relative;
     height: 210px;
     .van-swipe-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       .van-image {
         padding: 25px 20px;
         img {
