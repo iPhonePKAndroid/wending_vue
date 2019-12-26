@@ -103,7 +103,7 @@ export default {
       this.$router.push({ name: "exchangeList" });
     },
     input() {
-      this.params.ia = (this.params.amount / this.info.rate).toFixed(4);
+      this.params.ia = (this.params.amount * this.info.rate).toFixed(4);
       if (this.params.amount == "") {
         this.params.ia = "";
       }
