@@ -24,16 +24,36 @@
           <li>暂无公告</li>
         </template>
       </ul>
-
     </van-panel>
     <div class="sub-title">
       <span class="dot">关于IA</span>
     </div>
     <div class="three-card">
-      <van-image width="335px" height="127px" fit="fill" :src="require(`../assets/home-banner0.png`)"></van-image>
-      <van-image width="335px" height="127px" fit="fill" :src="require(`../assets/home-banner1.png`)"></van-image>
-      <van-image width="335px" height="127px" fit="fill" :src="require(`../assets/home-banner2.png`)"></van-image>
+      <van-image
+        width="335px"
+        height="127px"
+        fit="fill"
+        :src="require(`../assets/home-banner0.png`)"
+      ></van-image>
+      <van-image
+        width="335px"
+        height="127px"
+        fit="fill"
+        :src="require(`../assets/home-banner1.png`)"
+      ></van-image>
+      <van-image
+        width="335px"
+        height="127px"
+        fit="fill"
+        :src="require(`../assets/home-banner2.png`)"
+      ></van-image>
     </div>
+    <van-overlay :show="giftShow" @click="giftShow = false">
+      <div class="gift_wapper" @click.stop>
+        <div class="option_text">開</div>
+        <van-image class="option_img" width="50vw" height="84vw" :src="require('../assets/red_packet.png')" />
+      </div>
+    </van-overlay>
   </div>
 </template>
 
@@ -42,8 +62,8 @@ export default {
   data() {
     return {
       banners: [],
-      noticeList: [
-      ]
+      noticeList: [],
+      giftShow: true
     };
   },
   methods: {
@@ -187,6 +207,26 @@ export default {
   .van-hairline--top-bottom::after,
   .van-hairline-unset--top-bottom::after {
     border: none;
+  }
+  .gift_wapper{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .option_img{
+      position: absolute;
+    }
+    .option_text{
+      background-color:#e9cc9a;
+      height: 80px;
+      width: 80px;
+      border-radius: 80px;
+      color: #333;
+      line-height: 80px;
+      font-size: 30px;
+      font-weight:bold;
+      text-align: center;
+    }
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="logo">
-      <van-image height="80px" width="80px" :src="require('../../assets/logo.png')" />
+      <van-image height="80px" width="80px" :src="require('../../assets/logo.jpeg')" />
     </div>
     <div class="text">
       <!-- <van-field clearable placeholder="中国" :disabled="true" right-icon="arrow" /> -->

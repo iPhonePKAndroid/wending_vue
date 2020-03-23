@@ -9,7 +9,7 @@
           height="60"
           lazy-load
           round
-          :src="require('../assets/logo.png')"
+          :src="require('../assets/logo.jpeg')"
         />
         <div slot="label">
           <span>{{user.phone}}</span>

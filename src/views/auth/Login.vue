@@ -12,7 +12,7 @@
     <transition name="component-fade" mode="out-in">
       <div class="launchPage" v-if="curIndex ==1" key="el1">
         <div :class="{'img-wrapper':true,'img-wrapper-trans':isPageOk}">
-          <van-image height="130px" width="133px" :src="require('../../assets/logo.png')" />
+          <van-image height="130px" width="133px" :src="require('../../assets/logo.jpeg')" />
         </div>
 
         <div :class="{'mid-text':true,'mid-text-trans':isPageOk}">欢迎来到 IA</div>
@@ -23,7 +23,7 @@
       </div>
       <div class="input-wrapper" v-if="curIndex==2" key="el2">
         <div class="logo">
-          <van-image height="80px" width="80px" :src="require('../../assets/logo.png')" />
+          <van-image height="80px" width="80px" :src="require('../../assets/logo.jpeg')" />
         </div>
         <span class="field-title">账户</span>
         <van-field v-model="params.phone" clearable placeholder="请输入账户" />
